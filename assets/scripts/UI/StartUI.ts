@@ -46,6 +46,7 @@ export default class StartUI extends cc.Component {
 
     onClickQuit() {
         console.log("🛑 離開遊戲！");
+        cc.game.end();
         // window.close(); // 僅原生 App 有效
     }
 }
