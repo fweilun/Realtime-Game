@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "71e518d6-e400-48f9-9f14-83e98cb8c0e8",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 14,
+  "height": 14,
+  "platformSettings": {},
+  "subMetas": {
+    "WoodShield1": {
+      "ver": "1.0.6",
+      "uuid": "0d2edcf7-bf63-4c50-9dff-1c802f15e39c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "71e518d6-e400-48f9-9f14-83e98cb8c0e8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 14,
+      "height": 14,
+      "rawWidth": 14,
+      "rawHeight": 14,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

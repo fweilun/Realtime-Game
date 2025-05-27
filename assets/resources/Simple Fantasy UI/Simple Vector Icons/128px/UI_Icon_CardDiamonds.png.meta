@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "5bffa476-1770-46ce-9a76-64709eb298ed",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "UI_Icon_CardDiamonds": {
+      "ver": "1.0.6",
+      "uuid": "00b6e65b-19bf-41b4-9b16-6209fbfbd0fb",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "5bffa476-1770-46ce-9a76-64709eb298ed",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 23,
+      "trimY": 10,
+      "width": 82,
+      "height": 108,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

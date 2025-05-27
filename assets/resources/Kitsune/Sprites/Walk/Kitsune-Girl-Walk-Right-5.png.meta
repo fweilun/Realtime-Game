@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "fb53d42a-f471-4593-a2b9-1d777d5f4aad",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Walk-Right-5": {
+      "ver": "1.0.6",
+      "uuid": "d29b44a1-e4c3-4824-83b2-fd6315a8fc7c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "fb53d42a-f471-4593-a2b9-1d777d5f4aad",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -200.5,
+      "offsetY": 55,
+      "trimX": 436,
+      "trimY": 280,
+      "width": 627,
+      "height": 930,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

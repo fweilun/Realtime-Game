@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "6e265fb2-d163-40cc-b836-f1f41f362945",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Spin-Attack-Right-6": {
+      "ver": "1.0.6",
+      "uuid": "34675df8-1faf-4fb9-af90-12bdb6205de8",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "6e265fb2-d163-40cc-b836-f1f41f362945",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -13.5,
+      "offsetY": 56.5,
+      "trimX": 190,
+      "trimY": 99,
+      "width": 1493,
+      "height": 1289,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

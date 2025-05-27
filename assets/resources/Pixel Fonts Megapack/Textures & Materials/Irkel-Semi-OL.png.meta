@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "1aeb2413-98ce-460b-988e-71adbc3f80a7",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1400,
+  "height": 14,
+  "platformSettings": {},
+  "subMetas": {
+    "Irkel-Semi-OL": {
+      "ver": "1.0.6",
+      "uuid": "dbed0e31-2870-406a-b007-7c2ca580db6c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "1aeb2413-98ce-460b-988e-71adbc3f80a7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 6,
+      "offsetY": 0.5,
+      "trimX": 15,
+      "trimY": 0,
+      "width": 1382,
+      "height": 13,
+      "rawWidth": 1400,
+      "rawHeight": 14,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

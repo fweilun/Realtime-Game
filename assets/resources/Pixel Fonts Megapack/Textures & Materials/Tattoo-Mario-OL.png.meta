@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "841ffa16-f9dd-4182-83f7-1441e19f2e9c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1400,
+  "height": 14,
+  "platformSettings": {},
+  "subMetas": {
+    "Tattoo-Mario-OL": {
+      "ver": "1.0.6",
+      "uuid": "9644db0c-e1ec-4f97-9942-09a62e6efedd",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "841ffa16-f9dd-4182-83f7-1441e19f2e9c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 6,
+      "offsetY": -0.5,
+      "trimX": 15,
+      "trimY": 2,
+      "width": 1382,
+      "height": 11,
+      "rawWidth": 1400,
+      "rawHeight": 14,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

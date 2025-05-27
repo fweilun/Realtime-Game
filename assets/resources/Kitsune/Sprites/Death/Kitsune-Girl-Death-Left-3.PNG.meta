@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "0ac33af5-cde4-4a8e-be0b-5717b154d165",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Death-Left-3": {
+      "ver": "1.0.6",
+      "uuid": "78fb304a-dfe6-48ae-9889-485fa4f44f74",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "0ac33af5-cde4-4a8e-be0b-5717b154d165",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 90.5,
+      "offsetY": 29.5,
+      "trimX": 442,
+      "trimY": 198,
+      "width": 1197,
+      "height": 1145,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

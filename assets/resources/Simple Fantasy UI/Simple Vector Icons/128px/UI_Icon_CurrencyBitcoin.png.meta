@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "1c967143-08ae-4139-a783-576c78702056",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "UI_Icon_CurrencyBitcoin": {
+      "ver": "1.0.6",
+      "uuid": "34b69ccb-fe97-4338-b36a-305719192571",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "1c967143-08ae-4139-a783-576c78702056",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 27,
+      "trimY": 11,
+      "width": 74,
+      "height": 105,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

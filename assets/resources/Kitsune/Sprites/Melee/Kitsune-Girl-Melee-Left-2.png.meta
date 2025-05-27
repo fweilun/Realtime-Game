@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "b16b0285-990a-4cf5-a038-b8bf9c5e5330",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Melee-Left-2": {
+      "ver": "1.0.6",
+      "uuid": "5c28dc3f-cfdd-40a4-9c7b-f58c2fc9b85f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "b16b0285-990a-4cf5-a038-b8bf9c5e5330",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -356,
+      "offsetY": 20,
+      "trimX": 36,
+      "trimY": 349,
+      "width": 1116,
+      "height": 862,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

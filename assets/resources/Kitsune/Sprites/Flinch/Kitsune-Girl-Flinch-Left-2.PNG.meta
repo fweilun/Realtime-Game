@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "28c45a48-5201-4025-90a6-5501ea4e582d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Flinch-Left-2": {
+      "ver": "1.0.6",
+      "uuid": "9911b28e-5dc2-4228-a9c4-5eb926b03b93",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "28c45a48-5201-4025-90a6-5501ea4e582d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 206.5,
+      "offsetY": 5.5,
+      "trimX": 848,
+      "trimY": 371,
+      "width": 617,
+      "height": 847,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "596f5851-ee5f-4378-9c97-dad1d1c50744",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Run-Right-5": {
+      "ver": "1.0.6",
+      "uuid": "37144efb-0d51-4c89-8643-d851af93a7a4",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "596f5851-ee5f-4378-9c97-dad1d1c50744",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -61,
+      "offsetY": 26.5,
+      "trimX": 491,
+      "trimY": 410,
+      "width": 796,
+      "height": 727,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

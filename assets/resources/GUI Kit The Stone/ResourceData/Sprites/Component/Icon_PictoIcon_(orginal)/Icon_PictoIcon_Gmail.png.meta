@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "7317876a-fe46-4870-8675-4b03e1dc6895",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 53,
+  "height": 54,
+  "platformSettings": {},
+  "subMetas": {
+    "Icon_PictoIcon_Gmail": {
+      "ver": "1.0.6",
+      "uuid": "3bd580f3-b4f1-40ac-aa2d-fef6e83d8e7c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "7317876a-fe46-4870-8675-4b03e1dc6895",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 53,
+      "height": 54,
+      "rawWidth": 53,
+      "rawHeight": 54,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

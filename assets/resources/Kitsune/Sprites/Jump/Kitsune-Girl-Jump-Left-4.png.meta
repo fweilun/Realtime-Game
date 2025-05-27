@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c7568e74-f2d5-4f43-93f1-2460884eec6f",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Jump-Left-4": {
+      "ver": "1.0.6",
+      "uuid": "aae38ef0-34bc-4413-821a-49a9b2eb6a65",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c7568e74-f2d5-4f43-93f1-2460884eec6f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -68.5,
+      "offsetY": 44.5,
+      "trimX": 629,
+      "trimY": 281,
+      "width": 505,
+      "height": 949,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

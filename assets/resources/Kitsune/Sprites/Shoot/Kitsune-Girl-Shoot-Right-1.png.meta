@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "9d055a03-4098-403b-9b84-3facaa0e9b0c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Shoot-Right-1": {
+      "ver": "1.0.6",
+      "uuid": "2a754932-f770-4bb6-9dbb-057d165b2de0",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "9d055a03-4098-403b-9b84-3facaa0e9b0c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -120.5,
+      "offsetY": 31.5,
+      "trimX": 505,
+      "trimY": 333,
+      "width": 649,
+      "height": 871,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

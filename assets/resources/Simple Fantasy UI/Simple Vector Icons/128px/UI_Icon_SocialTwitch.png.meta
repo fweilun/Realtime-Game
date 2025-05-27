@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "a751f15a-6d6c-4801-97a1-94983f65a91a",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "UI_Icon_SocialTwitch": {
+      "ver": "1.0.6",
+      "uuid": "4e7ba8eb-c27e-4099-876d-478c237d74f9",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a751f15a-6d6c-4801-97a1-94983f65a91a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 23,
+      "trimY": 17,
+      "width": 82,
+      "height": 93,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

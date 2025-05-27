@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f0e2e2db-be61-41d4-b950-88cbcc5b9534",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Idle-Left-3": {
+      "ver": "1.0.6",
+      "uuid": "def5baec-f98e-4668-961b-3ff848667097",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f0e2e2db-be61-41d4-b950-88cbcc5b9534",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 59,
+      "offsetY": 60,
+      "trimX": 695,
+      "trimY": 266,
+      "width": 628,
+      "height": 948,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

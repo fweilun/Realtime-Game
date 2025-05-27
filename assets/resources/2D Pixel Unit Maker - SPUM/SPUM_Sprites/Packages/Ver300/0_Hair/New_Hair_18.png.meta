@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "a53adc3a-4475-4748-ba58-f96bd24b4d67",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 32,
+  "height": 32,
+  "platformSettings": {},
+  "subMetas": {
+    "New_Hair_18": {
+      "ver": "1.0.6",
+      "uuid": "65f4df45-baeb-40a3-a425-d147f7041bbd",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a53adc3a-4475-4748-ba58-f96bd24b4d67",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": 0,
+      "trimX": 7,
+      "trimY": 6,
+      "width": 19,
+      "height": 20,
+      "rawWidth": 32,
+      "rawHeight": 32,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

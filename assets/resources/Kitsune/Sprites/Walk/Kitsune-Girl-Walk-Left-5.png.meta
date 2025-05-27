@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "13086149-748d-428e-9705-294e07e671bf",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1900,
+  "height": 1600,
+  "platformSettings": {},
+  "subMetas": {
+    "Kitsune-Girl-Walk-Left-5": {
+      "ver": "1.0.6",
+      "uuid": "c33e3b68-8817-412a-a6d4-089dbf3dabc3",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "13086149-748d-428e-9705-294e07e671bf",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 31.5,
+      "offsetY": 53,
+      "trimX": 668,
+      "trimY": 282,
+      "width": 627,
+      "height": 930,
+      "rawWidth": 1900,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

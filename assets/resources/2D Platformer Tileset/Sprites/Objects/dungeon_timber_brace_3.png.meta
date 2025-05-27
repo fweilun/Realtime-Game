@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "28224f0b-b7d0-4d64-b702-e34b17ff9e3d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 275,
+  "height": 58,
+  "platformSettings": {},
+  "subMetas": {
+    "dungeon_timber_brace_3": {
+      "ver": "1.0.6",
+      "uuid": "c5b68294-d2a6-4830-928e-7e20dc579fa2",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "28224f0b-b7d0-4d64-b702-e34b17ff9e3d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 275,
+      "height": 58,
+      "rawWidth": 275,
+      "rawHeight": 58,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

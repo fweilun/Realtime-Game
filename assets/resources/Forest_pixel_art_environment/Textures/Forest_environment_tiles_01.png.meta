@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ea768a14-0fbc-4bfc-9fd8-253d7728c21b",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1313,
+  "height": 448,
+  "platformSettings": {},
+  "subMetas": {
+    "Forest_environment_tiles_01": {
+      "ver": "1.0.6",
+      "uuid": "434eab05-5803-49db-9c88-1e285d1986d1",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ea768a14-0fbc-4bfc-9fd8-253d7728c21b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -16.5,
+      "offsetY": 15,
+      "trimX": 16,
+      "trimY": 18,
+      "width": 1248,
+      "height": 382,
+      "rawWidth": 1313,
+      "rawHeight": 448,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "d14faebc-566f-4b09-ae1c-48c9292e296a",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 128,
+  "platformSettings": {},
+  "subMetas": {
+    "UI_Icon_BtnXboxY": {
+      "ver": "1.0.6",
+      "uuid": "c4f21777-19c8-4cdd-b5cc-0705b2125e9f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "d14faebc-566f-4b09-ae1c-48c9292e296a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 18,
+      "trimY": 18,
+      "width": 92,
+      "height": 91,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

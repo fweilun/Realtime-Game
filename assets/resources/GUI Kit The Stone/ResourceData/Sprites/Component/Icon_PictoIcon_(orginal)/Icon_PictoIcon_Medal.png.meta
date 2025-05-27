@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "0f868e50-e24d-484f-bfe4-4274a1e29677",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 46,
+  "height": 65,
+  "platformSettings": {},
+  "subMetas": {
+    "Icon_PictoIcon_Medal": {
+      "ver": "1.0.6",
+      "uuid": "118db2e4-651d-4700-a164-7bcc02094229",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "0f868e50-e24d-484f-bfe4-4274a1e29677",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 46,
+      "height": 65,
+      "rawWidth": 46,
+      "rawHeight": 65,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
