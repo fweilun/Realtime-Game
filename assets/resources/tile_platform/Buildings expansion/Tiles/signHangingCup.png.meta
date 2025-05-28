@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "486b891c-f54c-451f-b562-edf2e4588d29",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 70,
+  "height": 70,
+  "platformSettings": {},
+  "subMetas": {
+    "signHangingCup": {
+      "ver": "1.0.6",
+      "uuid": "74153601-d028-491b-b933-62de5d4f456b",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "486b891c-f54c-451f-b562-edf2e4588d29",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 3.5,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 70,
+      "height": 63,
+      "rawWidth": 70,
+      "rawHeight": 70,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

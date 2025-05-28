@@ -31,7 +31,7 @@ export default class StartUI extends cc.Component {
 
     onClickStart() {
         console.log("▶️ 單人模式啟動！");
-        cc.director.loadScene("GameBuildScene");
+        cc.director.loadScene("Scene1_dirt");
     }
 
     onClickMultiplayer() {
