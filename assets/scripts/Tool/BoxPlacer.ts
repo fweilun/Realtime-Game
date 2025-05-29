@@ -41,6 +41,8 @@ export default class BoxPlacer extends cc.Component {
     }
 
     onMouseDownNative(e: MouseEvent) {
+        const playerScript = this.player.getComponent("PlayerController"); 
+        if (playerScript.blockHold !== "box") return;
         const button = e.button;
 
         const screenPos = new cc.Vec2(e.clientX, e.clientY);
@@ -49,9 +51,10 @@ export default class BoxPlacer extends cc.Component {
 
         const x = localPos.x
         const y = localPos.y;
-        const snappedPos = cc.v2(x-330, -y+50);
+        const snappedPos = cc.v2(x-330, -y+50); 
 
         if (button === 0) {
+    
             if (this.placedBoxes.length < this.maxBoxCount && this.canPlaceAt(snappedPos)) {
                 const box = cc.instantiate(this.boxPrefab);
                 this.mapNode.addChild(box);

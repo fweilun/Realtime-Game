@@ -9,17 +9,7 @@ export default class PlayerController extends cc.Component {
     @property
     jumpForce: number = 300;
 
-    //@property(cc.Prefab)
-    //bigMarioPrefab: cc.Prefab = null;
-
-    //@property({ type: cc.AudioClip })
-    //jumpSound: cc.AudioClip = null;
-
-    //@property({ type: cc.AudioClip })
-    //dieSound: cc.AudioClip = null;
-
-    //@property({ type: cc.AudioClip })
-    //growSound: cc.AudioClip = null;
+    public blockHold: string = "box";
      
     private isInvincible: boolean = false;
     private rb: cc.RigidBody = null;
@@ -32,13 +22,6 @@ export default class PlayerController extends cc.Component {
         this.startPos = this.node.position.clone();
         cc.director.getPhysicsManager().enabled = true;
 
-//        if (CC_DEBUG) {
- //           cc.director.getPhysicsManager().debugDrawFlags =
-   //             cc.PhysicsManager.DrawBits.e_aabbBit |
-     //           cc.PhysicsManager.DrawBits.e_shapeBit;
-       // }
-        //this.node.group = "player";
-
         this.rb = this.getComponent(cc.RigidBody);
         this.rb.type = cc.RigidBodyType.Dynamic;
         this.rb.fixedRotation = true;
@@ -47,7 +30,6 @@ export default class PlayerController extends cc.Component {
         if (!box) {
             box = this.node.addComponent(cc.PhysicsBoxCollider);
         }
-        //box.size = this.node.getContentSize();
         box.apply();
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
