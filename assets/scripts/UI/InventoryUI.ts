@@ -43,14 +43,20 @@ export default class InventoryUI extends cc.Component {
     }
 
     start() {
-        // slot1 放 box icon
-        const Icon1 = cc.instantiate(this.Icon1);
-        Icon1.parent = this.slot1;
-        Icon1.setPosition(0, 0);
+        const selected = cc.game["selectedBlockTypes"];
+        if (selected && selected.length === 2) {
+            this.blockTypes = selected;
+            console.log("🧩 從 SelectionScene 讀入 blockTypes：", this.blockTypes);
+        }
 
-        const Icon2 = cc.instantiate(this.Icon2);
-        Icon2.parent = this.slot2;
-        Icon2.setPosition(0, 0);
+        for (let i = 0; i < 2; i++) {
+            const type = this.blockTypes[i];
+            const iconPrefab = type === "box" ? this.Icon1 : this.Icon2;
+            const slot = i === 0 ? this.slot1 : this.slot2;
+            const icon = cc.instantiate(iconPrefab);
+            icon.parent = slot;
+            icon.setPosition(0, 0);
+        }
 
         this.updateSelector();
         this.updatePlayerBlockHold();
