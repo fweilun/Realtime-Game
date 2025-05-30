@@ -41,6 +41,7 @@ export default class StartUI extends cc.Component {
 
     onClickSetting() {
         console.log("⚙️ 設定畫面打開！");
+        cc.director.loadScene("SettingScene");
         // 可打開設定面板
     }
 
