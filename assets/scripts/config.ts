@@ -8,20 +8,11 @@
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class Config extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
-
-    @property
-    text: string = 'hello';
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
-    start () {
-
+    onLoad () {
+        cc.director.getPhysicsManager().enabled = true;
+        cc.director.getPhysicsManager().gravity = cc.v2(0, -1280);
     }
 
     // update (dt) {}
