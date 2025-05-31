@@ -20,7 +20,7 @@
         "__id__": 56
       },
       {
-        "__id__": 62
+        "__id__": 63
       }
     ],
     "_active": false,
@@ -2565,6 +2565,9 @@
     "Icon2": {
       "__uuid__": "e2f53429-dc27-4dc2-a7d0-d5d2ec62e2e6"
     },
+    "Icon3": {
+      "__uuid__": "b1fe8642-3902-4951-b422-f07802ada0d8"
+    },
     "slot1": {
       "__id__": 47
     },
@@ -2592,6 +2595,9 @@
       },
       {
         "__id__": 61
+      },
+      {
+        "__id__": 62
       }
     ],
     "_prefab": null,
@@ -2679,7 +2685,25 @@
     "tileSize": 70,
     "cooldownSeconds": 3,
     "_id": "83TfBSrwVOEaSbU73acJwj"
-
+  },
+  {
+    "__type__": "a42d9RK1bREvLNeUFXEFC/n",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 59
+    },
+    "_enabled": true,
+    "spikePrefab": {
+      "__uuid__": "dedfa6ac-9cff-4eb5-b479-919ee27c0db5"
+    },
+    "player": null,
+    "mapNode": {
+      "__id__": 3
+    },
+    "tileSize": 70,
+    "cooldownSeconds": 0,
+    "_id": "5f8p+jKedLFoUWi0iHdCny"
   },
   {
     "__type__": "cc.Node",
@@ -2690,7 +2714,7 @@
     },
     "_children": [
       {
-        "__id__": 63
+        "__id__": 64
       }
     ],
     "_active": true,
@@ -2748,13 +2772,13 @@
     "_name": "GameManager",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 62
+      "__id__": 63
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 64
+        "__id__": 65
       }
     ],
     "_prefab": null,
@@ -2810,7 +2834,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 63
+      "__id__": 64
     },
     "_enabled": true,
     "localPlayerPrefab": {
@@ -2820,7 +2844,6 @@
       "__uuid__": "047f2d91-8eae-4646-af69-72a1a9d572f8"
     },
     "gameRoomId": "defaultGameRoom",
-
     "mainCamera": {
       "__id__": 51
     },
@@ -2830,10 +2853,12 @@
     "boxPlacer": {
       "__id__": 60
     },
+    "spikePlacer": {
+      "__id__": 62
+    },
     "inventoryUI": {
       "__id__": 58
     },
     "_id": "4eF+2NI55LBoG9UBANCl3o"
-
   }
 ]

@@ -181,6 +181,10 @@ export default class LocalPlayerController extends cc.Component {
         
         this.isGrounded = true;
 
+        if (otherCollider.node.name === "spike"){
+            this.die();
+        }
+
         if (otherCollider.node.name === "weight" && normal.y > 0.5) {
             this.die();
         }

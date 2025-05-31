@@ -14,6 +14,7 @@ import RemotePlayerController from '././RemotePlayerController'; // Corrected pa
 import WeightPlacer from '../../Tool/WeightPlacer';
 import BoxPlacer from '../../Tool/BoxPlacer';
 import Camera from '../../Player/Camera';
+import SpikePlacer from '../../Tool/SpikePlacer';
 import InventoryUI from '../../UI/InventoryUI';
 
 
@@ -39,6 +40,9 @@ export default class GameManager extends cc.Component {
 
     @property(BoxPlacer)
     boxPlacer: BoxPlacer = null;
+
+    @property(SpikePlacer)
+    spikePlacer: SpikePlacer = null;
 
     @property(InventoryUI)
     inventoryUI: InventoryUI = null;
@@ -218,8 +222,9 @@ export default class GameManager extends cc.Component {
         this.mainCamera.target = this.localPlayerNode;
         this.weightPlacer.player = this.localPlayerNode;
         this.boxPlacer.player = this.localPlayerNode;
+        this.spikePlacer.player = this.localPlayerNode;
         this.inventoryUI.playerNode = this.localPlayerNode;
-        this.localPlayerNode.getComponent("PlayerController").blockHold = cc.game["selectedBlockTypes"][0];
+        this.localPlayerNode.getComponent("LocalPlayerController").blockHold = cc.game["selectedBlockTypes"][0];
     
     }
 
