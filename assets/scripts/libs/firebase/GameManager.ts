@@ -11,6 +11,12 @@ import FirebaseManager from './FirebaseManager'; // If FirebaseManager.ts is in 
 import LocalPlayerController from './LocalPlayerController';
 import RemotePlayerController from '././RemotePlayerController'; // Corrected path if they are in the same folder
 
+import WeightPlacer from '../../Tool/WeightPlacer';
+import BoxPlacer from '../../Tool/BoxPlacer';
+import Camera from '../../Player/Camera';
+import InventoryUI from '../../UI/InventoryUI';
+
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -24,6 +30,19 @@ export default class GameManager extends cc.Component {
 
     @property(cc.String)
     gameRoomId: string = "defaultGameRoom"; // A fixed room ID for simplicity, or make it dynamic
+
+    @property(Camera)
+    mainCamera: Camera = null;
+
+    @property(WeightPlacer)
+    weightPlacer: WeightPlacer = null;
+
+    @property(BoxPlacer)
+    boxPlacer: BoxPlacer = null;
+
+    @property(InventoryUI)
+    inventoryUI: InventoryUI = null;
+
 
     private firebaseManager: FirebaseManager | null = null;
     private db: firebase.database.Database | null = null;
@@ -95,6 +114,7 @@ export default class GameManager extends cc.Component {
                 cc.error("Error signing in anonymously at start():", error.code, error.message);
             });
         }
+
     }
 
     /**
@@ -193,6 +213,14 @@ export default class GameManager extends cc.Component {
         } else {
             cc.error("🎮 GameManager: LocalPlayerController component not found on local player prefab!");
         }
+
+        this.node.name = "p1";
+        this.mainCamera.target = this.localPlayerNode;
+        this.weightPlacer.player = this.localPlayerNode;
+        this.boxPlacer.player = this.localPlayerNode;
+        this.inventoryUI.playerNode = this.localPlayerNode;
+        this.localPlayerNode.getComponent("PlayerController").blockHold = cc.game["selectedBlockTypes"][0];
+    
     }
 
     /**

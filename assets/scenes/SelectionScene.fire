@@ -1295,6 +1295,12 @@
     "weightIconPrefab": {
       "__uuid__": "e2f53429-dc27-4dc2-a7d0-d5d2ec62e2e6"
     },
+    "boxButton": {
+      "__id__": 11
+    },
+    "weightButton": {
+      "__id__": 18
+    },
     "_id": "e1EuXjYNZHwofE7xzaOwQl"
   }
 ]

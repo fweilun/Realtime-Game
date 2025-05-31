@@ -17,6 +17,7 @@ export default class LocalPlayerController extends cc.Component {
 
     public blockHold: string = "box";
 
+
     private isInvincible: boolean = false;
     private rb: cc.RigidBody = null;
     private isGrounded: boolean = true;
@@ -177,7 +178,12 @@ export default class LocalPlayerController extends cc.Component {
                 console.log("✅ Grounded on:", otherCollider.node.name);
             }
         }
+        
         this.isGrounded = true;
+
+        if (otherCollider.node.name === "weight" && normal.y > 0.5) {
+            this.die();
+        }
 
         if (otherCollider.node.name === "dead") {
             console.log("💀 player die！");

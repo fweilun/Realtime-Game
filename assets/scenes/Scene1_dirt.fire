@@ -2302,7 +2302,7 @@
     },
     "halfWidth": 0,
     "halfHeight": 0,
-    "xOffset": 0,
+    "xOffset": -150,
     "_id": "1eW7IDkspDAY50CzjzSlCM"
   },
   {
@@ -2679,6 +2679,7 @@
     "tileSize": 70,
     "cooldownSeconds": 3,
     "_id": "83TfBSrwVOEaSbU73acJwj"
+
   },
   {
     "__type__": "cc.Node",
@@ -2819,6 +2820,20 @@
       "__uuid__": "047f2d91-8eae-4646-af69-72a1a9d572f8"
     },
     "gameRoomId": "defaultGameRoom",
+
+    "mainCamera": {
+      "__id__": 51
+    },
+    "weightPlacer": {
+      "__id__": 61
+    },
+    "boxPlacer": {
+      "__id__": 60
+    },
+    "inventoryUI": {
+      "__id__": 58
+    },
     "_id": "4eF+2NI55LBoG9UBANCl3o"
+
   }
 ]
