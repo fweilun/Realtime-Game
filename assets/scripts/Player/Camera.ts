@@ -22,7 +22,7 @@ export default class Camera extends cc.Component {
         if (!this.target || !this.mapNode) return;
 
         const targetPos = this.target.position;
-        const mapWidth = this.mapNode.width -640;
+        const mapWidth = this.mapNode.width - 640;
 
         const minX = this.halfWidth;
         const maxX = mapWidth - 640;

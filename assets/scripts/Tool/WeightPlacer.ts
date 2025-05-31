@@ -50,8 +50,14 @@ export default class WeightPlacer extends cc.Component {
             return;
         }
 
+<<<<<<< HEAD
         const playerScript = this.player.getComponent("PlayerController");
         if (playerScript.blockHold !== "weight") return;
+=======
+        if(!this.player) return;
+        const player = this.player.getComponent("LocalPlayerController");
+        if (player.blockHold !== "weight") return;
+>>>>>>> 83de82d (單人模式可以放道具)
 
         const screenPos = new cc.Vec2(e.clientX, e.clientY);
         const worldPos = cc.Camera.main.getScreenToWorldPoint(screenPos);
@@ -61,14 +67,9 @@ export default class WeightPlacer extends cc.Component {
         const y = localPos.y;
         const snappedPos = cc.v2(x - 330, -y + 50);
 
-        if (snappedPos.y <= 280) {
-            console.log("⚠️ y <= 280，不能放 weight");
-            return;
-        }
-
         const weight = cc.instantiate(this.weightPrefab);
         this.mapNode.addChild(weight);
-        weight.setPosition(snappedPos);
+        weight.setPosition(snappedPos.x, 400);
 
         const rigid = weight.getComponent(cc.RigidBody);
         if (rigid) {

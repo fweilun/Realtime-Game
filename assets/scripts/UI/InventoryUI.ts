@@ -58,6 +58,9 @@ export default class InventoryUI extends cc.Component {
             icon.setPosition(0, 0);
         }
 
+        const player = this.playerNode.getComponent("LocalPlayerController");
+        player.blockHold = cc.game["selectedBlockTypes"][0];
+
         this.updateSelector();
         this.updatePlayerBlockHold();
     }

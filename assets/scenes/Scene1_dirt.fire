@@ -2467,7 +2467,7 @@
     },
     "halfWidth": 0,
     "halfHeight": 0,
-    "xOffset": 0,
+    "xOffset": -150,
     "_id": "1eW7IDkspDAY50CzjzSlCM"
   },
   {
@@ -2778,5 +2778,161 @@
     "tileSize": 70,
     "cooldownSeconds": 3,
     "_id": "83TfBSrwVOEaSbU73acJwj"
+<<<<<<< HEAD
+=======
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "GameManager",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 63
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": "44gMQMNDpBCK7avPXzr+9O"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "GameManager",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 62
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 64
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": "4dJvo91MxFIbi49U6pb+Ph"
+  },
+  {
+    "__type__": "be977OUf7dO15K1sSFk+H5n",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 63
+    },
+    "_enabled": true,
+    "localPlayerPrefab": {
+      "__uuid__": "ed61d711-16a3-463c-95e2-0636c8d608f8"
+    },
+    "remotePlayerPrefab": {
+      "__uuid__": "047f2d91-8eae-4646-af69-72a1a9d572f8"
+    },
+    "gameRoomId": "defaultGameRoom",
+    "mainCamera": {
+      "__id__": 51
+    },
+    "weightPlacer": {
+      "__id__": 61
+    },
+    "boxPlacer": {
+      "__id__": 60
+    },
+    "inventoryUI": {
+      "__id__": 58
+    },
+    "_id": "4eF+2NI55LBoG9UBANCl3o"
+>>>>>>> 83de82d (單人模式可以放道具)
   }
 ]
