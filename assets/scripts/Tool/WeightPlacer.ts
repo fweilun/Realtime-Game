@@ -50,7 +50,8 @@ export default class WeightPlacer extends cc.Component {
             return;
         }
 
-        const playerScript = this.player.getComponent("PlayerController");
+        if(!this.playerNode) return;
+        const player = this.playerNode.getComponent("LocalPlayerController");
         if (playerScript.blockHold !== "weight") return;
 
         const screenPos = new cc.Vec2(e.clientX, e.clientY);

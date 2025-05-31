@@ -41,7 +41,8 @@ export default class BoxPlacer extends cc.Component {
     }
 
     onMouseDownNative(e: MouseEvent) {
-        const playerScript = this.player.getComponent("PlayerController"); 
+        if(!this.playerNode) return;
+        const player = this.playerNode.getComponent("LocalPlayerController");
         if (playerScript.blockHold !== "box") return;
         const button = e.button;
 
