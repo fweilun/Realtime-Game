@@ -50,14 +50,9 @@ export default class WeightPlacer extends cc.Component {
             return;
         }
 
-<<<<<<< HEAD
-        const playerScript = this.player.getComponent("PlayerController");
-        if (playerScript.blockHold !== "weight") return;
-=======
         if(!this.player) return;
         const player = this.player.getComponent("LocalPlayerController");
         if (player.blockHold !== "weight") return;
->>>>>>> 83de82d (單人模式可以放道具)
 
         const screenPos = new cc.Vec2(e.clientX, e.clientY);
         const worldPos = cc.Camera.main.getScreenToWorldPoint(screenPos);

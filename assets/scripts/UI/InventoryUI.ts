@@ -95,7 +95,8 @@ export default class InventoryUI extends cc.Component {
     }
 
     updatePlayerBlockHold() {
-        const player = this.playerNode.getComponent("PlayerController");
+        if(!this.playerNode) return;
+        const player = this.playerNode.getComponent("LocalPlayerController");
         player.blockHold = this.blockTypes[this.currentIndex];
         console.log("🎯 blockHold =", player.blockHold);
     }

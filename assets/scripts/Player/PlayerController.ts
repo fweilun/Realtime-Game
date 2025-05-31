@@ -7,7 +7,7 @@ export default class PlayerController extends cc.Component {
     playerSpeed: number = 80;
 
     @property
-    jumpForce: number = 300;
+    jumpForce: number = 1000;
 
     public blockHold: string = "box";
      
@@ -17,6 +17,8 @@ export default class PlayerController extends cc.Component {
     private moveDir: number = 0;
     private startPos: cc.Vec3 = null;
     private currentAnim: string = "";
+    private rightDown = false;
+    private leftDown = false;
     
     onLoad() {
         this.startPos = this.node.position.clone();
@@ -45,13 +47,16 @@ export default class PlayerController extends cc.Component {
 
     onKeyDown(event: cc.Event.EventKeyboard) {
         if (event.keyCode === cc.macro.KEY.a) {
+            this.leftDown = true;
             this.moveDir = -1;
         } else if (event.keyCode === cc.macro.KEY.d) {
+            this.rightDown = true;
             this.moveDir = 1;
         } else if (event.keyCode === cc.macro.KEY.space) {
             console.log("🔼 Space pressed | isGrounded:", this.isGrounded);
             if (this.isGrounded) {
                 this.rb.linearVelocity = cc.v2(this.rb.linearVelocity.x, this.jumpForce);
+                // this.rb.linearVelocity = cc.v2(this.rb.linearVelocity.x, 1000);
                 this.isGrounded = false;
                // cc.audioEngine.playEffect(this.jumpSound, false);
                 console.log("🕴 Jumped!");
@@ -62,8 +67,20 @@ export default class PlayerController extends cc.Component {
     }
 
     onKeyUp(event: cc.Event.EventKeyboard) {
-        if (event.keyCode === cc.macro.KEY.a || event.keyCode === cc.macro.KEY.d) {
-            this.moveDir = 0;
+        if (event.keyCode === cc.macro.KEY.a) {
+            this.leftDown = false;
+            if (this.rightDown){
+                this.moveDir = 1;
+            }else{
+                this.moveDir = 0;
+            }
+        }else if (event.keyCode === cc.macro.KEY.d) {
+            this.rightDown = false;
+            if (this.leftDown){
+                this.moveDir = -1;
+            }else{
+                this.moveDir = 0;
+            }
         }
     }
 

@@ -41,12 +41,10 @@ export default class BoxPlacer extends cc.Component {
     }
 
     onMouseDownNative(e: MouseEvent) {
-<<<<<<< HEAD
-        const playerScript = this.player.getComponent("PlayerController"); 
-=======
+
         if (!this.player) return;
         const playerScript = this.player.getComponent("LocalPlayerController");
->>>>>>> 83de82d (單人模式可以放道具)
+
         if (playerScript.blockHold !== "box") return;
         const button = e.button;
 

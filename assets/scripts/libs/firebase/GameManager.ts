@@ -10,10 +10,12 @@ import FirebaseManager from './FirebaseManager'; // If FirebaseManager.ts is in 
 // Assuming LocalPlayerController and RemotePlayerController are in the same folder as GameManager.ts
 import LocalPlayerController from './LocalPlayerController';
 import RemotePlayerController from '././RemotePlayerController'; // Corrected path if they are in the same folder
+
 import WeightPlacer from '../../Tool/WeightPlacer';
 import BoxPlacer from '../../Tool/BoxPlacer';
 import Camera from '../../Player/Camera';
 import InventoryUI from '../../UI/InventoryUI';
+
 
 const { ccclass, property } = cc._decorator;
 
@@ -40,6 +42,7 @@ export default class GameManager extends cc.Component {
 
     @property(InventoryUI)
     inventoryUI: InventoryUI = null;
+
 
     private firebaseManager: FirebaseManager | null = null;
     private db: firebase.database.Database | null = null;
@@ -111,7 +114,7 @@ export default class GameManager extends cc.Component {
                 cc.error("Error signing in anonymously at start():", error.code, error.message);
             });
         }
-        
+
     }
 
     /**
@@ -198,6 +201,7 @@ export default class GameManager extends cc.Component {
         // Ensure this.localPlayerPrefab.data.x and .y are valid or set a default.
         this.localPlayerNode.setPosition(new cc.Vec2(200, 700)); // Example: start at origin
         this.node.parent.addChild(this.localPlayerNode); // Add to the scene's canvas
+
         cc.log(`🎮 GameManager: Local player node instantiated and added to scene at position: (${this.localPlayerNode.x}, ${this.localPlayerNode.y})`);
 
         // Assuming LocalPlayerController needs a reference to playersRef.child(this.currentUserId)

@@ -15,7 +15,8 @@ export default class LocalPlayerController extends cc.Component {
     @property
     jumpForce: number = 300;
 
-    public blockHold: string = "";
+    public blockHold: string = "box";
+
 
     private isInvincible: boolean = false;
     private rb: cc.RigidBody = null;
