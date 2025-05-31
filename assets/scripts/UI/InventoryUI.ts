@@ -12,6 +12,9 @@ export default class InventoryUI extends cc.Component {
     @property(cc.Prefab)
     Icon2: cc.Prefab = null;
 
+    @property(cc.Prefab)
+    Icon3: cc.Prefab = null;
+
     @property(cc.Node)
     slot1: cc.Node = null;
 
@@ -51,15 +54,19 @@ export default class InventoryUI extends cc.Component {
 
         for (let i = 0; i < 2; i++) {
             const type = this.blockTypes[i];
-            const iconPrefab = type === "box" ? this.Icon1 : this.Icon2;
+            let iconPrefab;
+            if (type === "box") {
+                iconPrefab = this.Icon1;
+            } else if (type === "weight") {
+                iconPrefab = this.Icon2;
+            } else if (type === "spike") {
+                iconPrefab = this.Icon3;
+            }
             const slot = i === 0 ? this.slot1 : this.slot2;
             const icon = cc.instantiate(iconPrefab);
             icon.parent = slot;
             icon.setPosition(0, 0);
         }
-
-        const player = this.playerNode.getComponent("LocalPlayerController");
-        player.blockHold = cc.game["selectedBlockTypes"][0];
 
         this.updateSelector();
         this.updatePlayerBlockHold();
