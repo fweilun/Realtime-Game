@@ -198,6 +198,10 @@ export default class LocalPlayerController extends cc.Component {
         
         this.isGrounded = true;
 
+        if (otherCollider.node.name === "saw") {
+            this.die();
+        }
+        
         if (otherCollider.node.name === "spike"){
             this.die();
         }

@@ -1,0 +1,111 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "saw",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.0166666666666666,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "201654b2-8642-47db-8aa0-66907cd6a82d"
+            }
+          },
+          {
+            "frame": 0.16666666666666666,
+            "value": {
+              "__uuid__": "c1cb8681-c427-428b-9cb6-a76eaa1e8b7e"
+            }
+          },
+          {
+            "frame": 0.3333333333333333,
+            "value": {
+              "__uuid__": "4e851c02-1eda-4899-a386-f60bd5fe7385"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "ac60e2f5-28a3-471a-a0e3-57cc910dbaa5"
+            }
+          },
+          {
+            "frame": 0.6666666666666666,
+            "value": {
+              "__uuid__": "3524ad46-6a05-46b7-9be2-e83d913a9f63"
+            }
+          },
+          {
+            "frame": 0.8333333333333334,
+            "value": {
+              "__uuid__": "e5ffbea7-b36b-4754-a1c5-bc2f7ba8e419"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "201654b2-8642-47db-8aa0-66907cd6a82d"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0,
+      "func": "onFrameEvent",
+      "params": [
+        "\"0\""
+      ]
+    },
+    {
+      "frame": 0.16666666666666666,
+      "func": "onFrameEvent",
+      "params": [
+        "\"1\""
+      ]
+    },
+    {
+      "frame": 0.3333333333333333,
+      "func": "onFrameEvent",
+      "params": [
+        "\"2\""
+      ]
+    },
+    {
+      "frame": 0.5,
+      "func": "onFrameEvent",
+      "params": [
+        "\"3\""
+      ]
+    },
+    {
+      "frame": 0.6666666666666666,
+      "func": "onFrameEvent",
+      "params": [
+        "\"4\""
+      ]
+    },
+    {
+      "frame": 0.8333333333333334,
+      "func": "onFrameEvent",
+      "params": [
+        "\"5\""
+      ]
+    },
+    {
+      "frame": 1,
+      "func": "onFrameEvent",
+      "params": [
+        "\"0\""
+      ]
+    }
+  ]
+}

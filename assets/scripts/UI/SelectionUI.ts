@@ -18,6 +18,9 @@ export default class SelectionUI extends cc.Component {
     @property(cc.Prefab)
     spikeIconPrefab: cc.Prefab = null;
 
+    @property(cc.Prefab)
+    sawIconPrefab: cc.Prefab = null;
+
     @property(cc.Button)
     boxButton: cc.Button = null;
 
@@ -26,6 +29,9 @@ export default class SelectionUI extends cc.Component {
 
     @property(cc.Button)
     spikeButton: cc.Button = null;
+
+    @property(cc.Button)
+    sawButton: cc.Button = null;
 
     private selected: string[] = [];
 
@@ -38,6 +44,9 @@ export default class SelectionUI extends cc.Component {
         }
         if (this.spikeButton) {
             this.spikeButton.node.on('click', () => this.onSelect("spike"), this);
+        }
+        if (this.sawButton) {
+            this.sawButton.node.on('click', () => this.onSelect("saw"), this);
         }
     }
 
@@ -57,6 +66,8 @@ export default class SelectionUI extends cc.Component {
             icon = cc.instantiate(this.weightIconPrefab);
         } else if (type === "spike") {
             icon = cc. instantiate(this.spikeIconPrefab);
+        } else if (type === "saw") {
+            icon = cc.instantiate(this.sawIconPrefab);
         }
 
         if (!icon || !slot) {
