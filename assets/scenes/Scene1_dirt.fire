@@ -27,6 +27,9 @@
       },
       {
         "__id__": 78
+      },
+      {
+        "__id__": 83
       }
     ],
     "_active": false,
@@ -3370,6 +3373,7 @@
     },
     "clipName": "gun",
     "fireFrameIndex": 70,
+    "speedPerSecond": 400,
     "_id": "b7Z6cmnX1IIqi7pWTU3vN+"
   },
   {
@@ -3379,6 +3383,157 @@
     },
     "asset": {
       "__uuid__": "3b4833d2-022a-4242-991b-dd1fc54a729e"
+    },
+    "fileId": "",
+    "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "cannon",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 84
+      },
+      {
+        "__id__": 85
+      },
+      {
+        "__id__": 86
+      }
+    ],
+    "_prefab": {
+      "__id__": 87
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 70,
+      "height": 59
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        600.229,
+        380.426,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": "49rCUdQm1KMLHS7RIUfYWi"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 83
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+      }
+    ],
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_spriteFrame": {
+      "__uuid__": "85213432-c339-4017-abd6-55aa2c3ba192"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_atlas": null,
+    "_id": "01jNyTzQ1Kb4LS8NfNJFFS"
+  },
+  {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 83
+    },
+    "_enabled": true,
+    "_defaultClip": {
+      "__uuid__": "97af63b3-5b69-41c3-8b6d-b5fff1d31143"
+    },
+    "_clips": [
+      {
+        "__uuid__": "97af63b3-5b69-41c3-8b6d-b5fff1d31143"
+      }
+    ],
+    "playOnLoad": false,
+    "_id": "c6SXylkYtI34NgrvotL5uE"
+  },
+  {
+    "__type__": "c65e5C3V5hLM4NOkjadGn/S",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 83
+    },
+    "_enabled": true,
+    "anim": {
+      "__id__": 85
+    },
+    "bulletPrefab": {
+      "__uuid__": "7454aabb-2c3f-408a-8acb-ed93416b1dd6"
+    },
+    "clipName": "cannon",
+    "fireFrameIndex": 230,
+    "speedPerSecond": -100,
+    "_id": "61kHuoaJdJ9Jb22jU4Nw/5"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 83
+    },
+    "asset": {
+      "__uuid__": "80a2610d-d0d4-4abd-9c06-ca2193be1f26"
     },
     "fileId": "",
     "sync": false
