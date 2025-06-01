@@ -24,6 +24,9 @@ export default class SelectionUI extends cc.Component {
     @property(cc.Prefab)
     gunIconPrefab: cc.Prefab = null;
 
+    @property(cc.Prefab)
+    cannonIconPrefab: cc.Prefab = null;
+
     @property(cc.Button)
     boxButton: cc.Button = null;
 
@@ -39,6 +42,8 @@ export default class SelectionUI extends cc.Component {
     @property(cc.Button)
     gunButton: cc.Button = null;
 
+    @property(cc.Button)
+    cannonButton: cc.Button = null;
     private selected: string[] = [];
 
     onLoad() {
@@ -56,6 +61,9 @@ export default class SelectionUI extends cc.Component {
         }
         if (this.gunButton){
             this.gunButton.node.on('click', () => this.onSelect("gun"), this);
+        }
+        if (this.cannonButton){
+            this.cannonButton.node.on('click', () => this.onSelect("cannon"), this);
         }
     }
 
@@ -79,8 +87,10 @@ export default class SelectionUI extends cc.Component {
             icon = cc.instantiate(this.sawIconPrefab);
         } else if (type === "gun") {
             icon = cc.instantiate(this.gunIconPrefab)
-        }
-        
+        } else if (type === "cannon") {
+            icon = cc.instantiate(this.cannonIconPrefab)
+        } 
+
         if (!icon || !slot) {
             console.error("❌ 無法產生圖示或 slot 無效");
             return;

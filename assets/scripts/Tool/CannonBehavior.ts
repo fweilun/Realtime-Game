@@ -1,7 +1,7 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class GunBehavior extends cc.Component {
+export default class CannonBehavior extends cc.Component {
 
     @property(cc.Animation)
     anim: cc.Animation = null;
@@ -10,13 +10,13 @@ export default class GunBehavior extends cc.Component {
     bulletPrefab: cc.Prefab = null;
 
     @property()
-    clipName: string = "gun";
+    clipName: string = "cannon";
 
     @property()
-    fireFrameIndex: number = 70;  // 動畫 timeline 上的第幾幀（例如 1:10 = 第70幀）
+    fireFrameIndex: number = 230;  // 動畫 timeline 上的第幾幀（例如 1:10 = 第70幀）
 
     @property()
-    speedPerSecond: number = 400;
+    speedPerSecond: number = -100;
 
     private fireTime: number = 0;
     private hasFiredInCycle: boolean = false;
@@ -65,8 +65,6 @@ export default class GunBehavior extends cc.Component {
         const startPos = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
         bullet.setPosition(startPos);
 
-        // ✅ 子彈向右飛，持續 5 秒
-        //const speedPerSecond = 400; // 可調整成你想要的速度
         const duration = 5;
         const move = cc.moveBy(duration, cc.v2(this.speedPerSecond * duration, 0));
         const destroy = cc.callFunc(() => bullet.destroy());
