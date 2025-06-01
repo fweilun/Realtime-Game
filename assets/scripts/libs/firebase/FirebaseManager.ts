@@ -11,14 +11,14 @@ const { ccclass, property } = cc._decorator;
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyC0AKbBTFPhuGIfWycE4_290Jn5PpyG0nk",
-    authDomain: "software-final-1d277.firebaseapp.com",
-    projectId: "software-final-1d277",
-    storageBucket: "software-final-1d277.firebasestorage.app",
-    messagingSenderId: "328128380018",
-    appId: "1:328128380018:web:3852b6d0e71d94df6096eb",
-    measurementId: "G-1LWJQ357K4",
-    databaseURL: "https://software-final-1d277-default-rtdb.firebaseio.com/" // IMPORTANT: Your Realtime Database URL
+    apiKey: "AIzaSyAJX-c19ArCHmiRl5gWKw2Da8NkBmnbah4",
+    authDomain: "software-final-7fb6f.firebaseapp.com",
+    databaseURL: "https://software-final-7fb6f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "software-final-7fb6f",
+    storageBucket: "software-final-7fb6f.firebasestorage.app",
+    messagingSenderId: "974237513033",
+    appId: "1:974237513033:web:38aa4ab92371d706511698",
+    measurementId: "G-VF4W1K36LX"
 };
 
 @ccclass

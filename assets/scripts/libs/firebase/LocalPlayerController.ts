@@ -10,34 +10,35 @@ declare const firebase: any;
 export default class LocalPlayerController extends cc.Component {
 
     @property
-    playerSpeed: number = 80;
+    playerSpeed: number = 250;
 
     @property
     jumpForce: number = 300;
 
     public blockHold: string = "box";
 
-
+    private defaultPlayerSpeed=200;
+    private defaultJumpForce=750;
     private isInvincible: boolean = false;
     private rb: cc.RigidBody = null;
     private isGrounded: boolean = true;
     private moveDir: number = 0;
     private startPos: cc.Vec3 = null;
     private currentAnim: string = "";
+    private rightDown = false;
+    private leftDown = false;
 
     private firebasePlayerRef: firebase.database.Reference = null; // Firebase reference for this player's state
 
     onLoad() {
         this.startPos = this.node.position.clone();
         cc.director.getPhysicsManager().enabled = true;
-
         this.rb = this.getComponent(cc.RigidBody);
         if (!this.rb) {
             this.rb = this.node.addComponent(cc.RigidBody);
         }
         this.rb.type = cc.RigidBodyType.Dynamic;
         this.rb.fixedRotation = true;
-
         let box = this.getComponent(cc.PhysicsBoxCollider);
         if (!box) {
             box = this.node.addComponent(cc.PhysicsBoxCollider);
@@ -46,8 +47,11 @@ export default class LocalPlayerController extends cc.Component {
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-
+        cc.game.on(cc.game.EVENT_HIDE, this.onAppHide, this);
+        cc.game.on(cc.game.EVENT_SHOW, this.onAppShow, this);
         console.log("🧍 Local player initialized.");
+        this.playerSpeed = this.defaultPlayerSpeed;
+        this.jumpForce = this.defaultJumpForce;
     }
 
     onDestroy() {
@@ -69,15 +73,13 @@ export default class LocalPlayerController extends cc.Component {
     onKeyDown(event: cc.Event.EventKeyboard) {
         let changed = false;
         if (event.keyCode === cc.macro.KEY.a) {
-            if (this.moveDir !== -1) {
-                this.moveDir = -1;
-                changed = true;
-            }
+            this.leftDown = true;
+            this.moveDir = -1;
+            changed = true;
         } else if (event.keyCode === cc.macro.KEY.d) {
-            if (this.moveDir !== 1) {
-                this.moveDir = 1;
-                changed = true;
-            }
+            this.rightDown = true;
+            this.moveDir = 1;
+            changed = true;
         } else if (event.keyCode === cc.macro.KEY.space) {
             console.log("🔼 Space pressed | isGrounded:", this.isGrounded);
             if (this.isGrounded) {
@@ -97,10 +99,19 @@ export default class LocalPlayerController extends cc.Component {
 
     onKeyUp(event: cc.Event.EventKeyboard) {
         let changed = false;
-        if (event.keyCode === cc.macro.KEY.a || event.keyCode === cc.macro.KEY.d) {
-            if (this.moveDir !== 0) {
+        if (event.keyCode === cc.macro.KEY.a) {
+            this.leftDown = false;
+            if (this.rightDown) {
+                this.moveDir = 1;
+            }else{
                 this.moveDir = 0;
-                changed = true;
+            }
+        }else if (event.keyCode === cc.macro.KEY.d) {
+            this.rightDown = false;
+            if (this.leftDown) {
+                this.moveDir = -1;
+            }else{
+                this.moveDir = 0;
             }
         }
         if (changed) {
@@ -165,6 +176,12 @@ export default class LocalPlayerController extends cc.Component {
     }
 
     onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+        console.log(selfCollider.name);
+        console.log(otherCollider.name);
+        if (otherCollider.name.includes("Player") && selfCollider.name.includes("p1")) {
+            contact.disabled=true;
+            return;
+        }
         // Check if the contact is with the ground
         const worldManifold = contact.getWorldManifold();
         const normal = worldManifold.normal; // Normal vector of the collision
@@ -207,6 +224,12 @@ export default class LocalPlayerController extends cc.Component {
         }
     }
 
+    onPreSolve(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+        console.log(selfCollider.name);
+        console.log(otherCollider.name);
+        if (selfCollider.name.includes("p1") && otherCollider.name.includes("Player")) contact.disabled=true;
+    }
+
     onEndContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
         // This is a simple way to detect leaving ground.
         // For more robust ground detection, consider raycasting downwards.
@@ -218,6 +241,14 @@ export default class LocalPlayerController extends cc.Component {
                 this.sendPlayerStateToFirebase(); // Grounded state changed, send update
             }
         }
+    }
+
+    private onAppHide() {
+        console.log("🚪 App 被隱藏了（切換到其他視窗）");
+    }
+
+    private onAppShow() {
+        console.log("👀 App 回來了（切回遊戲）");
     }
 
 

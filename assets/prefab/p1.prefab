@@ -57,8 +57,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -438.29,
-        -84.253,
+        -522.458,
+        332.036,
         0,
         0,
         0,
@@ -133,7 +133,7 @@
       "y": 0
     },
     "_angularVelocity": 0,
-    "_fixedRotation": false,
+    "_fixedRotation": true,
     "enabledContactListener": true,
     "bullet": false,
     "awakeOnLoad": true,
@@ -155,13 +155,13 @@
     "body": null,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": -0.7,
+      "y": -3.4
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 66,
-      "height": 92
+      "width": 49.3,
+      "height": 85.2
     },
     "_id": ""
   },
@@ -173,8 +173,8 @@
       "__id__": 1
     },
     "_enabled": true,
-    "playerSpeed": 80,
-    "jumpForce": 300,
+    "playerSpeed": 250,
+    "jumpForce": 950,
     "_id": ""
   },
   {
