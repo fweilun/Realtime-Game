@@ -23,6 +23,7 @@ export default class RemotePlayerController extends cc.Component {
             this.playerNameLabel.string = initialState.name || `Player_${id.substring(0, 5)}`;
         }
         this.updateState(initialState);
+        this.name = "p1 remote";
         cc.log(`👥 Remote player ${this.playerId} initialized.`);
     }
 

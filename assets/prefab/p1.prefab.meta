@@ -1,6 +1,6 @@
-{
+assets/prefab/{
   "ver": "1.3.2",
-  "uuid": "ed61d711-16a3-463c-95e2-0636c8d608f8",
+  "uuid": "85bb62f3-1eff-436a-bc7c-673ab272903a",
   "importer": "prefab",
   "optimizationPolicy": "AUTO",
   "asyncLoadAssets": false,
