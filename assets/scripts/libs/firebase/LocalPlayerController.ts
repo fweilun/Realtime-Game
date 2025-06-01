@@ -198,6 +198,10 @@ export default class LocalPlayerController extends cc.Component {
         
         this.isGrounded = true;
 
+        if (otherCollider.node.name === "ironball_main") {
+            this.die();
+        }
+
         if (otherCollider.node.name === "bullet_stone") {
             this.die();
         }
