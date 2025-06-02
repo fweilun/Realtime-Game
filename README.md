@@ -30,3 +30,8 @@ weight(灰色)只能放在高的地方，大約畫面上方1/5，被砸到會死
 
 5/31 23:40 讓至少操作的player1可以使用道具
 
+6/2 17:00 selectionScene的地方可以選擇要去Scene_dirt(enable Canva/Selection)或是Scene_test(enable Canva/SelectionSingle)
+enable Canva/SelectionSingle的話，在SelectionScene先選擇一個道具，選擇完會自動跳到下個場景，下個場景可以放道具，放完道具可以操作(1p)。
+死掉的話，可以有重新放道具的機會，並且場景上的道具不會消失。
+通關回到start_scene。
+

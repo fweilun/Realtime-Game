@@ -36,7 +36,7 @@ export default class StartUI extends cc.Component {
 
     onClickMultiplayer() {
         console.log("🧑‍🤝‍🧑 多人模式啟動！");
-        // cc.director.loadScene("RoomScene"); // 實作後可導向房間
+        cc.director.loadScene("RoomScene");
     }
 
     onClickSetting() {

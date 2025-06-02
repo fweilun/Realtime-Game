@@ -22,7 +22,7 @@ export default class CannonBehavior extends cc.Component {
     private hasFiredInCycle: boolean = false;
 
     onLoad() {
-        this.node.name = "gun";
+        this.node.name = "cannon";
     }
 
     start() {
@@ -62,7 +62,7 @@ export default class CannonBehavior extends cc.Component {
         const bullet = cc.instantiate(this.bulletPrefab);
         bullet.parent = this.node.parent;
 
-        const startPos = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
+        const startPos = this.node.position;
         bullet.setPosition(startPos);
 
         const duration = 5;
