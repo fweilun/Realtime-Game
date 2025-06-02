@@ -52,6 +52,13 @@ export default class FirebaseManager extends cc.Component {
         return FirebaseManager._instance;
     }
 
+    public setUid(uid: string) {
+        this._userId = uid;
+    }
+
+    public getUid(): string {
+    return this._userId || firebase.auth().currentUser?.uid || "";
+}
     onLoad() {
         //cc.log("🚨 FirebaseManager onLoad initiated! Node name:", this.node.name, "Current static _instance:", FirebaseManager._instance ? FirebaseManager._instance.node.name : "null");
 
