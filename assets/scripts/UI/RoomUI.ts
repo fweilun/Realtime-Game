@@ -256,10 +256,23 @@ export default class RoomUI extends cc.Component {
         const ownerSnap = await roomRef.child('owner').once('value');
         if (ownerSnap.val() === uid) {
             await roomRef.child('state').set('ready');
+            // 將房間從 pending 移動到 active
+            const roomData = await roomRef.once('value');
+            await this.db.ref(`rooms/active/${roomId}`).set({
+                ...roomData.val(),
+                state: 'placing',
+                gameState: {
+                    phase: 'placing',
+                    startTime: Date.now()
+                }
+            });
+            
             cc.log('房主已將房間狀態設為 ready');
-            console.log("▶️ 單人模式啟動！");
-            this.removeFromRoom(roomId);
-            cc.director.loadScene("SelectionScene");
+            console.log("▶️ 多人模式啟動！");
+            await this.removeFromRoom(roomId);
+            // 保存房間ID到全局變量
+            cc.game["currentRoomId"] = roomId;
+            cc.director.loadScene("SelectionMultipleScene");
         } else {
             cc.warn('只有房主可以開始遊戲');
         }
@@ -273,11 +286,11 @@ export default class RoomUI extends cc.Component {
         console.log(state);
         if (state === 'ready') {
             console.log('房間狀態為 ready');
-            console.log("▶️ 單人模式啟動！");
-            this.removeFromRoom(roomId);
-            cc.director.loadScene("SelectionScene");
+            console.log("▶️ 多人模式啟動！");
+            await this.removeFromRoom(roomId);
+            // 保存房間ID到全局變量
+            cc.game["currentRoomId"] = roomId;
+            cc.director.loadScene("SelectionMultipleScene");
         }
     }
-
-    // update (dt) {}
 }
