@@ -253,6 +253,7 @@ export default class RoomUI extends cc.Component {
         if (ownerSnap.val() === uid) {
             await roomRef.child('state').set('ready');
             cc.log('房主已將房間狀態設為 ready');
+            cc.director.loadScene('Scene1_dirt');
         } else {
             cc.warn('只有房主可以開始遊戲');
         }
@@ -266,6 +267,7 @@ export default class RoomUI extends cc.Component {
         console.log(state);
         if (state === 'ready') {
             console.log('房間狀態為 ready');
+            cc.director.loadScene('Scene1_dirt');
         }
     }
 
