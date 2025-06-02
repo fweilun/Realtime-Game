@@ -86,14 +86,14 @@ export default class RoomUI extends cc.Component {
         if (this.updateRoomListCallback) {
             this.unschedule(this.updateRoomListCallback);
         }
-        // window.removeEventListener('beforeunload', this._onWindowUnload);
+        window.removeEventListener('beforeunload', this._onWindowUnload);
     }
 
-    // _onWindowUnload = (event) => {
-        // if (this.joinedRoom) {
-        //     this.removeFromRoom(this.joinedRoom);
-        // }
-    // }
+    _onWindowUnload = (event) => {
+        if (this.joinedRoom) {
+            this.removeFromRoom(this.joinedRoom);
+        }
+    }
 
     async reLoadRooms() {
         if (!this.db) return;
@@ -158,9 +158,6 @@ export default class RoomUI extends cc.Component {
     }
 
     async onJoinRoom() {
-        if (this.joinedRoom){
-            this.removeFromRoom(this.joinedRoom);
-        }
         if (!this.selectedRoomId) {
             cc.warn('請先選擇房間');
             return;
@@ -170,6 +167,13 @@ export default class RoomUI extends cc.Component {
             console.log("join room fail, user not found or db problem");
             return;
         }
+        
+        // 檢查房間狀態 如果不是pending應該要不能進去，但還沒實作。
+
+        if (this.joinedRoom){
+            this.removeFromRoom(this.joinedRoom);
+        }
+
         // Player加入Room
         const uid = user.uid;
         const roomPath = 'rooms/pending/' + this.selectedRoomId + '/players/' + uid;
@@ -253,7 +257,9 @@ export default class RoomUI extends cc.Component {
         if (ownerSnap.val() === uid) {
             await roomRef.child('state').set('ready');
             cc.log('房主已將房間狀態設為 ready');
-            cc.director.loadScene('Scene1_dirt');
+            console.log("▶️ 單人模式啟動！");
+            this.removeFromRoom(roomId);
+            cc.director.loadScene("SelectionScene");
         } else {
             cc.warn('只有房主可以開始遊戲');
         }
@@ -267,7 +273,9 @@ export default class RoomUI extends cc.Component {
         console.log(state);
         if (state === 'ready') {
             console.log('房間狀態為 ready');
-            cc.director.loadScene('Scene1_dirt');
+            console.log("▶️ 單人模式啟動！");
+            this.removeFromRoom(roomId);
+            cc.director.loadScene("SelectionScene");
         }
     }
 
