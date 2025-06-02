@@ -1,7 +1,7 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class DeadCollision extends cc.Component {
+export default class DeadCollisionGeneral extends cc.Component {
 
     onLoad() {
         // ✅ 開啟物理系統
@@ -31,11 +31,10 @@ export default class DeadCollision extends cc.Component {
         for (let obj of objects) {
             let width = obj.width;
             let height = obj.height;
-            let x = obj.x + width / 2 - 2100;
-            let y = obj.y - height / 2 - 420;
+            let x = obj.x + width / 2;
+            let y = obj.y - height / 2 ;
 
-            let worldPos = this.node.convertToWorldSpaceAR(cc.v2(x, y));
-            let localPos = this.node.parent.convertToNodeSpaceAR(worldPos);
+            let localPos = this.node.parent.convertToNodeSpaceAR(cc.v2(x, y));
 
             let colliderNode = new cc.Node("dead");
             this.node.parent.addChild(colliderNode);

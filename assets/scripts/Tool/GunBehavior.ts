@@ -62,7 +62,7 @@ export default class GunBehavior extends cc.Component {
         const bullet = cc.instantiate(this.bulletPrefab);
         bullet.parent = this.node.parent;
 
-        const startPos = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
+        const startPos = this.node.position;
         bullet.setPosition(startPos);
 
         // ✅ 子彈向右飛，持續 5 秒

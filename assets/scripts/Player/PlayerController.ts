@@ -40,6 +40,11 @@ export default class PlayerController extends cc.Component {
         console.log("🧍 player initialized.");
     }
 
+    start() {
+        this.born();  // 👈 初始重生
+    }
+
+
     onDestroy() {
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
@@ -139,6 +144,30 @@ export default class PlayerController extends cc.Component {
         this.isGrounded = true;
         console.log("✅ Grounded on:", otherCollider.node.name);
 
+        if (otherCollider.node.name === "ironball_main") {
+            this.die();
+        }
+
+        if (otherCollider.node.name === "bullet_stone") {
+            this.die();
+        }
+
+        if (otherCollider.node.name === "bullet_light") {
+            this.die();
+        }
+        
+        if (otherCollider.node.name === "saw") {
+            this.die();
+        }
+        
+        if (otherCollider.node.name === "spike"){
+            this.die();
+        }
+
+        if (otherCollider.node.name === "weight" && worldManifold.normal.y > 0.5) {
+            this.die();
+        }
+
         if (otherCollider.node.name === "dead") {
             console.log("💀 player die！");
             this.die();
@@ -171,14 +200,40 @@ export default class PlayerController extends cc.Component {
         
         this.scheduleOnce(() => {
             cc.director.loadScene("StartScene")
+            cc.game["placedItems"] = [];
         }, 3)
     }
 
-    die() {
-        console.log("💀 player died. Restarting scene...");
+    born() {
+        console.log("🔄 Player reborn");
+
+        this.enabled = true;
+        this.node.position = this.startPos.clone();  // 回到初始位置
+        this.rb.linearVelocity = cc.v2(0, 0);        // 重設速度
+        this.isGrounded = false;
+        this.moveDir = 0;
+        this.currentAnim = "";
+
+        const collider = this.getComponent(cc.PhysicsBoxCollider);
+        if (collider) {
+            collider.enabled = true;
+        }
+
+        const anim = this.getComponent(cc.Animation);
+        if (anim && anim.getClips().some(c => c.name === "idle")) {
+            anim.play("idle");
+            this.currentAnim = "idle";
+        }
+
+        console.log("🧍 Respawn complete");
+    }
+
+
+   die() {
+        console.log("💀 player died. Respawning...");
 
         this.rb.linearVelocity = cc.v2(0, 100);
-        // 播放死亡動畫（需先設好 "die" clip）
+
         const anim = this.getComponent(cc.Animation);
         if (anim && anim.getClips().some(c => c.name === "die")) {
             anim.play("die");
@@ -188,25 +243,18 @@ export default class PlayerController extends cc.Component {
             console.warn("⚠️ 'die' animation not found");
         }
 
-        this.enabled = false; // 停用腳本內部邏輯（如 update）
-        //this.rb.linearVelocity = cc.v2(0, 0); // 重設初始速度
+        this.enabled = false;
 
         const collider = this.getComponent(cc.PhysicsBoxCollider);
         if (collider) {
             collider.enabled = false;
         }
 
+        // 延遲 1 秒後復活
         this.scheduleOnce(() => {
-            const currentScene = cc.director.getScene().name;
-            let nextScene = "";
-
-            if (currentScene === "Scene1_dirt") {
-                nextScene = "Scene1_dirt"; 
-            } 
-
-            cc.director.loadScene("Scene1_dirt");
-        }, 1); 
-        //cc.audioEngine.playEffect(this.dieSound, false);
-
+            cc.game["selectedBlockType"] = null; 
+            cc.director.loadScene("SelectionScene"); 
+        }, 1);
     }
+        //cc.audioEngine.playEffect(this.dieSound, false);
 }

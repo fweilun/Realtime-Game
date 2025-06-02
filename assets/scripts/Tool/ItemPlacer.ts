@@ -21,6 +21,9 @@ export default class ItemPlacer extends cc.Component {
     @property(cc.Node) mapNode: cc.Node = null;
     @property(cc.Node) cursorLayer: cc.Node = null;
 
+    @property(cc.Prefab) playerPrefab: cc.Prefab = null;
+    @property(cc.Node) spawnPoint: cc.Node = null;
+
     private cursorItem: cc.Node = null;
     private currentPrefab: cc.Prefab = null;
     private selectedType: string = null;
@@ -58,6 +61,17 @@ export default class ItemPlacer extends cc.Component {
             this.setSelectedType(selected);
         } else {
             console.warn("❗ 尚未從選擇場景讀取到選擇的道具！");
+        }
+
+        if (cc.game["placedItems"]) {
+            for (const item of cc.game["placedItems"]) {
+                const prefab = this.prefabMap[item.type];
+                if (prefab) {
+                    const node = cc.instantiate(prefab);
+                    node.setPosition(item.x, item.y);
+                    this.mapNode.addChild(node);
+                }
+            }
         }
     }
 
@@ -109,10 +123,39 @@ export default class ItemPlacer extends cc.Component {
         }
 
         this.onPlaced(); // 可以自定義觸發遊戲開始
+
+        if (!cc.game["placedItems"]) cc.game["placedItems"] = [];
+
+        cc.game["placedItems"].push({
+            type: this.selectedType,
+            x: pos.x,
+            y: pos.y
+        });
+    }
+
+    spawnPlayer() {
+        if (!this.playerPrefab || !this.spawnPoint) {
+            console.warn(" 先設定 playerPrefab 和 spawnPoint");
+            return;
+        }
+
+        const player = cc.instantiate(this.playerPrefab);
+        player.setPosition(this.spawnPoint.position);
+        this.mapNode.addChild(player);
+
+        const ctrl = player.getComponent("PlayerController");
+        ctrl?.born(); 
+
+        console.log("主角已生成");
     }
 
     onPlaced() {
-        console.log("🎮 道具放置完成，可以開始遊戲！");
-        // 例如：this.node.emit(\"GameStart\") 或跳轉狀態
+        console.log(" 道具放置完成，可以開始遊戲！");
+        this.spawnPlayer();
+
+        // ❌ 關閉事件監聽，不能再放置
+        this.cursorLayer.off(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
+        this.cursorLayer.off(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
+        this.enabled = false;
     }
 }

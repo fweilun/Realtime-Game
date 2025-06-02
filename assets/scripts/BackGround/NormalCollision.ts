@@ -1,7 +1,7 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class TilemapCollisionInit extends cc.Component {
+export default class NormalCollision extends cc.Component {
 
     onLoad() {
         // ✅ 開啟物理系統

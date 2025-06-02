@@ -1,7 +1,7 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class DeadCollision extends cc.Component {
+export default class NormalCollisionGeneral extends cc.Component {
 
     onLoad() {
         // ✅ 開啟物理系統
@@ -16,9 +16,9 @@ export default class DeadCollision extends cc.Component {
         }
         // ✅ 載入 Tiled 地圖的 Object Layer
         let tiledMap = this.getComponent(cc.TiledMap);
-        let collisionLayer = tiledMap.getObjectGroup("deadCollision");
+        let collisionLayer = tiledMap.getObjectGroup("normalCollision");
         if (!collisionLayer) {
-            cc.warn("沒有找到 deadCollision object layer！");
+            cc.warn("沒有找到 normalCollision object layer！");
             return;
         }
 
@@ -31,17 +31,16 @@ export default class DeadCollision extends cc.Component {
         for (let obj of objects) {
             let width = obj.width;
             let height = obj.height;
-            let x = obj.x + width / 2 - 2100;
-            let y = obj.y - height / 2 - 420;
+            let x = obj.x + width / 2;
+            let y = obj.y - height / 2 ;
 
-            let worldPos = this.node.convertToWorldSpaceAR(cc.v2(x, y));
-            let localPos = this.node.parent.convertToNodeSpaceAR(worldPos);
+            let localPos = this.node.parent.convertToNodeSpaceAR(cc.v2(x, y));
 
-            let colliderNode = new cc.Node("dead");
+            let colliderNode = new cc.Node("normal");
             this.node.parent.addChild(colliderNode);
             colliderNode.setPosition(localPos);
             
-            //colliderNode.group = "dead";
+            //colliderNode.group = "normal";
 
             let rigid = colliderNode.addComponent(cc.RigidBody);
             rigid.type = cc.RigidBodyType.Static;
