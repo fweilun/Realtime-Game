@@ -46,6 +46,7 @@ export default class GameManager extends cc.Component {
     private localPlayerNode: cc.Node = null;
     private remotePlayers: { [key: string]: cc.Node } = {};
 
+    
     async start() {
         console.log("🚀 GameManager starting");
 
@@ -88,6 +89,7 @@ export default class GameManager extends cc.Component {
             const id = snapshot.key;
             if (id !== this.currentUserId) {
                 this.spawnRemotePlayer(id, snapshot.val());
+                
             }
         });
 
@@ -112,6 +114,9 @@ export default class GameManager extends cc.Component {
 
         this.localPlayerNode = cc.instantiate(this.localPlayerPrefab);
         this.localPlayerNode.setPosition(cc.v2(100, 700));
+
+        this.localPlayerNode["uid"] = this.currentUserId;
+
         this.node.addChild(this.localPlayerNode);
 
         const controller = this.localPlayerNode.getComponent(LocalPlayerController);
@@ -123,7 +128,7 @@ export default class GameManager extends cc.Component {
         const ref = this.db.ref(`games/${this.gameRoomId}/players/${this.currentUserId}`);
         controller.setFirebaseRef(ref);
         console.log("✅ Local player spawned and Firebase ref set.");
-
+        
         if (this.mainCamera) this.mainCamera.target = this.localPlayerNode;
         if (this.weightPlacer) this.weightPlacer.player = this.localPlayerNode;
         if (this.boxPlacer) this.boxPlacer.player = this.localPlayerNode;
@@ -136,6 +141,9 @@ export default class GameManager extends cc.Component {
 
         const remote = cc.instantiate(this.remotePlayerPrefab);
         remote.setPosition(cc.v2(state.positionX || 0, state.positionY || 0));
+
+        remote["uid"] = id;
+
         this.node.addChild(remote);
 
         const controller = remote.getComponent(RemotePlayerController);

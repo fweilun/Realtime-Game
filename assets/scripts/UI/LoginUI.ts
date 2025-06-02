@@ -49,6 +49,8 @@ export default class LoginUI extends cc.Component {
         try {
             const result = await firebase.auth().createUserWithEmailAndPassword(email, password);
             console.log("✅ 註冊成功:", result.user.uid);
+            const uid = result.user.uid;
+            FirebaseManager.getInstance().setUid(uid); 
             cc.director.loadScene("RoomScene");
         } catch (signupError) {
             console.error("❌ 註冊失敗:", signupError.message);
@@ -67,6 +69,8 @@ export default class LoginUI extends cc.Component {
         try {
             const result = await firebase.auth().signInWithEmailAndPassword(email, password);
             console.log("✅ 登入成功:", result.user.uid);
+            const uid = result.user.uid;
+            FirebaseManager.getInstance().setUid(uid);
             cc.director.loadScene("RoomScene");
         } catch (loginError) {
             console.error("❌ 登入失敗:", loginError.message);

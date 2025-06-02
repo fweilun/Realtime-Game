@@ -1,6 +1,8 @@
 // LocalPlayerController.ts
 // This script controls the local player and sends its state to Firebase.
 
+import FirebaseManager from "./FirebaseManager";
+
 const { ccclass, property } = cc._decorator;
 
 // Declare the global 'firebase' object to satisfy TypeScript
@@ -44,6 +46,8 @@ export default class LocalPlayerController extends cc.Component {
         if (!box) {
             box = this.node.addComponent(cc.PhysicsBoxCollider);
         }
+        //box.restitution = 0.4;
+        //box.friction = 0.2;
         box.apply();
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
@@ -180,16 +184,28 @@ export default class LocalPlayerController extends cc.Component {
     onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
         console.log(selfCollider.name);
         console.log(otherCollider.name);
-        if (otherCollider.name.includes("Player") && selfCollider.name.includes("p1")) {
-            contact.disabled=true;
-            return;
-        }
-        // Check if the contact is with the ground
-        const worldManifold = contact.getWorldManifold();
-        const normal = worldManifold.normal; // Normal vector of the collision
 
-        // Check if the collision normal is pointing upwards (indicating ground contact)
-        // A small tolerance (e.g., 0.7) can account for sloped surfaces
+        // ✅ 玩家撞到其他玩家，進行推動 + 傳送位置（新增）
+        const myUID = FirebaseManager.getInstance().getUid();
+        const otherNode = otherCollider.node;
+        const otherUID = otherNode["uid"];
+
+        if (otherUID && otherUID !== myUID) {
+            const dir = otherNode.getPosition().sub(this.node.getPosition()).normalize();
+            const forceX = dir.x * 300;
+            const forceY = dir.y * 300;
+
+            firebase.database().ref(`games/defaultGameRoom/players/${otherUID}/pushForce`).set({
+                x: forceX,
+                y: forceY
+            });
+
+            console.log(`💥 我(${myUID}) 撞了 ${otherUID} → 推動並同步位置`);
+        }
+
+        // ✅ 地面偵測邏輯（保留原始）
+        const worldManifold = contact.getWorldManifold();
+        const normal = worldManifold.normal;
         if (normal.y > 0.7) {
             if (!this.isGrounded) {
                 this.isGrounded = true;
@@ -197,26 +213,13 @@ export default class LocalPlayerController extends cc.Component {
                 console.log("✅ Grounded on:", otherCollider.node.name);
             }
         }
-        
+
+        // ✅ 確保地面狀態保持 true
         this.isGrounded = true;
 
-        if (otherCollider.node.name === "ironball_main") {
-            this.die();
-        }
-
-        if (otherCollider.node.name === "bullet_stone") {
-            this.die();
-        }
-
-        if (otherCollider.node.name === "bullet_light") {
-            this.die();
-        }
-        
-        if (otherCollider.node.name === "saw") {
-            this.die();
-        }
-        
-        if (otherCollider.node.name === "spike"){
+        // ✅ 死亡物件判定邏輯（保留原始）
+        const deadlyNames = ["ironball_main", "bullet_stone", "bullet_light", "saw", "spike"];
+        if (deadlyNames.includes(otherCollider.node.name)) {
             this.die();
         }
 
@@ -229,10 +232,12 @@ export default class LocalPlayerController extends cc.Component {
             this.die();
         }
 
+        // ✅ 關卡過關
         if (otherCollider.node.name === "flag") {
             this.levelCleared();
         }
     }
+
 
     onPreSolve(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
         console.log(selfCollider.name);
