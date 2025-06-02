@@ -1,80 +1,62 @@
-// RemotePlayerController.ts
-// This script controls remote players based on data received from Firebase.
-
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class RemotePlayerController extends cc.Component {
 
-    @property(cc.Label)
-    playerNameLabel: cc.Label = null; // Optional: A label to display the player's name
-
-    private playerId: string = null;
+    private playerId: string = "";
     private currentAnim: string = "";
 
-    /**
-     * Initializes the remote player with its ID and initial state.
-     * @param id The unique ID of the remote player.
-     * @param initialState The initial state data from Firebase.
-     */
     public init(id: string, initialState: any) {
         this.playerId = id;
-        if (this.playerNameLabel) {
-            this.playerNameLabel.string = initialState.name || `Player_${id.substring(0, 5)}`;
-        }
         this.updateState(initialState);
-        this.name = "p1 remote";
-        cc.log(`👥 Remote player ${this.playerId} initialized.`);
+
+        // 確保 RigidBody 和 Collider 存在
+        const rb = this.getComponent(cc.RigidBody);
+        if (rb) rb.enabled = true;
+
+        const col = this.getComponent(cc.PhysicsBoxCollider);
+        if (col) col.enabled = true;
     }
 
-    /**
-     * Updates the remote player's visual state based on new data from Firebase.
-     * @param newState The latest state data from Firebase.
-     */
-    public updateState(newState: any) {
-        if (!this.node) return; // Node might have been destroyed
-
-        // Update position
-        this.node.x = newState.positionX;
-        this.node.y = newState.positionY;
-
-        // Update facing direction (scaleX)
-        this.node.scaleX = newState.scaleX;
-
-        // Update animation
-        this.updateAnimation(newState.currentAnim);
-
-        // You can add more state updates here (e.g., health, blockHold, etc.)
-        // cc.log(`👥 Remote player ${this.playerId} updated: Pos(${this.node.x}, ${this.node.y}), Anim: ${newState.currentAnim}`);
-    }
-
-    /**
-     * Plays the specified animation for the remote player.
-     * @param newAnim The name of the animation to play.
-     */
-    private updateAnimation(newAnim: string) {
-        const anim = this.getComponent(cc.Animation);
-        if (!anim) {
-            // console.warn("⚠️ Animation component not found on remote player node");
+    public updateState(state: any) {
+        if (!this.node) return;
+        if (state.status === "dead") {
+            this.playDead();
             return;
         }
 
-        if (newAnim !== this.currentAnim) {
-            if (anim.getClips().some(c => c.name === newAnim)) {
-                anim.play(newAnim);
-                this.currentAnim = newAnim;
-                // console.log(`👥 Remote player ${this.playerId} playing '${newAnim}' animation`);
-            } else {
-                // console.warn(`⚠️ '${newAnim}' animation clip not found for remote player ${this.playerId}.`);
-                if (anim.getAnimationState(this.currentAnim)?.isPlaying) {
-                    anim.stop();
-                }
-                this.currentAnim = ""; // Reset if animation not found
-            }
+        this.node.setPosition(state.positionX || 0, state.positionY || 0);
+        this.node.scaleX = state.scaleX || 1;
+        this.updateAnimation(state.currentAnim);
+    }
+
+    private updateAnimation(newAnim: string) {
+        if (newAnim === this.currentAnim) return;
+        const anim = this.getComponent(cc.Animation);
+        if (anim?.getClips().some(c => c.name === newAnim)) {
+            anim.play(newAnim);
+            this.currentAnim = newAnim;
         }
     }
 
-    onDestroy() {
-        cc.log(`👥 Remote player ${this.playerId} destroyed.`);
+    private playDead() {
+        const anim = this.getComponent(cc.Animation);
+        if (anim?.getClips().some(c => c.name === "die")) {
+            anim.play("die");
+        }
+        this.node.opacity = 150;
+        this.node.getComponent(cc.RigidBody).enabled = false;
+    }
+
+    onBeginContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
+        if (other.node.name === "spike") {
+            console.log(`☠️ Remote ${this.playerId} hit spike!`);
+            this.markDead();
+        }
+    }
+
+    private markDead() {
+        const db = firebase.database();
+        db.ref(`games/defaultGameRoom/players/${this.playerId}/status`).set("dead");
     }
 }

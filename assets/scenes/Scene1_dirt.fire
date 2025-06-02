@@ -2852,7 +2852,9 @@
     "localPlayerPrefab": {
       "__uuid__": "ed61d711-16a3-463c-95e2-0636c8d608f8"
     },
-    "remotePlayerPrefab": null,
+    "remotePlayerPrefab": {
+      "__uuid__": "0b016f8a-aaf7-4d8a-8a49-236705456dc4"
+    },
     "gameRoomId": "defaultGameRoom",
     "mainCamera": {
       "__id__": 51

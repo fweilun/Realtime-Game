@@ -29,6 +29,7 @@ export default class LocalPlayerController extends cc.Component {
     private leftDown = false;
 
     private firebasePlayerRef: firebase.database.Reference = null; // Firebase reference for this player's state
+    private isReadyToSync: boolean = false;
 
     onLoad() {
         this.startPos = this.node.position.clone();
@@ -68,6 +69,7 @@ export default class LocalPlayerController extends cc.Component {
     public setFirebaseRef(ref: firebase.database.Reference) {
         this.firebasePlayerRef = ref;
         cc.log("🧍 LocalPlayerController: Firebase ref set.");
+        this.isReadyToSync = true;
     }
 
     onKeyDown(event: cc.Event.EventKeyboard) {
@@ -296,6 +298,11 @@ export default class LocalPlayerController extends cc.Component {
     die() {
         console.log("💀 player died. Restarting scene...");
 
+        this.firebasePlayerRef.update({
+            status: "dead",
+            lastUpdate: firebase.database.ServerValue.TIMESTAMP
+        })
+
         this.rb.linearVelocity = cc.v2(0, 100);
         const anim = this.getComponent(cc.Animation);
         if (anim && anim.getClips().some(c => c.name === "die")) {
@@ -337,24 +344,34 @@ export default class LocalPlayerController extends cc.Component {
      * This should be called whenever a significant state change occurs.
      */
     private sendPlayerStateToFirebase() {
-        if (!this.firebasePlayerRef) {
-             cc.warn("Firebase player ref not set for local player.");
+        if (!this.firebasePlayerRef) return;
+
+        const safeX = isNaN(this.node.x) ? 100 : this.node.x;
+        const safeY = isNaN(this.node.y) ? 500 : this.node.y;
+
+        if (isNaN(safeX) || isNaN(safeY)) {
+            console.warn("🚫 嘗試上傳包含 NaN 的 player state，已中止：", {
+                x: this.node.x,
+                y: this.node.y,
+                scaleX: this.node.scaleX,
+            });
             return;
         }
 
         const playerState = {
-            positionX: this.node.x,
-            positionY: this.node.y,
-            scaleX: this.node.scaleX, // Include scale for facing direction
+            positionX: safeX,
+            positionY: safeY,
+            scaleX: this.node.scaleX,
             moveDir: this.moveDir,
             isGrounded: this.isGrounded,
             currentAnim: this.currentAnim,
-            lastUpdate: firebase.database.ServerValue.TIMESTAMP // Use server timestamp for consistency
+            lastUpdate: firebase.database.ServerValue.TIMESTAMP
         };
 
-        this.firebasePlayerRef.update(playerState)
-            .catch((error) => {
-                cc.error("❌ Failed to update local player state to Firebase:", error);
-            });
+        this.firebasePlayerRef.update(playerState).catch((error) => {
+            console.error("❌ Failed to update local player state to Firebase:", error);
+        });
     }
+
+
 }

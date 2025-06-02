@@ -37,13 +37,10 @@ export default class FirebaseManager extends cc.Component {
 
         if (!FirebaseManager._instance) {
             // If the static instance is null, try to find it among the persistent root nodes
-            const persistRootNodes = cc.game.getPersistRootNodes();
-            for (const node of persistRootNodes) {
-                const component = node.getComponent(FirebaseManager);
-                if (component) {
-                    FirebaseManager._instance = component;
-                    //cc.log("[FirebaseManager.getInstance()] Found and set _instance from persist root node:", node.name);
-                    break; // Found it, no need to check other nodes
+            if (!FirebaseManager._instance) {
+                FirebaseManager._instance = cc.find("FirebaseManager")?.getComponent(FirebaseManager);
+                if (!FirebaseManager._instance) {
+                    cc.error("找不到名為 FirebaseManager 的節點，請確認場景中有這個節點，且有掛 FirebaseManager.ts");
                 }
             }
 
@@ -108,12 +105,26 @@ export default class FirebaseManager extends cc.Component {
 
     // Public methods to get the initialized Firebase instances
     public getAuth(): firebase.auth.Auth | null {
-        cc.log("[FirebaseManager.getAuth()] Called. Auth instance:", this._auth ? "exists" : "null");
+        if (!this._auth) {
+            try {
+                this._auth = firebase.auth();
+                cc.log("[FirebaseManager.getAuth()] Recovered auth instance");
+            } catch (e) {
+                cc.error("getAuth() failed:", e);
+            }
+        }
         return this._auth;
     }
 
     public getDatabase(): firebase.database.Database | null {
-        cc.log("[FirebaseManager.getDatabase()] Called. DB instance:", this._database ? "exists" : "null");
+        if (!this._database) {
+            try {
+                this._database = firebase.database();
+                cc.log("[FirebaseManager.getDatabase()] Recovered DB instance");
+            } catch (e) {
+                cc.error("getDatabase() failed:", e);
+            }
+        }
         return this._database;
     }
 
