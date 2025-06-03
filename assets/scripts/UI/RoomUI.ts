@@ -252,14 +252,47 @@ export default class RoomUI extends cc.Component {
         const uid = user.uid;
         const roomId = this.selectedRoomId;
         const roomRef = this.db.ref('rooms/pending/' + roomId);
+        
         // 只有 owner 可以 start
         const ownerSnap = await roomRef.child('owner').once('value');
         if (ownerSnap.val() === uid) {
+            // 1. 讀取 playerList
+            const playersSnapshot = await roomRef.child('players').once('value');
+            const players = playersSnapshot.val();
+            // 2. 將房間狀態設為 ready
             await roomRef.child('state').set('ready');
+            // 3. 初始化 active 房間
+            const activeRoomRef = this.db.ref('rooms/active/' + roomId);
+            await activeRoomRef.set({
+                state: 'placing',  // 放置階段
+                startedAt: Date.now(),
+                owner: uid,
+                items: [],         // 道具列表
+                players: {},       // 玩家列表
+                gameState: {
+                    phase: 'placing',
+                    currentTurn: 1
+                }
+            });
+            // 4. 將所有玩家從 pending 複製到 active
+            if (players) {
+                const activePlayersRef = activeRoomRef.child('players');
+                for (const [playerId, _] of Object.entries(players)) {
+                    await activePlayersRef.child(playerId).set({
+                        uid: playerId,
+                        isReady: false,
+                        postion: { x: 0, y: 0 },
+                        score: 0,
+                        isFinished: false
+                    });
+                }
+            }
+
             cc.log('房主已將房間狀態設為 ready');
-            console.log("▶️ 單人模式啟動！");
+            console.log("▶️ 多人模式啟動！");
             this.removeFromRoom(roomId);
-            cc.director.loadScene("SelectionScene");
+            cc.game["currentRoomId"] = roomId;
+            cc.director.loadScene("SelectionMultiScene");
         } else {
             cc.warn('只有房主可以開始遊戲');
         }
@@ -275,7 +308,8 @@ export default class RoomUI extends cc.Component {
             console.log('房間狀態為 ready');
             console.log("▶️ 單人模式啟動！");
             this.removeFromRoom(roomId);
-            cc.director.loadScene("SelectionScene");
+            cc.game["currentRoomId"] = roomId;
+            cc.director.loadScene("SelectionMultiScene");
         }
     }
 

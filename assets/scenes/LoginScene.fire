@@ -343,7 +343,7 @@
       "__id__": 8
     },
     "_enabled": true,
-    "_string": "",
+    "_string": "test@gmail.com",
     "returnType": 0,
     "maxLength": 50,
     "_tabIndex": 0,
@@ -569,7 +569,7 @@
       "__id__": 8
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 13
@@ -634,11 +634,15 @@
       "__id__": 12
     },
     "_enabled": true,
-    "_materials": [],
+    "_materials": [
+      {
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+      }
+    ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "",
-    "_N$string": "",
+    "_string": "test@gmail.com",
+    "_N$string": "test@gmail.com",
     "_fontSize": 20,
     "_lineHeight": 25,
     "_enableWrapText": false,
@@ -690,7 +694,7 @@
       "__id__": 8
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 16
@@ -815,7 +819,7 @@
       "__id__": 19
     },
     "_enabled": true,
-    "_string": "",
+    "_string": "123456",
     "returnType": 0,
     "maxLength": 50,
     "_tabIndex": 0,
@@ -1041,7 +1045,7 @@
       "__id__": 19
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 24
@@ -1106,11 +1110,15 @@
       "__id__": 23
     },
     "_enabled": true,
-    "_materials": [],
+    "_materials": [
+      {
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+      }
+    ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "",
-    "_N$string": "",
+    "_string": "123456",
+    "_N$string": "123456",
     "_fontSize": 20,
     "_lineHeight": 25,
     "_enableWrapText": false,
@@ -1162,7 +1170,7 @@
       "__id__": 19
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 27
