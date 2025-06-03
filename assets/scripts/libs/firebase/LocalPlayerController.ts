@@ -57,6 +57,7 @@ export default class LocalPlayerController extends cc.Component {
         console.log("🧍 Local player initialized.");
         this.playerSpeed = this.defaultPlayerSpeed;
         this.jumpForce = this.defaultJumpForce;
+        this.listenForPushForce();
     }
 
     onDestroy() {
@@ -377,6 +378,26 @@ export default class LocalPlayerController extends cc.Component {
             console.error("❌ Failed to update local player state to Firebase:", error);
         });
     }
+    private listenForPushForce() {
+        const uid = FirebaseManager.getInstance().getUid();
+        const pushForceRef = firebase.database().ref(`games/defaultGameRoom/players/${uid}/pushForce`);
 
+        pushForceRef.on('value', (snapshot: any) => {
+            const force = snapshot.val();
+            if (force && typeof force.x === "number" && typeof force.y === "number") {
+                const rb = this.getComponent(cc.RigidBody);
+                if (rb) {
+                    const impulse = cc.v2(force.x, force.y);
+                    rb.applyLinearImpulse(impulse, this.node.getPosition(), true);
+                    console.log("💨 Local 端受到推力：", impulse);
+                }
+
+                // 清掉 pushForce（只處理一次）
+                pushForceRef.remove().catch((err: any) => {
+                    console.error("❌ Local 清除 pushForce 失敗:", err);
+                });
+            }
+        });
+    }
 
 }
