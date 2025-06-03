@@ -1,123 +1,30 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class SelectionUI extends cc.Component {
+export default class SelectionMultiUI extends cc.Component {
+    @property(cc.Button) boxButton: cc.Button = null;
+    @property(cc.Button) weightButton: cc.Button = null;
+    @property(cc.Button) spikeButton: cc.Button = null;
+    @property(cc.Button) sawButton: cc.Button = null;
+    @property(cc.Button) gunButton: cc.Button = null;
+    @property(cc.Button) cannonButton: cc.Button = null;
+    @property(cc.Button) ironballButton: cc.Button = null;
 
-    @property(cc.Node)
-    slot1: cc.Node = null;
-
-    @property(cc.Node)
-    slot2: cc.Node = null;
-
-    @property(cc.Prefab)
-    boxIconPrefab: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    weightIconPrefab: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    spikeIconPrefab: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    sawIconPrefab: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    gunIconPrefab: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    cannonIconPrefab: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    ironballIconPrefab: cc.Prefab = null;
-
-    @property(cc.Button)
-    boxButton: cc.Button = null;
-
-    @property(cc.Button)
-    weightButton: cc.Button = null;
-
-    @property(cc.Button)
-    spikeButton: cc.Button = null;
-
-    @property(cc.Button)
-    sawButton: cc.Button = null;
-
-    @property(cc.Button)
-    gunButton: cc.Button = null;
-
-    @property(cc.Button)
-    cannonButton: cc.Button = null;
-    
-    @property(cc.Button)
-    ironballButton: cc.Button = null;
-
-    private selected: string[] = [];
+    private selected: string = null;
 
     onLoad() {
-        if (this.boxButton) {
-            this.boxButton.node.on('click', () => this.onSelect("box"), this);
-        }
-        if (this.weightButton) {
-            this.weightButton.node.on('click', () => this.onSelect("weight"), this);
-        }
-        if (this.spikeButton) {
-            this.spikeButton.node.on('click', () => this.onSelect("spike"), this);
-        }
-        if (this.sawButton) {
-            this.sawButton.node.on('click', () => this.onSelect("saw"), this);
-        }
-        if (this.gunButton){
-            this.gunButton.node.on('click', () => this.onSelect("gun"), this);
-        }
-        if (this.cannonButton){
-            this.cannonButton.node.on('click', () => this.onSelect("cannon"), this);
-        }
-        if (this.ironballButton){
-            this.ironballButton.node.on('click', () => this.onSelect("ironball"), this);
-        }
+        this.boxButton.node.on('click', () => this.select("box"), this);
+        this.weightButton.node.on('click', () => this.select("weight"), this);
+        this.spikeButton.node.on('click', () => this.select("spike"), this);
+        this.sawButton.node.on('click', () => this.select("saw"), this);
+        this.gunButton.node.on('click', () => this.select("gun"), this);
+        this.cannonButton.node.on('click', () => this.select("cannon"), this);
+        this.ironballButton.node.on('click', () => this.select("ironball"), this);
     }
 
-    onSelect(type: string) {
-        if (this.selected.length >= 2) {
-            console.warn("❗ 最多只能選兩個");
-            return;
-        }
-
-        this.selected.push(type);
-        const slot = this.selected.length === 1 ? this.slot1 : this.slot2;
-
-        let icon: cc.Node = null;
-        if (type === "box") {
-            icon = cc.instantiate(this.boxIconPrefab);
-        } else if (type === "weight") {
-            icon = cc.instantiate(this.weightIconPrefab);
-        } else if (type === "spike") {
-            icon = cc. instantiate(this.spikeIconPrefab);
-        } else if (type === "saw") {
-            icon = cc.instantiate(this.sawIconPrefab);
-        } else if (type === "gun") {
-            icon = cc.instantiate(this.gunIconPrefab)
-        } else if (type === "cannon") {
-            icon = cc.instantiate(this.cannonIconPrefab)
-        } else if (type === "ironball") {
-            icon = cc.instantiate(this.ironballIconPrefab);
-        }
-
-        if (!icon || !slot) {
-            console.error("❌ 無法產生圖示或 slot 無效");
-            return;
-        }
-
-        icon.parent = slot;
-        icon.setPosition(0, 0);
-        icon.opacity = 255;
-
-        console.log("✅ 選擇了", type);
-
-        // 如果已選兩個，跳場景
-        if (this.selected.length === 2) {
-            cc.game["selectedBlockTypes"] = this.selected;
-            cc.director.loadScene("Scene1_dirt");
-        }
+    select(type: string) {
+        this.selected = type;
+        cc.game["selectedBlockType"] = this.selected;
+        cc.director.loadScene("GameRunScene");
     }
 }
