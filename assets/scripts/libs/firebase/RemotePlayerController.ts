@@ -1,41 +1,60 @@
 const { ccclass, property } = cc._decorator;
+declare const firebase: any;
 
 @ccclass
 export default class RemotePlayerController extends cc.Component {
 
     private playerId: string = "";
     private currentAnim: string = "";
+    private targetPos: cc.Vec3 = null;  // 可選：平滑移動
 
     public init(id: string, initialState: any) {
         this.playerId = id;
         this.updateState(initialState);
+        this.node["uid"] = id;
 
-        // 確保 RigidBody 和 Collider 存在
         const rb = this.getComponent(cc.RigidBody);
         if (rb) rb.enabled = true;
 
         const col = this.getComponent(cc.PhysicsBoxCollider);
         if (col) col.enabled = true;
     }
-    
+
     public updateState(state: any) {
-        if (!this.node) return;
+        if (!this.node || !state) return;
+
+        // ✅ 處理死亡動畫
         if (state.status === "dead") {
             this.playDead();
             return;
         }
-        if (state.pushForce) {
-            const rb = this.getComponent(cc.RigidBody);
-            if (rb) {
-                rb.applyLinearImpulse(cc.v2(state.pushForce.x, state.pushForce.y), this.node.getPosition(), true);
-            }
 
-            // 清除推力，避免重複觸發
-            firebase.database().ref(`games/defaultGameRoom/players/${this.playerId}/pushForce`).remove();
-        }
+        // ✅ 平滑移動（可選）或直接設位置
         this.node.setPosition(state.positionX || 0, state.positionY || 0);
+
+        // ✅ 面向與動畫更新
         this.node.scaleX = state.scaleX || 1;
         this.updateAnimation(state.currentAnim);
+
+        // ✅ 處理被撞推力
+        if (
+            state.pushForce &&
+            typeof state.pushForce.x === "number" &&
+            typeof state.pushForce.y === "number"
+        ) {
+            const rb = this.getComponent(cc.RigidBody);
+            if (rb) {
+                const impulse = cc.v2(state.pushForce.x, state.pushForce.y);
+                rb.applyLinearImpulse(impulse, this.node.getPosition(), true);
+                console.log(`💨 Remote ${this.playerId} 受到推力：`, impulse);
+            }
+
+            // ❌ 清掉 pushForce，避免重複施力
+            firebase.database()
+                .ref(`games/defaultGameRoom/players/${this.playerId}/pushForce`)
+                .remove()
+                .catch((err: any) => console.error("❌ 無法移除 pushForce:", err));
+        }
     }
 
     private updateAnimation(newAnim: string) {
@@ -53,18 +72,8 @@ export default class RemotePlayerController extends cc.Component {
             anim.play("die");
         }
         this.node.opacity = 150;
-        this.node.getComponent(cc.RigidBody).enabled = false;
-    }
 
-    onBeginContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
-        if (other.node.name === "spike" || other.node.name === "deadCollision") {
-            console.log(`☠️ Remote ${this.playerId} hit spike!`);
-            this.markDead();
-        }
-    }
-
-    private markDead() {
-        const db = firebase.database();
-        db.ref(`games/defaultGameRoom/players/${this.playerId}/status`).set("dead");
+        const rb = this.getComponent(cc.RigidBody);
+        if (rb) rb.enabled = false;
     }
 }
