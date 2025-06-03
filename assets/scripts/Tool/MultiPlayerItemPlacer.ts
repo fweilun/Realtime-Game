@@ -44,8 +44,10 @@ export default class MultiPlayerItemPlacer extends cc.Component {
     private playerId: string = null;
 
     private ghostItems: { [key: string]: cc.Node } = {};
+    private ghoastItemNum:number = null
     private itemListRef:any = null;
     private itemKey:any = null;
+    private placed:boolean = null;
 
     onLoad() {
         this.prefabMap = {
@@ -221,7 +223,10 @@ export default class MultiPlayerItemPlacer extends cc.Component {
                         ghost.setPosition(item.x, item.y);
                         this.mapNode.addChild(ghost);
                         // 記錄起來
+                        this.ghoastItemNum++;
                         this.ghostItems[key] = ghost;
+                    }else{
+                        console.error("Item放置非預期");
                     }
                 }
             }
@@ -236,6 +241,7 @@ export default class MultiPlayerItemPlacer extends cc.Component {
                     if (this.ghostItems[key]) {
                         this.ghostItems[key].destroy();
                         delete this.ghostItems[key];
+                        --this.ghoastItemNum;
                         // 有玩家放好方塊就檢查要不要開始遊戲
                         this.checkAllPlaced();
                     }
@@ -272,18 +278,33 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         console.log("主角已生成");
     }
 
-    onAllPlaced() {
-        console.log(" 道具放置完成，可以開始遊戲！");
-        this.spawnPlayer();
-        // ❌ 關閉事件監聽，不能再放置
+    onPlaced() {
+        this.placed = true;
         this.cursorLayer.off(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
         this.cursorLayer.off(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
-        this.enabled = false;
+        // 只 update state，不要再 push
+        if (this.itemKey && this.itemListRef) {
+            const pos = this.cursorItem ? this.cursorItem.getPosition() : {x: 0, y: 0};
+            this.itemListRef.child(this.itemKey).update({
+                x: pos.x,
+                y: pos.y,
+                state: ItemState.Placed
+            });
+        }
+
+        this.checkAllPlaced();
     }
 
     private checkAllPlaced() {
-        if (Object.keys(this.ghostItems).length === 0) {
-            this.onAllPlaced();
+        console.log("why bro");
+        console.log(this.ghostItems);
+        console.log(this.playerId);
+        if (this.placed && (this.ghoastItemNum==0)) {
+            console.log(" 道具放置完成，可以開始遊戲！");
+            this.spawnPlayer();
+            this.enabled = false;
+        }else{
+            console.log("還有玩家沒放道具！");
         }
     }
 }
