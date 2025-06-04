@@ -35,3 +35,7 @@ enable Canva/SelectionSingle的話，在SelectionScene先選擇一個道具，�
 死掉的話，可以有重新放道具的機會，並且場景上的道具不會消失。
 通關回到start_scene。
 
+6/4 21:50 audio已經可以使用(要從startscene開始才會有)
+使用時import AudioController from "../Audio/AudioController";
+再用裡面的API AudioController.PLAY("string")即可
+注意：走路開始和結束分別要呼叫AudioController.PLAY和AudioController.SFX_walk_end
