@@ -346,7 +346,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
@@ -358,8 +358,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        12.706,
-        -118.128,
+        0,
+        -100,
         0,
         0,
         0,
@@ -415,7 +415,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
@@ -717,7 +717,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
@@ -729,8 +729,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        12.706,
-        -252.657,
+        0,
+        -250,
         0,
         0,
         0,
@@ -786,7 +786,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
@@ -1088,7 +1088,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
@@ -1100,8 +1100,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        302.236,
-        209.421,
+        300,
+        200,
         0,
         0,
         0,
@@ -1157,7 +1157,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
@@ -1459,7 +1459,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
@@ -1471,8 +1471,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        12.706,
-        -188.317,
+        0,
+        -175,
         0,
         0,
         0,
@@ -1528,7 +1528,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 150,
       "height": 40
     },
     "_anchorPoint": {
