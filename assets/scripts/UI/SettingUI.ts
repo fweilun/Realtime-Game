@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import AudioController from "../Audio/AudioController";
+
 const {ccclass, property} = cc._decorator;
 
 type CharacterData = {
@@ -68,8 +70,8 @@ export default class NewClass extends cc.Component {
     @property(cc.Label)
     CharacterName: cc.Label = null;
 
-    BGMValue: number = 50;
-    SFXValue: number = 50;
+    BGMValue: number;
+    SFXValue: number;
     MoveSpeed: number = 0;
     JumpHeight: number = 0;
     HP: number = 0;
@@ -79,11 +81,6 @@ export default class NewClass extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        //之後看要記在哪裡，可以load的時候就存過來
-        this.BGMValue = 50;
-        this.SFXValue = 50;
-        this.CharacterID = 0;
-
         //左右按鈕
         if (this.ChooseCharacterL) {
             this.ChooseCharacterL.node.on('click', this.onClick_charL, this);
@@ -114,18 +111,21 @@ export default class NewClass extends cc.Component {
         if (this.SFXSlider) {
             this.SFXSlider.node.on('slide', this.onSlide_SFX, this);
         }
-        
+        this.node.on(cc.Node.EventType.MOUSE_UP, this.onMouseUp, this);
     }
 
     start () {
+        this.BGMValue = AudioController.BGM_vol;
+        this.BGMSlider.handle.node.x = this.BGMValue * 4 - 200;
+        this.SFXValue = AudioController.SFX_vol;
+        this.SFXSlider.handle.node.x = this.SFXValue * 4 - 200;
+        this.CharacterID = 0;
         this.set_character();
         this.show_setting_bars_and_lbls();
     }
 
     update (dt) {
-
     }
-
     set_character(){
         this.HPLbl.string = CharacterStats[this.CharacterID].hp.toString();
         this.JumpHeightLbl.string = CharacterStats[this.CharacterID].jumpheight.toString();
@@ -211,24 +211,35 @@ export default class NewClass extends cc.Component {
     onSlide_BGM(slider: cc.Slider){
         this.BGMValue = slider.progress * 100;
         console.log("BGM: " + this.BGMValue);
+        AudioController.SetVolumeBGM(this.BGMValue);
     }
 
     onSlide_SFX(slider: cc.Slider){
-        this.BGMValue = slider.progress * 100;
+        this.SFXValue = slider.progress * 100;
         console.log("SFX: " + this.SFXValue);
+        AudioController.SetVolumeSFX(this.SFXValue);
+        AudioController.PLAY("SFX_test");
     }
 
     //其他東西
     update_bgm_val(){
         this.BGMSlider.handle.node.x = this.BGMValue * 4 - 200;
         console.log("BGM: " + this.BGMValue);
+        AudioController.SetVolumeBGM(this.BGMValue);
+        
     }
     update_sfx_val(){
         this.SFXSlider.handle.node.x = this.SFXValue * 4 - 200;
         console.log("SFX: " + this.SFXValue);
+        AudioController.SetVolumeSFX(this.SFXValue);
+        AudioController.PLAY("SFX_test_short");
     }
 
     show_character_pic(){
         //還沒實作，但就換圖
+    }
+
+    onMouseUp(){
+        AudioController.SFX_test_end();
     }
 }
