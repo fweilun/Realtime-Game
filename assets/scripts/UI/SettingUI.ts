@@ -6,9 +6,12 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import AudioController from "../Audio/AudioController";
+import PlayerStats from "../Player/PlayerStats";
+import CharacterStats from "../Character/CharacterStats";
 
 const {ccclass, property} = cc._decorator;
 
+/*
 type CharacterData = {
     speed: number,
     hp: number,
@@ -16,16 +19,18 @@ type CharacterData = {
     jumpheight: number,
 };
 
-const CharacterStats: CharacterData[] = [
-    { speed: 5, hp: 40 , name: "chicken", jumpheight: 6  },
-    { speed: 8, hp: 100, name: "cow"    , jumpheight: 3  },
-    { speed: 6, hp: 20 , name: "rabbit" , jumpheight: 10 },
+datas: CharacterData[] = [
+    { speed: 6 , hp: 40 , name: "chicken", jumpheight: 7  },
+    { speed: 5 , hp: 70 , name: "horse"  , jumpheight: 5  },
+    { speed: 5 , hp: 20 , name: "bunny"  , jumpheight: 10 },
+    { speed: 10, hp: 40 , name: "raccoon", jumpheight: 3  },
+    { speed: 4 , hp: 90 , name: "sheep"  , jumpheight: 4  },
 ];
-const CharacterMaxID = 3;
-
+const CharacterMaxID = 5;
+*/
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class SettingUI extends cc.Component {
 
     @property(cc.Button)
     ChooseCharacterL: cc.Button = null;
@@ -119,7 +124,7 @@ export default class NewClass extends cc.Component {
         this.BGMSlider.handle.node.x = this.BGMValue * 4 - 200;
         this.SFXValue = AudioController.SFX_vol;
         this.SFXSlider.handle.node.x = this.SFXValue * 4 - 200;
-        this.CharacterID = 0;
+        this.CharacterID = PlayerStats.animalID;
         this.set_character();
         this.show_setting_bars_and_lbls();
     }
@@ -127,28 +132,30 @@ export default class NewClass extends cc.Component {
     update (dt) {
     }
     set_character(){
-        this.HPLbl.string = CharacterStats[this.CharacterID].hp.toString();
-        this.JumpHeightLbl.string = CharacterStats[this.CharacterID].jumpheight.toString();
-        this.MoveSpeedLbl.string = CharacterStats[this.CharacterID].speed.toString();
+        let data = CharacterStats.getdata(this.CharacterID);
+        this.HPLbl.string = data.hp.toString();
+        this.JumpHeightLbl.string = data.jumpheight.toString();
+        this.MoveSpeedLbl.string = data.speed.toString();
     }
 
     show_setting_bars_and_lbls(){
+        let data = CharacterStats.getdata(this.CharacterID);
         this.show_setting_bar("m");
         this.show_setting_bar("j");
         this.show_setting_bar("h");
-        this.CharacterName.string = CharacterStats[this.CharacterID].name;
+        this.CharacterName.string = data.name;
     }
     show_setting_bar(which: string){
-
+        let data = CharacterStats.getdata(this.CharacterID);
         const h = 30;
         const w = 300;
         let bar_index = 0;
         if(which == "m"){//move speed
-            bar_index = CharacterStats[this.CharacterID].speed - 1;
+            bar_index = data.speed - 1;
         }if(which == "h"){//hp
-            bar_index = CharacterStats[this.CharacterID].hp / 10 - 1;
+            bar_index = data.hp / 10 - 1;
         }if(which == "j"){//jump height
-            bar_index = CharacterStats[this.CharacterID].jumpheight - 1;
+            bar_index = data.jumpheight - 1;
         }
 
         let rect = new cc.Rect(0, bar_index * h, w, h);
@@ -173,14 +180,20 @@ export default class NewClass extends cc.Component {
     onClick_charR() {
         AudioController.PLAY("SFX_click")
         console.log("character +");
-        this.CharacterID = (this.CharacterID + 1)%CharacterMaxID;
+
+        this.CharacterID = (this.CharacterID + 1) % CharacterStats.getMaxID();
+        PlayerStats.changeID(this.CharacterID);
+
         this.set_character();
         this.show_setting_bars_and_lbls();
     }
     onClick_charL() {
         AudioController.PLAY("SFX_click")
         console.log("character -");
-        this.CharacterID = (this.CharacterID - 1 + CharacterMaxID)%CharacterMaxID;
+
+        this.CharacterID = (this.CharacterID - 1 + CharacterStats.getMaxID()) % CharacterStats.getMaxID();
+        PlayerStats.changeID(this.CharacterID);
+        
         this.set_character();
         this.show_setting_bars_and_lbls();
     }

@@ -64,7 +64,7 @@ export default class AudioController extends cc.Component {
             //exist forever
             cc.game.addPersistRootNode(this.node);
             await this._initAsync();
-            console.log(AudioController.getInstance().bgm_normal);
+            //console.log(AudioController.getInstance().bgm_normal);
         } else {
             console.log("delete node")
             this.node.destroy();
