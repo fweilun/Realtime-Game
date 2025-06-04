@@ -2,6 +2,8 @@ declare const firebase: any;
 const { ccclass, property } = cc._decorator;
 import FirebaseManager from '../libs/firebase/FirebaseManager';
 
+import AudioController from "../Audio/AudioController";
+
 @ccclass
 export default class LoginUI extends cc.Component {
     @property(cc.EditBox)
@@ -32,12 +34,14 @@ export default class LoginUI extends cc.Component {
         }
         if (this.quitButton) {
             this.quitButton.node.on('click', () => {
+                AudioController.PLAY("SFX_click");
                 cc.director.loadScene('StartScene');
             }, this);
         }
     }
 
     async onClickRegister() {
+        AudioController.PLAY("SFX_click")
         const email = this.emailInput.string.trim();
         const password = this.passwordInput.string.trim();
 
@@ -58,6 +62,7 @@ export default class LoginUI extends cc.Component {
     }
 
     async onClickLogin() {
+        AudioController.PLAY("SFX_click")
         const email = this.emailInput.string.trim();
         const password = this.passwordInput.string.trim();
 

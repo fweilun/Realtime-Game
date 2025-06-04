@@ -171,39 +171,46 @@ export default class NewClass extends cc.Component {
 
     //左右按鈕
     onClick_charR() {
+        AudioController.PLAY("SFX_click")
         console.log("character +");
         this.CharacterID = (this.CharacterID + 1)%CharacterMaxID;
         this.set_character();
         this.show_setting_bars_and_lbls();
     }
     onClick_charL() {
+        AudioController.PLAY("SFX_click")
         console.log("character -");
         this.CharacterID = (this.CharacterID - 1 + CharacterMaxID)%CharacterMaxID;
         this.set_character();
         this.show_setting_bars_and_lbls();
     }
     onClick_BGMR() {
+        AudioController.PLAY("SFX_click")
         console.log("BGM +");
         this.BGMValue = Math.min(this.BGMValue + 10, 100);
         this.update_bgm_val();
     }
     onClick_BGML() {
+        AudioController.PLAY("SFX_click")
         console.log("BGM -");
         this.BGMValue = Math.max(this.BGMValue - 10, 0);
         this.update_bgm_val();
     }
     onClick_SFXR() {
+        //AudioController.PLAY("SFX_click")
         console.log("SFX +");
         this.SFXValue = Math.min(this.SFXValue + 10, 100);
         this.update_sfx_val();
     }
     onClick_SFXL() {
+        //AudioController.PLAY("SFX_click")
         console.log("SFX -");
         this.SFXValue = Math.max(this.SFXValue - 10, 0);
         this.update_sfx_val();
     }
     //返回按鈕
     onClick_Back() {
+        AudioController.PLAY("SFX_click")
         console.log("Back");
         cc.director.loadScene("StartScene");
     }
