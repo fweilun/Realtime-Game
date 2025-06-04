@@ -39,3 +39,5 @@ enable Canva/SelectionSingle的話，在SelectionScene先選擇一個道具，�
 使用時import AudioController from "../Audio/AudioController";
 再用裡面的API AudioController.PLAY("string")即可
 注意：走路開始和結束分別要呼叫AudioController.PLAY和AudioController.SFX_walk_end
+
+6/5 3:04 新增playerdata和characterdata，作為儲存玩家資料用；現在setting所有資訊已經可以被記憶，可以藉由import playerstats 來存取玩家資訊
