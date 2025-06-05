@@ -44,8 +44,6 @@ export default class RoomUI extends cc.Component {
     playerListCol: cc.Node = null;
 
     onLoad() {
-        // 視窗關閉時自動離開房間
-        // window.addEventListener('beforeunload', this._onWindowUnload);
     }
 
     async start() {
@@ -86,14 +84,8 @@ export default class RoomUI extends cc.Component {
         if (this.updateRoomListCallback) {
             this.unschedule(this.updateRoomListCallback);
         }
-        window.removeEventListener('beforeunload', this._onWindowUnload);
     }
 
-    _onWindowUnload = (event) => {
-        if (this.joinedRoom) {
-            this.removeFromRoom(this.joinedRoom);
-        }
-    }
 
     async reLoadRooms() {
         if (!this.db) return;
@@ -259,8 +251,6 @@ export default class RoomUI extends cc.Component {
             // 1. 讀取 playerList
             const playersSnapshot = await roomRef.child('players').once('value');
             const players = playersSnapshot.val();
-            // 2. 將房間狀態設為 ready
-            await roomRef.child('state').set('ready');
             // 3. 初始化 active 房間
             const activeRoomRef = this.db.ref('rooms/active/' + roomId);
             await activeRoomRef.set({
@@ -290,7 +280,7 @@ export default class RoomUI extends cc.Component {
 
             cc.log('房主已將房間狀態設為 ready');
             console.log("▶️ 多人模式啟動！");
-            this.removeFromRoom(roomId);
+            await this.removeFromRoom(roomId);
             cc.game["currentRoomId"] = roomId;
             cc.director.loadScene("SelectionMultiScene");
         } else {
@@ -300,14 +290,18 @@ export default class RoomUI extends cc.Component {
 
     async reloadGameState(roomId: string) {
         if (!this.db || !roomId) return;
-        const roomPath = 'rooms/pending/' + roomId + '/state';
-        const snapshot = await this.db.ref(roomPath).once('value');
-        const state = snapshot.val();
-        console.log(state);
-        if (state === 'ready') {
-            console.log('房間狀態為 ready');
+        
+        // 檢查 active 房間是否存在
+        const activeRoomPath = 'rooms/active/' + roomId;
+        const activeSnapshot = await this.db.ref(activeRoomPath).once('value');
+        const activeRoom = activeSnapshot.val();
+        
+        if (activeRoom) {
+            console.log('房間已啟動');
             console.log("▶️ 單人模式啟動！");
-            this.removeFromRoom(roomId);
+            // 刪除 pending 房間
+            const pendingRoomPath = 'rooms/pending/' + roomId;
+            await this.removeFromRoom(roomId);
             cc.game["currentRoomId"] = roomId;
             cc.director.loadScene("SelectionMultiScene");
         }
