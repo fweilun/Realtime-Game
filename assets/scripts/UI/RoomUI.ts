@@ -20,7 +20,7 @@ export default class RoomUI extends cc.Component {
     private joinedRoom:any = null;
     private updateInterval: number = 1; // 秒
     private updateRoomListCallback: Function = null;
-    private roomState:string = "pending";
+    private playerListListener: any = null;
 
     @property(cc.Node)
     contentNode: cc.Node = null; // 指向 ScrollView 的 content
@@ -40,8 +40,14 @@ export default class RoomUI extends cc.Component {
     @property(cc.Prefab)
     playerItemPrefab: cc.Prefab = null;
 
+    @property(cc.Prefab)
+    playerIconPrefab: cc.Prefab = null;
+
     @property(cc.Node)
     playerListCol: cc.Node = null;
+
+    @property(cc.Node)
+    playerListIcon: cc.Node = null;
 
     onLoad() {
     }
@@ -84,8 +90,11 @@ export default class RoomUI extends cc.Component {
         if (this.updateRoomListCallback) {
             this.unschedule(this.updateRoomListCallback);
         }
+        if (this.playerListListener) {
+            this.playerListListener.off();
+            this.playerListListener = null;
+        }
     }
-
 
     async reLoadRooms() {
         if (!this.db) return;
@@ -159,8 +168,6 @@ export default class RoomUI extends cc.Component {
             console.log("join room fail, user not found or db problem");
             return;
         }
-        
-        // 檢查房間狀態 如果不是pending應該要不能進去，但還沒實作。
 
         if (this.joinedRoom){
             this.removeFromRoom(this.joinedRoom);
@@ -171,6 +178,8 @@ export default class RoomUI extends cc.Component {
         const roomPath = 'rooms/pending/' + this.selectedRoomId + '/players/' + uid;
         await this.db.ref(roomPath).set({ joinedAt: Date.now() });
         this.joinedRoom = this.selectedRoomId;
+        
+        // 更新玩家列表和圖標
         await this.reloadPlayerList(this.joinedRoom);
     }
 
@@ -225,17 +234,42 @@ export default class RoomUI extends cc.Component {
         const roomPath = 'rooms/pending/' + selectedRoomId + '/players';
         const snapshot = await this.db.ref(roomPath).once('value');
         const players = snapshot.val();
-        if (this.playerListCol) this.playerListCol.removeAllChildren();
         if (!players) {
             cc.log('房間內沒有玩家');
             return;
         }
-        Object.keys(players).forEach(uid => {
-            const item = cc.instantiate(this.playerItemPrefab);
-            const label = item.getComponent(cc.Label) || item.getComponentInChildren(cc.Label);
-            if (label) label.string = uid; // 你可以改成顯示玩家暱稱
-            this.playerListCol.addChild(item);
-        });
+        if (this.playerListIcon) this.playerListIcon.removeAllChildren();
+        
+        // 獲取每個玩家的名字
+        for (const [uid, playerData] of Object.entries(players)) {
+            const item = cc.instantiate(this.playerIconPrefab);
+            // 設置位置：單數位置在 x=0，雙數位置在 x=135
+            const index = Object.keys(players).indexOf(uid);
+            item.x = index % 2 === 0 ? 0 : 135;
+            
+            // 獲取並設置玩家名字
+            const nameNode = item.getChildByName('name');
+            const ismeNode = item.getChildByName('isme');
+            if (nameNode) {
+                const label = nameNode.getComponent(cc.Label);
+                if (label) {
+                    // 從數據庫獲取玩家名字，如果沒有則顯示 "None"
+                    const playerInfo = playerData as { name?: string };
+                    const playerName = playerInfo.name || "None";
+                    label.string = playerName;
+                }
+            }
+            
+            // 設置是否為當前玩家的標識
+            if (ismeNode) {
+                const label = ismeNode.getComponent(cc.Label);
+                if (label && this.auth.currentUser) {
+                    label.string = uid === this.auth.currentUser.uid ? "ME!" : "";
+                }
+            }
+            
+            this.playerListIcon.addChild(item);
+        }
     }
 
     async onStartGame() {
