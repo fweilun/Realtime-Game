@@ -305,7 +305,9 @@ export default class RoomUI extends cc.Component {
                     await activePlayersRef.child(playerId).set({
                         uid: playerId,
                         isReady: false,
-                        postion: { x: 0, y: 0 },
+                        // position: { x: 0, y: 0 },
+                        x: 0,
+                        y: 0,
                         score: 0,
                         isFinished: false
                     });

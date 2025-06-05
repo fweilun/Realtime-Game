@@ -45,12 +45,12 @@ export default class MultiPlayerController extends cc.Component {
 
         console.log("🧍 player initialized.");
 
-        this.schedule(this.sendInfo, 0.1, cc.macro.REPEAT_FOREVER, 0);
     }
 
-    start() {
+    async start() {
+        await this.initFirebase();
         this.born();  // 👈 初始重生
-        this.initFirebase();
+        this.schedule(this.sendInfo, 0.02, cc.macro.REPEAT_FOREVER, 0);
     }
 
 
@@ -287,8 +287,9 @@ export default class MultiPlayerController extends cc.Component {
     }
     async sendInfo() {
         if (!this.db || !this.auth || !this.roomId) return;
-        const uid = this.auth.uid;
+        const uid = this.auth.currentUser.uid;
         const playerRef = this.db.ref(`rooms/active/${this.roomId}/players/${uid}`);
+        console.log(this.node.x, this.node.y);
         await playerRef.update({
             x: this.node.x,
             y: this.node.y,

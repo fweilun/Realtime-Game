@@ -23,6 +23,24 @@ export default class NewClass extends cc.Component {
     start () {
 
     }
+    async initFirebase() {
+        this.firebaseManager = FirebaseManager.getInstance();
+        if (!this.firebaseManager) {
+            cc.error("RoomUI: FirebaseManager instance not found via getInstance(). Aborting Firebase setup.");
+            return;
+        }
+        await this.firebaseManager.awaitInitialization();
+        this.db = this.firebaseManager.getDatabase();
+        this.auth = this.firebaseManager.getAuth();
+
+        if (!this.auth.currentUser) { // Check if there's no current user (useful after cold start)
+            this.auth.signInAnonymously().catch(error => {
+                cc.error("Error signing in anonymously at start():", error.code, error.message);
+            });
+        }
+        this.roomId = cc.game["currentRoomId"];
+        // this.id
+    }
 
     // update (dt) {}
 }

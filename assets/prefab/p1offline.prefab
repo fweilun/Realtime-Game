@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "p1realtime",
+    "_name": "p1offline",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -24,16 +24,10 @@
       },
       {
         "__id__": 3
-      },
-      {
-        "__id__": 4
-      },
-      {
-        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 6
+      "__id__": 4
     },
     "_opacity": 255,
     "_color": {
@@ -57,8 +51,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -385.857,
-        61.461,
+        -910.857,
+        -288.539,
         0,
         0,
         0,
@@ -137,44 +131,6 @@
     "enabledContactListener": true,
     "bullet": false,
     "awakeOnLoad": false,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.PhysicsBoxCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_density": 1,
-    "_sensor": false,
-    "_friction": 0.2,
-    "_restitution": 0,
-    "body": null,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 20,
-      "height": 30
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "baa12paIO1I0ZjdjSLI9iun",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "playerSpeed": 220,
-    "jumpForce": 400,
     "_id": ""
   },
   {
