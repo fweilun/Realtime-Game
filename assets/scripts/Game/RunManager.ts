@@ -55,10 +55,16 @@ export default class RunManager extends cc.Component {
 
         const player = cc.instantiate(this.playerPrefab);
         player.setPosition(this.spawnPoint.position);
+        console.log(this.spawnPoint.position);
+        player.setPosition(cc.v2(-400,20));
         this.mapNode.addChild(player);
         const ctrl = player.getComponent("PlayerController");
         ctrl?.born(); 
         console.log("主角已生成");
+    }
+
+    syncOtherPlayer() {
+        
     }
     // update (dt) {}
 }

@@ -9,8 +9,7 @@ export default class MultiPlayerController extends cc.Component {
     @property
     jumpForce: number = 1000;
 
-    public blockHold: string = "box";
-     
+    public blockHold: string = "box"; 
     private isInvincible: boolean = false;
     private rb: cc.RigidBody = null;
     private isGrounded: boolean = false;

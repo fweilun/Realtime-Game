@@ -166,13 +166,15 @@
     "_id": ""
   },
   {
-    "__type__": "5357aouWSxAir8+iyuTXsRh",
+    "__type__": "42390Qe2A5ADpyfiVp7/uOF",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
+    "playerSpeed": 220,
+    "jumpForce": 700,
     "_id": ""
   },
   {
