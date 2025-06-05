@@ -1304,7 +1304,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 78.3,
+      "width": 44.45,
       "height": 40.32
     },
     "_anchorPoint": {
@@ -1545,8 +1545,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "Label",
-    "_N$string": "Label",
+    "_string": "HP",
+    "_N$string": "HP",
     "_fontSize": 32,
     "_lineHeight": 32,
     "_enableWrapText": true,

@@ -1,3 +1,5 @@
+import AudioController from "../Audio/AudioController";
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -30,22 +32,26 @@ export default class StartUI extends cc.Component {
     }
 
     onClickStart() {
+        AudioController.PLAY("SFX_click")
         console.log("▶️ 單人模式啟動！");
         cc.director.loadScene("SelectionScene");
     }
 
     onClickMultiplayer() {
+        AudioController.PLAY("SFX_click")
         console.log("🧑‍🤝‍🧑 多人模式啟動！");
         cc.director.loadScene("LoginScene");
     }
 
     onClickSetting() {
+        AudioController.PLAY("SFX_click")
         console.log("⚙️ 設定畫面打開！");
         cc.director.loadScene("SettingScene");
         // 可打開設定面板
     }
 
     onClickQuit() {
+        AudioController.PLAY("SFX_click")
         console.log("🛑 離開遊戲！");
         cc.game.end();
         // window.close(); // 僅原生 App 有效
