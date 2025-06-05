@@ -44,7 +44,7 @@ export default class MultiPlayerItemPlacer extends cc.Component {
     private playerId: string = null;
 
     private ghostItems: { [key: string]: cc.Node } = {};
-    private ghoastItemNum:number = null
+    private ghoastItemNum: number = 0;
     private itemListRef:any = null;
     private itemKey:any = null;
     private placed:boolean = null;
@@ -185,17 +185,16 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         const newItem = cc.instantiate(this.currentPrefab);
         newItem.setPosition(pos);
         this.mapNode.addChild(newItem);
-
-        // 更新到 Firebase
-        if (this.db && this.roomId) {
-            const newRef = this.itemListRef.push({
-                type: this.selectedType,
-                x: pos.x,
-                y: pos.y,
-                placedBy: this.playerId,
-                state: ItemState.Placed
-            });
-        }
+        // // 更新到 Firebase
+        // if (this.db && this.roomId) {
+        //     this.itemListRef.child(this.itemKey).update({
+        //         type: this.selectedType,
+        //         x: pos.x,
+        //         y: pos.y,
+        //         placedBy: this.playerId,
+        //         state: ItemState.Placed
+        //     });
+        // }
         console.log(`✅ 已放置 ${this.selectedType} 道具！`);
 
         if (this.cursorItem) {
@@ -262,32 +261,13 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         });
     }
 
-    spawnPlayer() {
-        if (!this.playerPrefab || !this.spawnPoint) {
-            console.warn(" 先設定 playerPrefab 和 spawnPoint");
-            return;
-        }
-
-        const player = cc.instantiate(this.playerPrefab);
-        player.setPosition(this.spawnPoint.position);
-        this.mapNode.addChild(player);
-
-        const ctrl = player.getComponent("PlayerController");
-        ctrl?.born(); 
-
-        console.log("主角已生成");
-    }
-
     onPlaced() {
         this.placed = true;
         this.cursorLayer.off(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
         this.cursorLayer.off(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
         // 只 update state，不要再 push
         if (this.itemKey && this.itemListRef) {
-            const pos = this.cursorItem ? this.cursorItem.getPosition() : {x: 0, y: 0};
             this.itemListRef.child(this.itemKey).update({
-                x: pos.x,
-                y: pos.y,
                 state: ItemState.Placed
             });
         }
@@ -296,12 +276,11 @@ export default class MultiPlayerItemPlacer extends cc.Component {
     }
 
     private checkAllPlaced() {
-        console.log("why bro");
-        console.log(this.ghostItems);
-        console.log(this.playerId);
         if (this.placed && (this.ghoastItemNum==0)) {
-            console.log(" 道具放置完成，可以開始遊戲！");
-            this.spawnPlayer();
+            console.log("所有玩家都放好道具，進入跑酷階段！");
+            if (this.db && this.roomId) {
+                this.db.ref(`rooms/active/${this.roomId}/gameState/phase`).set("running");
+            }
             this.enabled = false;
         }else{
             console.log("還有玩家沒放道具！");
