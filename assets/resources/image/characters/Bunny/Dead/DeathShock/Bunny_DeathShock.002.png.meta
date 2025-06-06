@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "d25d4ea8-f894-4440-b16c-6f77a23e9abc",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 353,
+  "height": 348,
+  "platformSettings": {},
+  "subMetas": {
+    "Bunny_DeathShock.002": {
+      "ver": "1.0.6",
+      "uuid": "4783f67c-f20f-4865-aa48-405de19e8834",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "d25d4ea8-f894-4440-b16c-6f77a23e9abc",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": -1.5,
+      "trimX": 2,
+      "trimY": 8,
+      "width": 346,
+      "height": 335,
+      "rawWidth": 353,
+      "rawHeight": 348,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

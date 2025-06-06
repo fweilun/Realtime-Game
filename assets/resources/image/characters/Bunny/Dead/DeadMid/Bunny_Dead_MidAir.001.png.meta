@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "4cc32768-6b94-45d0-84f4-32b78fd0b33c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 366,
+  "height": 344,
+  "platformSettings": {},
+  "subMetas": {
+    "Bunny_Dead_MidAir.001": {
+      "ver": "1.0.6",
+      "uuid": "76ddc31c-88d1-490a-8b87-72d495ddaae4",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "4cc32768-6b94-45d0-84f4-32b78fd0b33c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 4,
+      "offsetY": 4,
+      "trimX": 8,
+      "trimY": 4,
+      "width": 358,
+      "height": 328,
+      "rawWidth": 366,
+      "rawHeight": 344,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

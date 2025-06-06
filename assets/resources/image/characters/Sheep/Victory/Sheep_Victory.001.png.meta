@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "853b2976-f464-4614-941c-7e5c4a2cf83c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 205,
+  "height": 283,
+  "platformSettings": {},
+  "subMetas": {
+    "Sheep_Victory.001": {
+      "ver": "1.0.6",
+      "uuid": "1a8f89b7-27a8-451e-8e0b-989ef36843ec",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "853b2976-f464-4614-941c-7e5c4a2cf83c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -5.5,
+      "offsetY": 2.5,
+      "trimX": 1,
+      "trimY": 2,
+      "width": 192,
+      "height": 274,
+      "rawWidth": 205,
+      "rawHeight": 283,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

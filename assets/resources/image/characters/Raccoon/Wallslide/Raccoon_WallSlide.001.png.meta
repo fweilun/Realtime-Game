@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "da044653-4a81-4dab-ae6a-d0c15ba347ba",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 208,
+  "height": 333,
+  "platformSettings": {},
+  "subMetas": {
+    "Raccoon_WallSlide.001": {
+      "ver": "1.0.6",
+      "uuid": "875c729c-cb2d-4151-be20-6b8642b95fab",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "da044653-4a81-4dab-ae6a-d0c15ba347ba",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 3,
+      "trimY": 3,
+      "width": 202,
+      "height": 327,
+      "rawWidth": 208,
+      "rawHeight": 333,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

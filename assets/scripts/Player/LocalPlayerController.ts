@@ -145,9 +145,17 @@ export default class LocalPlayerController extends cc.Component {
             this.die();
         }
     }
+    onEndContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+        if (otherCollider.node.name.includes("stage")){
+            this.sendLobbySelection(0);
+        }
+    }
 
-
-    onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+    async onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+        if (otherCollider.node.name.includes("stage")){
+            await this.sendLobbySelection(1);
+            return;
+        }
         const worldManifold = contact.getWorldManifold();
 
         this.isGrounded = true;
@@ -298,6 +306,14 @@ export default class LocalPlayerController extends cc.Component {
             y: this.node.y,
             scaleX: this.node.scaleX,
             scaleY: this.node.scaleY
+        });
+    }
+    async sendLobbySelection(stage:number) {
+        if (!this.db || !this.auth || !this.roomId) return;
+        const uid = this.auth.currentUser.uid;
+        const playerLobbyRef = this.db.ref(`rooms/active/${this.roomId}/players/${uid}/lobby`);
+        await playerLobbyRef.update({
+            selected: stage,
         });
     }
     async sendInfo() {
