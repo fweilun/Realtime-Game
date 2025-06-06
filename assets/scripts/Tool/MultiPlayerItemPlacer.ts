@@ -74,37 +74,34 @@ export default class MultiPlayerItemPlacer extends cc.Component {
     }
 
     async start() {
-        // load information
         this.roomId = cc.game["currentRoomId"];
+        await this.initFirebase();
+        this.itemListRef = this.db.ref(`rooms/active/${this.roomId}/items`);
+        this.playerId = this.auth.currentUser.uid;
+        // 監聽 remote item
+        this.listenToRemoteItems();
+        // 本地玩家選擇道具
+        const selected = cc.game["selectedBlockType"];
+        if (selected) this.setSelectedType(selected);
+    }
+
+    async initFirebase() {
         this.firebaseManager = FirebaseManager.getInstance();
-        if (!this.firebaseManager) {
-            cc.error("RoomUI: FirebaseManager instance not found via getInstance(). Aborting Firebase setup.");
-            return;
-        }
         await this.firebaseManager.awaitInitialization();
         this.db = this.firebaseManager.getDatabase();
         this.auth = this.firebaseManager.getAuth();
-        if (this.auth.currentUser) {
-            this.playerId = this.auth.currentUser.uid;
-        } else {
-            console.error("User not logged in yet.");
-            // 可以選擇導向登入流程或等待 onAuthStateChanged
-        }
+    }
 
-        if (!this.auth.currentUser) { // Check if there's no current user (useful after cold start)
-            this.auth.signInAnonymously().catch(error => {
-                cc.error("Error signing in anonymously at start():", error.code, error.message);
-            });
-        }
-        this.itemListRef = this.db.ref(`rooms/active/${this.roomId}/items`);
-        // Add item to group first
-        const selected = cc.game["selectedBlockType"];
-        if (selected) {
-            this.setSelectedType(selected);
-        } else {
-            console.warn("❗ 尚未從選擇場景讀取到選擇的道具！");
-        }
-        // add item to list
+    setSelectedType(type: string) {
+        this.selectedType = type;
+        if (this.cursorItem) this.cursorItem.destroy();
+        const iconPrefab = this.iconMap[type];
+        if (!iconPrefab) return;
+        this.cursorItem = cc.instantiate(iconPrefab);
+        this.cursorItem.opacity = 180;
+        this.cursorItem.parent = this.cursorLayer;
+        this.cursorItem.zIndex = 999;
+        // push item to firebase
         const tempRef = this.itemListRef.push({
             type: this.selectedType,
             state: ItemState.Moving,
@@ -112,147 +109,90 @@ export default class MultiPlayerItemPlacer extends cc.Component {
             x: 0,
             y: 0
         });
-        this.itemKey = tempRef.key
-        // 從 Firebase 讀取已放置的道具
-        this.loadPlacedItems();
-        this.listenToOtherPlayers();
-    }
-
-    async loadPlacedItems() {
-        if (!this.db || !this.roomId) return;
-        const snapshot = await this.itemListRef.once('value');
-        const items = snapshot.val() || [];
-        for (const item of items) {
-            if (item.state != ItemState.Placed) continue;
-            const prefab = this.prefabMap[item.type];
-            if (prefab) {
-                const node = cc.instantiate(prefab);
-                node.setPosition(item.x, item.y);
-                this.mapNode.addChild(node);
-            }
-        }
-    }
-    async syncObjectPos() {
-        if (!this.itemKey || !this.itemListRef) return;
-        const pos = this.cursorItem.getPosition();
-        await this.itemListRef.child(this.itemKey).update({
-            x: pos.x,
-            y: pos.y
-        });
-    }
-
-    onDestroy() {
-        this.cursorLayer.off(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
-        this.cursorLayer.off(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
-        
-        // 清理 Firebase 監聽
-        if (this.itemListRef) {
-            this.itemListRef.off();
-        }
-    }
-
-    setSelectedType(type: string) {
-        this.selectedType = type;
-
-        if (this.cursorItem) this.cursorItem.destroy();
-
-        const iconPrefab = this.iconMap[type];
-        const actualPrefab = this.prefabMap[type];
-
-        if (!iconPrefab || !actualPrefab) {
-            console.warn("❌ 找不到對應的道具或圖示：", type);
-            return;
-        }
-
-        this.currentPrefab = actualPrefab;
-        this.cursorItem = cc.instantiate(iconPrefab);
-        this.cursorItem.opacity = 180;
-        this.cursorItem.parent = this.cursorLayer;
-        this.cursorItem.zIndex = 999;
+        this.itemKey = tempRef.key;
     }
 
     onMouseMove(event: cc.Event.EventMouse) {
         if (!this.cursorItem) return;
         const pos = this.cursorLayer.convertToNodeSpaceAR(event.getLocation());
         this.cursorItem.setPosition(pos);
-        this.syncObjectPos();
+        // 即時同步位置
+        if (this.itemKey && this.itemListRef) {
+            this.itemListRef.child(this.itemKey).update({
+                x: pos.x,
+                y: pos.y
+            });
+        }
     }
 
     onMouseDown(event: cc.Event.EventMouse) {
-        if (!this.selectedType || !this.currentPrefab) return;
-
+        if (!this.selectedType) return;
         const pos = this.mapNode.convertToNodeSpaceAR(event.getLocation());
-        const newItem = cc.instantiate(this.currentPrefab);
+        // 放置正式 item
+        const newItem = cc.instantiate(this.prefabMap[this.selectedType]);
         newItem.setPosition(pos);
         this.mapNode.addChild(newItem);
-        // // 更新到 Firebase
-        // if (this.db && this.roomId) {
-        //     this.itemListRef.child(this.itemKey).update({
-        //         type: this.selectedType,
-        //         x: pos.x,
-        //         y: pos.y,
-        //         placedBy: this.playerId,
-        //         state: ItemState.Placed
-        //     });
-        // }
-        console.log(`✅ 已放置 ${this.selectedType} 道具！`);
-
+        // 更新 firebase 狀態
+        if (this.itemKey && this.itemListRef) {
+            this.itemListRef.child(this.itemKey).update({
+                x: pos.x,
+                y: pos.y,
+                state: ItemState.Placed
+            });
+        }
         if (this.cursorItem) {
             this.cursorItem.destroy();
             this.cursorItem = null;
         }
-
-        this.onPlaced();
+        this.placed = true;
+        this.checkAllPlaced();
     }
 
-    listenToOtherPlayers() {
+    listenToRemoteItems() {
         if (!this.itemListRef) return;
-        
-        // 監聽新放置的道具
+        // 監聽新增 item
         this.itemListRef.on('child_added', (snapshot) => {
             const item = snapshot.val();
             const key = snapshot.key;
             if (item.placedBy !== this.playerId) {
                 const prefab = this.prefabMap[item.type];
                 if (prefab) {
-                    if (item.state == ItemState.Moving) {
-                        // 產生半透明方塊
+                    if (item.state === ItemState.Moving) {
+                        // ghost
                         const ghost = cc.instantiate(prefab);
-                        ghost.opacity = 100; // 半透明
+                        ghost.opacity = 100;
                         ghost.setPosition(item.x, item.y);
                         this.mapNode.addChild(ghost);
-                        // 記錄起來
-                        this.ghoastItemNum++;
                         this.ghostItems[key] = ghost;
-                    }else{
-                        console.error("Item放置非預期");
+                    } else if (item.state === ItemState.Placed) {
+                        // 直接放正式 item
+                        const node = cc.instantiate(prefab);
+                        node.setPosition(item.x, item.y);
+                        this.mapNode.addChild(node);
                     }
                 }
             }
         });
-
+        // 監聽 item 狀態變化
         this.itemListRef.on('child_changed', (snapshot) => {
             const item = snapshot.val();
             const key = snapshot.key;
-
             if (item.placedBy !== this.playerId) {
-                if (item.state == ItemState.Placed) {
+                if (item.state === ItemState.Placed) {
                     if (this.ghostItems[key]) {
                         this.ghostItems[key].destroy();
                         delete this.ghostItems[key];
-                        --this.ghoastItemNum;
-                        // 有玩家放好方塊就檢查要不要開始遊戲
-                        this.checkAllPlaced();
                     }
-                    // 放正式的
+                    // 放正式 item
                     const prefab = this.prefabMap[item.type];
                     if (prefab) {
                         const node = cc.instantiate(prefab);
                         node.setPosition(item.x, item.y);
                         this.mapNode.addChild(node);
                     }
-                } else if (item.state == ItemState.Moving) {
-                    // ghost 還在，更新位置
+                    this.checkAllPlaced();
+                } else if (item.state === ItemState.Moving) {
+                    // ghost 移動
                     if (this.ghostItems[key]) {
                         this.ghostItems[key].setPosition(item.x, item.y);
                     }
@@ -261,29 +201,34 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         });
     }
 
-    onPlaced() {
-        this.placed = true;
-        this.cursorLayer.off(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
-        this.cursorLayer.off(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
-        // 只 update state，不要再 push
-        if (this.itemKey && this.itemListRef) {
-            this.itemListRef.child(this.itemKey).update({
-                state: ItemState.Placed
-            });
-        }
-
-        this.checkAllPlaced();
+    checkAllPlaced() {
+        // 檢查所有 item 是否都已 placed
+        this.itemListRef.once('value', (snapshot) => {
+            const items = snapshot.val();
+            let allPlaced = true;
+            for (const key in items) {
+                if (items[key].state !== ItemState.Placed) {
+                    allPlaced = false;
+                    break;
+                }
+            }
+            if (allPlaced) {
+                // 進入下一階段
+                this.onAllPlaced();
+            }
+        });
     }
 
-    private checkAllPlaced() {
-        if (this.placed && (this.ghoastItemNum==0)) {
-            console.log("所有玩家都放好道具，進入跑酷階段！");
-            if (this.db && this.roomId) {
-                this.db.ref(`rooms/active/${this.roomId}/gameState/phase`).set("running");
-            }
-            this.enabled = false;
-        }else{
-            console.log("還有玩家沒放道具！");
-        }
+    onAllPlaced() {
+        // 進入下一階段的邏輯
+        cc.log("所有玩家都放好道具，進入下一階段！");
+        // 你可以在這裡切換遊戲狀態
+        
+    }
+
+    onDestroy() {
+        this.cursorLayer.off(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
+        this.cursorLayer.off(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
+        if (this.itemListRef) this.itemListRef.off();
     }
 }

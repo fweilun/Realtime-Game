@@ -2,7 +2,7 @@ import FirebaseManager from '../libs/firebase/FirebaseManager';
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class MultiPlayerController extends cc.Component {
+export default class LocalPlayerController extends cc.Component {
 
     @property
     playerSpeed: number = 80;
@@ -288,11 +288,22 @@ export default class MultiPlayerController extends cc.Component {
         this.roomId = cc.game["currentRoomId"];
         // this.id
     }
+    async initInfo() {
+        if (!this.db || !this.auth || !this.roomId) return;
+        const uid = this.auth.currentUser.uid;
+        const playerRef = this.db.ref(`rooms/active/${this.roomId}/players/${uid}`);
+        await playerRef.update({
+            state:"build",
+            x: this.node.x,
+            y: this.node.y,
+            scaleX: this.node.scaleX,
+            scaleY: this.node.scaleY
+        });
+    }
     async sendInfo() {
         if (!this.db || !this.auth || !this.roomId) return;
         const uid = this.auth.currentUser.uid;
         const playerRef = this.db.ref(`rooms/active/${this.roomId}/players/${uid}`);
-        console.log(this.node.x, this.node.y);
         await playerRef.update({
             x: this.node.x,
             y: this.node.y,
