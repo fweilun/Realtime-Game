@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c8c76c00-50f3-4729-9470-2381c09a730b",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 173,
+  "height": 50,
+  "platformSettings": {},
+  "subMetas": {
+    "Upblower-BlowerFan.005": {
+      "ver": "1.0.6",
+      "uuid": "b5635e1a-9de1-4749-90c5-72215ebf4f0e",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c8c76c00-50f3-4729-9470-2381c09a730b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -0.5,
+      "trimX": 2,
+      "trimY": 3,
+      "width": 169,
+      "height": 45,
+      "rawWidth": 173,
+      "rawHeight": 50,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
