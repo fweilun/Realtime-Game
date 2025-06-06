@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "60959bcc-7957-4810-ae17-a251ffaa1af4",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 248,
+  "height": 327,
+  "platformSettings": {},
+  "subMetas": {
+    "Bunny_Dead_Rising.000": {
+      "ver": "1.0.6",
+      "uuid": "eeea449c-4e08-47bf-9768-43b0ea48197c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "60959bcc-7957-4810-ae17-a251ffaa1af4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2,
+      "offsetY": 2.5,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 240,
+      "height": 318,
+      "rawWidth": 248,
+      "rawHeight": 327,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "a7aa4a86-aa56-4a4b-9fc4-8a4627b98f41",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 323,
+  "height": 212,
+  "platformSettings": {},
+  "subMetas": {
+    "Chickendie.002": {
+      "ver": "1.0.6",
+      "uuid": "fa1badc3-35ec-49a5-9576-25ec06f0a98c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a7aa4a86-aa56-4a4b-9fc4-8a4627b98f41",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 9.5,
+      "offsetY": -2.5,
+      "trimX": 19,
+      "trimY": 10,
+      "width": 304,
+      "height": 197,
+      "rawWidth": 323,
+      "rawHeight": 212,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "8c38a398-020e-4ae8-b4a1-56c151b050ae",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 286,
+  "height": 307,
+  "platformSettings": {},
+  "subMetas": {
+    "Bunny_JumpGoingUp.001": {
+      "ver": "1.0.6",
+      "uuid": "aaeca457-1be1-4de2-a9f8-3a38a94ad419",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "8c38a398-020e-4ae8-b4a1-56c151b050ae",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 3,
+      "offsetY": 0.5,
+      "trimX": 8,
+      "trimY": 4,
+      "width": 276,
+      "height": 298,
+      "rawWidth": 286,
+      "rawHeight": 307,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

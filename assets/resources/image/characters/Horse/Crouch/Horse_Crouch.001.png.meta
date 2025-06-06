@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "8621ee29-fd20-4c70-831b-5cdb5795ee8d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 239,
+  "height": 162,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_Crouch.001": {
+      "ver": "1.0.6",
+      "uuid": "3265d080-f084-4030-9b51-45b3539f80f2",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "8621ee29-fd20-4c70-831b-5cdb5795ee8d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 3,
+      "offsetY": 0.5,
+      "trimX": 8,
+      "trimY": 3,
+      "width": 229,
+      "height": 155,
+      "rawWidth": 239,
+      "rawHeight": 162,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

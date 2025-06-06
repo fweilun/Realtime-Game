@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "980ff3fb-cbbf-4021-acfe-de8abb1e46f2",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 237,
+  "height": 289,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_JumpingDown.002": {
+      "ver": "1.0.6",
+      "uuid": "d931700b-337c-42cd-8379-c6194c6b0beb",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "980ff3fb-cbbf-4021-acfe-de8abb1e46f2",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 6,
+      "offsetY": 4,
+      "trimX": 19,
+      "trimY": 0,
+      "width": 211,
+      "height": 281,
+      "rawWidth": 237,
+      "rawHeight": 289,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

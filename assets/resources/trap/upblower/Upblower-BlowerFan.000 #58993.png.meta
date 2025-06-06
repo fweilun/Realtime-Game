@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "a87513b2-dd77-42b9-8e8c-63abf01cd680",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 189,
+  "height": 47,
+  "platformSettings": {},
+  "subMetas": {
+    "Upblower-BlowerFan.000 #58993": {
+      "ver": "1.0.6",
+      "uuid": "ce4b6096-a9c2-46c5-b644-79fc77d10e95",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a87513b2-dd77-42b9-8e8c-63abf01cd680",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 3,
+      "trimY": 2,
+      "width": 183,
+      "height": 42,
+      "rawWidth": 189,
+      "rawHeight": 47,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "697f6bff-1ebe-4d60-8b24-b9aeccaced98",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 350,
+  "height": 169,
+  "platformSettings": {},
+  "subMetas": {
+    "Bunnydie.004": {
+      "ver": "1.0.6",
+      "uuid": "6d3d7ee4-1390-46ab-aa55-7c866c4b03b4",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "697f6bff-1ebe-4d60-8b24-b9aeccaced98",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 2,
+      "offsetY": 1.5,
+      "trimX": 9,
+      "trimY": 1,
+      "width": 336,
+      "height": 164,
+      "rawWidth": 350,
+      "rawHeight": 169,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
