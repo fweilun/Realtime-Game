@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "fd232e2e-a469-4a2f-8e16-dac71f76c3ac",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 234,
+  "height": 161,
+  "platformSettings": {},
+  "subMetas": {
+    "Sheep_Crouch.002": {
+      "ver": "1.0.6",
+      "uuid": "0f9ade0a-9c4e-487a-80b5-75b93e1d15c1",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "fd232e2e-a469-4a2f-8e16-dac71f76c3ac",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -4,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 222,
+      "height": 157,
+      "rawWidth": 234,
+      "rawHeight": 161,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

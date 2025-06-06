@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "65cf2e56-8252-4b59-8eb8-217091cfff87",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 311,
+  "height": 206,
+  "platformSettings": {},
+  "subMetas": {
+    "Raccoon_Crouch.001": {
+      "ver": "1.0.6",
+      "uuid": "7964072a-506b-4553-a77f-038b212dff95",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "65cf2e56-8252-4b59-8eb8-217091cfff87",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -3,
+      "offsetY": -2.5,
+      "trimX": 3,
+      "trimY": 6,
+      "width": 299,
+      "height": 199,
+      "rawWidth": 311,
+      "rawHeight": 206,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

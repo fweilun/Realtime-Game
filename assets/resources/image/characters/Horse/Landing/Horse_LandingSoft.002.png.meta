@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "dbc61c3e-677d-4453-bccc-6ef9ffb9bb3f",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 266,
+  "height": 311,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_LandingSoft.002": {
+      "ver": "1.0.6",
+      "uuid": "872cc934-ee5b-447a-ac22-c552ce3070d0",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "dbc61c3e-677d-4453-bccc-6ef9ffb9bb3f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2,
+      "offsetY": 11,
+      "trimX": 3,
+      "trimY": 1,
+      "width": 256,
+      "height": 287,
+      "rawWidth": 266,
+      "rawHeight": 311,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

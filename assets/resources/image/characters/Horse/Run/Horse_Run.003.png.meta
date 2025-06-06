@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ecfde06a-333b-4904-a0b1-e92e8e3bd4bd",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 278,
+  "height": 324,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_Run.003": {
+      "ver": "1.0.6",
+      "uuid": "47fbf1e4-e194-4041-9e2f-d6c9bc793970",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ecfde06a-333b-4904-a0b1-e92e8e3bd4bd",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 2,
+      "offsetY": 12,
+      "trimX": 7,
+      "trimY": 1,
+      "width": 268,
+      "height": 298,
+      "rawWidth": 278,
+      "rawHeight": 324,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

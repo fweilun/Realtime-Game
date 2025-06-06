@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "3c375242-26df-4827-8af6-245eb40e194e",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 293,
+  "height": 280,
+  "platformSettings": {},
+  "subMetas": {
+    "Bunny_Walk.001": {
+      "ver": "1.0.6",
+      "uuid": "f011b85a-8e58-482d-a6b9-4dd6e38c4dae",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "3c375242-26df-4827-8af6-245eb40e194e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 2,
+      "offsetY": -1,
+      "trimX": 13,
+      "trimY": 6,
+      "width": 271,
+      "height": 270,
+      "rawWidth": 293,
+      "rawHeight": 280,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

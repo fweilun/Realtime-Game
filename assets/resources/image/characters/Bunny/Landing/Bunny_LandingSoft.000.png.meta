@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "50f85afb-99a8-44a7-b1dd-bc10e9551668",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 339,
+  "height": 306,
+  "platformSettings": {},
+  "subMetas": {
+    "Bunny_LandingSoft.000": {
+      "ver": "1.0.6",
+      "uuid": "763d6e33-dde0-4c2f-9737-45854d801fcf",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "50f85afb-99a8-44a7-b1dd-bc10e9551668",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -3,
+      "offsetY": 0.5,
+      "trimX": 5,
+      "trimY": 5,
+      "width": 323,
+      "height": 295,
+      "rawWidth": 339,
+      "rawHeight": 306,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

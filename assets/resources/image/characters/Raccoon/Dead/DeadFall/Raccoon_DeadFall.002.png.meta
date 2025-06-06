@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c44c9e2c-c02d-4302-88eb-0876b81897b0",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 263,
+  "height": 320,
+  "platformSettings": {},
+  "subMetas": {
+    "Raccoon_DeadFall.002": {
+      "ver": "1.0.6",
+      "uuid": "7c9d5b01-6486-4d83-adf9-6e096a8c6053",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c44c9e2c-c02d-4302-88eb-0876b81897b0",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -5.5,
+      "offsetY": 3,
+      "trimX": 8,
+      "trimY": 0,
+      "width": 236,
+      "height": 314,
+      "rawWidth": 263,
+      "rawHeight": 320,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

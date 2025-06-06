@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "3db47213-240e-4446-8481-8efe9b590dd0",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 205,
+  "height": 268,
+  "platformSettings": {},
+  "subMetas": {
+    "HorseWallSlide.000": {
+      "ver": "1.0.6",
+      "uuid": "c1986bf3-5433-4ec8-84a7-dfa4e70217b3",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "3db47213-240e-4446-8481-8efe9b590dd0",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1,
+      "offsetY": 6.5,
+      "trimX": 5,
+      "trimY": 2,
+      "width": 193,
+      "height": 251,
+      "rawWidth": 205,
+      "rawHeight": 268,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

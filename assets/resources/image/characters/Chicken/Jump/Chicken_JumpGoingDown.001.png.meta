@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "b04416c2-f7ce-4da6-bdc4-c75ab6a3b10a",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 274,
+  "height": 344,
+  "platformSettings": {},
+  "subMetas": {
+    "Chicken_JumpGoingDown.001": {
+      "ver": "1.0.6",
+      "uuid": "901fe94a-fc67-4a3f-bc62-8ae905bcc628",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "b04416c2-f7ce-4da6-bdc4-c75ab6a3b10a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": -7.5,
+      "trimX": 2,
+      "trimY": 19,
+      "width": 267,
+      "height": 321,
+      "rawWidth": 274,
+      "rawHeight": 344,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

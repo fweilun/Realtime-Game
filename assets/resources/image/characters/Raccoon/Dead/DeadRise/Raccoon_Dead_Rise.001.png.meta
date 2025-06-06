@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "fbcbfc13-e492-452e-9b4f-d8880e95f430",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 194,
+  "height": 311,
+  "platformSettings": {},
+  "subMetas": {
+    "Raccoon_Dead_Rise.001": {
+      "ver": "1.0.6",
+      "uuid": "50bf37f5-c9ea-4c8c-ad6d-f56fa1d9e51c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "fbcbfc13-e492-452e-9b4f-d8880e95f430",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2.5,
+      "offsetY": -3,
+      "trimX": 4,
+      "trimY": 7,
+      "width": 181,
+      "height": 303,
+      "rawWidth": 194,
+      "rawHeight": 311,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

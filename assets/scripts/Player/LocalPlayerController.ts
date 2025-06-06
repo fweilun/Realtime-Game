@@ -2,7 +2,7 @@ import FirebaseManager from '../libs/firebase/FirebaseManager';
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class MultiPlayerController extends cc.Component {
+export default class LocalPlayerController extends cc.Component {
 
     @property
     playerSpeed: number = 80;
@@ -146,9 +146,17 @@ export default class MultiPlayerController extends cc.Component {
             this.die();
         }
     }
+    onEndContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+        if (otherCollider.node.name.includes("stage")){
+            this.sendLobbySelection(0);
+        }
+    }
 
-
-    onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+    async onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+        if (otherCollider.node.name.includes("stage")){
+            await this.sendLobbySelection(1);
+            return;
+        }
         const worldManifold = contact.getWorldManifold();
 
         this.isGrounded = true;
@@ -163,6 +171,9 @@ export default class MultiPlayerController extends cc.Component {
         }
 
         if (otherCollider.node.name === "bullet_light") {
+            this.die();
+        }
+        if (otherCollider.node.name === "InnerCircle") {
             this.die();
         }
         
@@ -283,11 +294,30 @@ export default class MultiPlayerController extends cc.Component {
         this.roomId = cc.game["currentRoomId"];
         // this.id
     }
+    async initInfo() {
+        if (!this.db || !this.auth || !this.roomId) return;
+        const uid = this.auth.currentUser.uid;
+        const playerRef = this.db.ref(`rooms/active/${this.roomId}/players/${uid}`);
+        await playerRef.update({
+            state:"build",
+            x: this.node.x,
+            y: this.node.y,
+            scaleX: this.node.scaleX,
+            scaleY: this.node.scaleY
+        });
+    }
+    async sendLobbySelection(stage:number) {
+        if (!this.db || !this.auth || !this.roomId) return;
+        const uid = this.auth.currentUser.uid;
+        const playerLobbyRef = this.db.ref(`rooms/active/${this.roomId}/players/${uid}/lobby`);
+        await playerLobbyRef.update({
+            selected: stage,
+        });
+    }
     async sendInfo() {
         if (!this.db || !this.auth || !this.roomId) return;
         const uid = this.auth.currentUser.uid;
         const playerRef = this.db.ref(`rooms/active/${this.roomId}/players/${uid}`);
-        console.log(this.node.x, this.node.y);
         await playerRef.update({
             x: this.node.x,
             y: this.node.y,

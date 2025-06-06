@@ -41,3 +41,5 @@ enable Canva/SelectionSingle的話，在SelectionScene先選擇一個道具，�
 注意：走路開始和結束分別要呼叫AudioController.PLAY和AudioController.SFX_walk_end
 
 6/5 3:04 新增playerdata和characterdata，作為儲存玩家資料用；現在setting所有資訊已經可以被記憶，可以藉由import playerstats 來存取玩家資訊
+
+6/6 11:36 StartScene, SettingScene, LoginScene及兩個SelectionScene的UI優化；黑洞及輸送帶道具新增(selection的兩個道具按鈕還沒有功能)

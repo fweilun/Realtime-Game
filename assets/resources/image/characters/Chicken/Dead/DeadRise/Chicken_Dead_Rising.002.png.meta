@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "7a887537-7d5e-4b3b-a5fa-ff32fddd8ca5",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 165,
+  "height": 289,
+  "platformSettings": {},
+  "subMetas": {
+    "Chicken_Dead_Rising.002": {
+      "ver": "1.0.6",
+      "uuid": "43155091-7a35-47c1-bb0e-3823aca663e2",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "7a887537-7d5e-4b3b-a5fa-ff32fddd8ca5",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": 0.5,
+      "trimX": 1,
+      "trimY": 2,
+      "width": 160,
+      "height": 284,
+      "rawWidth": 165,
+      "rawHeight": 289,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

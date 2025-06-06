@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "5c5b3b38-36ae-4c83-aa17-0ca03922eb75",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 218,
+  "height": 323,
+  "platformSettings": {},
+  "subMetas": {
+    "Chicken_DeadFalling.002": {
+      "ver": "1.0.6",
+      "uuid": "4731a04d-c873-4cbc-8493-805fc20bbf5b",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "5c5b3b38-36ae-4c83-aa17-0ca03922eb75",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": -2,
+      "trimX": 3,
+      "trimY": 6,
+      "width": 214,
+      "height": 315,
+      "rawWidth": 218,
+      "rawHeight": 323,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

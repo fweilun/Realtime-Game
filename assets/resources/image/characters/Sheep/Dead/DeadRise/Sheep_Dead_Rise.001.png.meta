@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "eae7ca41-147b-46be-8adc-10c8898f608d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 134,
+  "height": 288,
+  "platformSettings": {},
+  "subMetas": {
+    "Sheep_Dead_Rise.001": {
+      "ver": "1.0.6",
+      "uuid": "e9769d73-5373-46d6-bc25-e80fa5463c99",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "eae7ca41-147b-46be-8adc-10c8898f608d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 6.5,
+      "trimX": 1,
+      "trimY": 2,
+      "width": 131,
+      "height": 271,
+      "rawWidth": 134,
+      "rawHeight": 288,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

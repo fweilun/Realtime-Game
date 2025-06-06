@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "430d6b01-718c-4ab9-9e82-89d62a0117d7",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 187,
+  "height": 284,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_DeadFall.001": {
+      "ver": "1.0.6",
+      "uuid": "0bff595d-41e9-4e92-a22a-57d6e1d222fa",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "430d6b01-718c-4ab9-9e82-89d62a0117d7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 0,
+      "trimY": 1,
+      "width": 187,
+      "height": 281,
+      "rawWidth": 187,
+      "rawHeight": 284,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
