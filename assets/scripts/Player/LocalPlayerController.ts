@@ -10,6 +10,9 @@ export default class LocalPlayerController extends cc.Component {
     @property
     jumpForce: number = 100;
 
+    @property
+    forceMagnitude: number = 2500;
+
     public blockHold: string = "box";
      
     private isInvincible: boolean = false;
@@ -26,6 +29,8 @@ export default class LocalPlayerController extends cc.Component {
     private auth:any = null;
     private roomId:number = null;
     private playerId: string = null;
+    private isInOuterRing: boolean = false;
+    private outerRingCollider: cc.Collider = null;
     
     onLoad() {
         this.startPos = this.node.position.clone();
@@ -114,7 +119,23 @@ export default class LocalPlayerController extends cc.Component {
             this.rb.linearVelocity = cc.v2(this.playerSpeed * this.moveDir, this.rb.linearVelocity.y);
         }
 
+        if (this.isInOuterRing && this.outerRingCollider) {
+            let playerRigidBody = this.getComponent(cc.RigidBody);
+            if (playerRigidBody) {
+                let circleNodeWorldPos = this.outerRingCollider.node.convertToWorldSpaceAR(cc.v2(0,0));
+                let playerNodeWorldPos = this.node.convertToWorldSpaceAR(cc.v2(0,0));
+                let circleCenter = cc.v2(circleNodeWorldPos.x, circleNodeWorldPos.y);
+                let playerCenter = cc.v2(playerNodeWorldPos.x, playerNodeWorldPos.y);
+                let forceDirection = circleCenter.sub(playerCenter);
+                forceDirection.normalizeSelf();
+                let force = forceDirection.mul(this.forceMagnitude);
+                playerRigidBody.applyForceToCenter(force, true);
+            }
+        }
+
         const anim = this.getComponent(cc.Animation);
+
+
 
         if (!this.isGrounded) {
             this.node.scaleX = this.moveDir >= 0 ? 1 : -1;
@@ -160,6 +181,12 @@ export default class LocalPlayerController extends cc.Component {
         if (otherCollider.node.name.includes("stage")){
             this.sendLobbySelection(0);
         }
+        
+        if (otherCollider.node.name === "OuterRing") {
+            this.isInOuterRing = false;
+            this.outerRingCollider = null;
+        }
+    
     }
 
     async onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
@@ -173,14 +200,14 @@ export default class LocalPlayerController extends cc.Component {
             this.isGrounded = true;
             console.log("✅ Grounded on:", otherCollider.node.name);
         }
-        
+
         if(Math.abs(worldManifold.normal.y) < 0.1 && Math.abs(worldManifold.normal.x) > 0.9){
             this.isGrounded = true;
         }
 
         console.log("✅ Grounded on:", otherCollider.node.name);
 
-        if (otherCollider.node.name === "ironball_main") {
+         if (otherCollider.node.name === "ironball_main") {
             this.die();
         }
 
@@ -194,7 +221,11 @@ export default class LocalPlayerController extends cc.Component {
         if (otherCollider.node.name === "InnerCircle") {
             this.die();
         }
-        
+        if (otherCollider.node.name === "OuterRing") {
+            this.isInOuterRing = true;
+            this.outerRingCollider = otherCollider;
+            // 原本的吸引力邏輯可刪除，改由 update 處理
+        }
         if (otherCollider.node.name === "saw") {
             this.die();
         }

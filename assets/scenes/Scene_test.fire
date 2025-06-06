@@ -745,6 +745,16 @@
     "ironballPrefab": {
       "__uuid__": "ae12c63a-5b55-49ab-85e7-d3d06f1deaa6"
     },
+    "BlackHolePrefab": {
+      "__uuid__": "de922281-fb6f-44ff-af04-ce354df7ccda"
+    },
+    "TheadmillPrefab": null,
+    "WoodVerticalPrefab": {
+      "__uuid__": "0347dfd9-d172-4126-b6f1-8c7cee6a093b"
+    },
+    "WoodHorizontalPrefab": {
+      "__uuid__": "2e76d91d-ca97-40a9-a929-2ce882f7c4d1"
+    },
     "boxIcon": {
       "__uuid__": "53277743-d5d1-4ce0-9701-cdfd9e9af14d"
     },
@@ -765,6 +775,16 @@
     },
     "ironballIcon": {
       "__uuid__": "758799b2-ffb4-4382-a8b1-650b6cc30178"
+    },
+    "BlackHolePrefabIcon": {
+      "__uuid__": "de922281-fb6f-44ff-af04-ce354df7ccda"
+    },
+    "TheadmillPrefabIcon": null,
+    "WoodVerticalPrefabIcon": {
+      "__uuid__": "0347dfd9-d172-4126-b6f1-8c7cee6a093b"
+    },
+    "WoodHorizontalPrefabIcon": {
+      "__uuid__": "2e76d91d-ca97-40a9-a929-2ce882f7c4d1"
     },
     "mapNode": {
       "__id__": 5
