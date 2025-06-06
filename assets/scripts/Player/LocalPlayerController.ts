@@ -8,7 +8,7 @@ export default class LocalPlayerController extends cc.Component {
     playerSpeed: number = 80;
 
     @property
-    jumpForce: number = 1000;
+    jumpForce: number = 100;
 
     public blockHold: string = "box";
      
@@ -34,6 +34,7 @@ export default class LocalPlayerController extends cc.Component {
         this.rb = this.getComponent(cc.RigidBody);
         this.rb.type = cc.RigidBodyType.Dynamic;
         this.rb.fixedRotation = true;
+        this.getComponent(cc.PhysicsBoxCollider).friction = 0;
 
         let box = this.getComponent(cc.PhysicsBoxCollider);
         if (!box) {
@@ -67,7 +68,7 @@ export default class LocalPlayerController extends cc.Component {
         } else if (event.keyCode === cc.macro.KEY.d) {
             this.rightDown = true;
             this.moveDir = 1;
-        } else if (event.keyCode === cc.macro.KEY.space) {
+        } else if (event.keyCode === cc.macro.KEY.w) {
             console.log("🔼 Space pressed | isGrounded:", this.isGrounded);
             if (this.isGrounded) {
                 this.rb.linearVelocity = cc.v2(this.rb.linearVelocity.x, this.jumpForce);
@@ -78,6 +79,15 @@ export default class LocalPlayerController extends cc.Component {
             } else {
                 console.log("🚫 Jump blocked. Not grounded.");
             }
+        } else if (event.keyCode === cc.macro.KEY.r) {
+            console.log("die");
+            this.die();
+        } else if (event.keyCode === cc.macro.KEY.q) {
+            console.log("Player dance");
+            // dance animation code ...
+        } else if (event.keyCode === cc.macro.KEY.s) {
+            console.log("Player sit");
+            // sit animation code ...
         }
     }
 
@@ -159,7 +169,15 @@ export default class LocalPlayerController extends cc.Component {
         }
         const worldManifold = contact.getWorldManifold();
 
-        this.isGrounded = true;
+        if (worldManifold.normal.y < -0.5) {
+            this.isGrounded = true;
+            console.log("✅ Grounded on:", otherCollider.node.name);
+        }
+        
+        if(Math.abs(worldManifold.normal.y) < 0.1 && Math.abs(worldManifold.normal.x) > 0.9){
+            this.isGrounded = true;
+        }
+
         console.log("✅ Grounded on:", otherCollider.node.name);
 
         if (otherCollider.node.name === "ironball_main") {

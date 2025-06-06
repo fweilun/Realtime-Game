@@ -83,6 +83,8 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         // 本地玩家選擇道具
         const selected = cc.game["selectedBlockType"];
         if (selected) this.setSelectedType(selected);
+
+        this.resetPlayerStatus();
     }
 
     async initFirebase() {
