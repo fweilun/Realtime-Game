@@ -15,6 +15,10 @@ export default class MultiPlayerItemPlacer extends cc.Component {
     @property(cc.Prefab) gunPrefab: cc.Prefab = null;
     @property(cc.Prefab) cannonPrefab: cc.Prefab = null;
     @property(cc.Prefab) ironballPrefab: cc.Prefab = null;
+    @property(cc.Prefab) BlackHolePrefab: cc.Prefab = null;
+    @property(cc.Prefab) TheadmillPrefab: cc.Prefab = null;
+    @property(cc.Prefab) WoodVerticalPrefab: cc.Prefab = null;
+    @property(cc.Prefab) WoodHorizontalPrefab: cc.Prefab = null;
 
     @property(cc.Prefab) boxIcon: cc.Prefab = null;
     @property(cc.Prefab) weightIcon: cc.Prefab = null;
@@ -23,6 +27,10 @@ export default class MultiPlayerItemPlacer extends cc.Component {
     @property(cc.Prefab) gunIcon: cc.Prefab = null;
     @property(cc.Prefab) cannonIcon: cc.Prefab = null;
     @property(cc.Prefab) ironballIcon: cc.Prefab = null;
+    @property(cc.Prefab) BlackHolePrefabIcon: cc.Prefab = null;
+    @property(cc.Prefab) TheadmillPrefabIcon: cc.Prefab = null;
+    @property(cc.Prefab) WoodVerticalPrefabIcon: cc.Prefab = null;
+    @property(cc.Prefab) WoodHorizontalPrefabIcon: cc.Prefab = null;
 
     @property(cc.Node) mapNode: cc.Node = null;
     @property(cc.Node) cursorLayer: cc.Node = null;
@@ -50,7 +58,7 @@ export default class MultiPlayerItemPlacer extends cc.Component {
     private placed:boolean = null;
 
     onLoad() {
-        this.prefabMap = {
+         this.prefabMap = {
             box: this.boxPrefab,
             weight: this.weightPrefab,
             spike: this.spikePrefab,
@@ -58,6 +66,10 @@ export default class MultiPlayerItemPlacer extends cc.Component {
             gun: this.gunPrefab,
             cannon: this.cannonPrefab,
             ironball: this.ironballPrefab,
+            BlackHole: this.BlackHolePrefab,
+            Theadmill: this.TheadmillPrefab,
+            WoodVertical: this.WoodVerticalPrefab,
+            WoodHorizontal: this.WoodHorizontalPrefab,
         };
         this.iconMap = {
             box: this.boxIcon,
@@ -67,6 +79,10 @@ export default class MultiPlayerItemPlacer extends cc.Component {
             gun: this.gunIcon,
             cannon: this.cannonIcon,
             ironball: this.ironballIcon,
+            BlackHole: this.BlackHolePrefabIcon,
+            Theadmill: this.TheadmillPrefabIcon,
+            WoodVertical: this.WoodVerticalPrefabIcon,
+            WoodHorizontal: this.WoodHorizontalPrefabIcon,
         };
         
         this.cursorLayer.on(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);

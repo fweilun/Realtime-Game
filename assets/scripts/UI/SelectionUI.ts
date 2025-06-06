@@ -9,6 +9,10 @@ export default class SelectionMultiUI extends cc.Component {
     @property(cc.Button) gunButton: cc.Button = null;
     @property(cc.Button) cannonButton: cc.Button = null;
     @property(cc.Button) ironballButton: cc.Button = null;
+    @property(cc.Button) BlackHoleButton: cc.Button = null;
+    @property(cc.Button) TheadmillButton: cc.Button = null;
+    @property(cc.Button) WoodHorizontalButton: cc.Button = null;
+    @property(cc.Button) WoodVerticalButton: cc.Button = null;
 
     private selected: string = null;
 
@@ -20,6 +24,11 @@ export default class SelectionMultiUI extends cc.Component {
         this.gunButton.node.on('click', () => this.select("gun"), this);
         this.cannonButton.node.on('click', () => this.select("cannon"), this);
         this.ironballButton.node.on('click', () => this.select("ironball"), this);
+        this.BlackHoleButton.node.on('click', () => this.select("BlackHole"), this);
+        this.TheadmillButton.node.on('click', () => this.select("Theadmill"), this);
+        this.WoodHorizontalButton.node.on('click', () => this.select("WoodHorizontal"), this);
+        this.WoodVerticalButton.node.on('click', () => this.select("WoodVertical"), this);
+
     }
 
     select(type: string) {
