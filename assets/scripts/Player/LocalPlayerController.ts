@@ -8,7 +8,7 @@ export default class LocalPlayerController extends cc.Component {
     playerSpeed: number = 80;
 
     @property
-    jumpForce: number = 1000;
+    jumpForce: number = 100;
 
     public blockHold: string = "box";
      
@@ -25,6 +25,7 @@ export default class LocalPlayerController extends cc.Component {
     private db: any = null;
     private auth:any = null;
     private roomId:number = null;
+    private playerId: string = null;
     
     onLoad() {
         this.startPos = this.node.position.clone();
@@ -33,6 +34,7 @@ export default class LocalPlayerController extends cc.Component {
         this.rb = this.getComponent(cc.RigidBody);
         this.rb.type = cc.RigidBodyType.Dynamic;
         this.rb.fixedRotation = true;
+        this.getComponent(cc.PhysicsBoxCollider).friction = 0;
 
         let box = this.getComponent(cc.PhysicsBoxCollider);
         if (!box) {
@@ -42,15 +44,15 @@ export default class LocalPlayerController extends cc.Component {
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-
+        
         console.log("🧍 player initialized.");
-
     }
 
     async start() {
         await this.initFirebase();
         this.born();  // 👈 初始重生
         this.schedule(this.sendInfo, 0.02, cc.macro.REPEAT_FOREVER, 0);
+        this.listenForEveryoneStatus();
     }
 
 
@@ -66,7 +68,7 @@ export default class LocalPlayerController extends cc.Component {
         } else if (event.keyCode === cc.macro.KEY.d) {
             this.rightDown = true;
             this.moveDir = 1;
-        } else if (event.keyCode === cc.macro.KEY.space) {
+        } else if (event.keyCode === cc.macro.KEY.w) {
             console.log("🔼 Space pressed | isGrounded:", this.isGrounded);
             if (this.isGrounded) {
                 this.rb.linearVelocity = cc.v2(this.rb.linearVelocity.x, this.jumpForce);
@@ -77,6 +79,15 @@ export default class LocalPlayerController extends cc.Component {
             } else {
                 console.log("🚫 Jump blocked. Not grounded.");
             }
+        } else if (event.keyCode === cc.macro.KEY.r) {
+            console.log("die");
+            this.die();
+        } else if (event.keyCode === cc.macro.KEY.q) {
+            console.log("Player dance");
+            // dance animation code ...
+        } else if (event.keyCode === cc.macro.KEY.s) {
+            console.log("Player sit");
+            // sit animation code ...
         }
     }
 
@@ -158,7 +169,15 @@ export default class LocalPlayerController extends cc.Component {
         }
         const worldManifold = contact.getWorldManifold();
 
-        this.isGrounded = true;
+        if (worldManifold.normal.y < -0.5) {
+            this.isGrounded = true;
+            console.log("✅ Grounded on:", otherCollider.node.name);
+        }
+        
+        if(Math.abs(worldManifold.normal.y) < 0.1 && Math.abs(worldManifold.normal.x) > 0.9){
+            this.isGrounded = true;
+        }
+
         console.log("✅ Grounded on:", otherCollider.node.name);
 
         if (otherCollider.node.name === "ironball_main") {
@@ -200,29 +219,25 @@ export default class LocalPlayerController extends cc.Component {
 
     levelCleared() {
         this.enabled = false; 
-        cc.director.getPhysicsManager().enabled = false; 
+        cc.director.getPhysicsManager().enabled = false;
 
-        const targetNode = cc.find("Canvas/EndTarget");
-        const targetPos = targetNode.getPosition();
-
-        const anim = this.getComponent(cc.Animation);
-        if (anim && anim.getClips().some(c => c.name === "run")) {
-            anim.play("run");
+        // 更新 Firebase: isFinished = true
+        if (this.db && this.roomId && this.playerId) {
+            this.db.ref(`rooms/active/${this.roomId}/players/${this.playerId}`).update({
+                isFinished: true
+            });
         }
-        this.node.scaleX = 1; 
 
-        cc.tween(this.node)
-            .to(2, { x: targetPos.x, y: targetPos.y }) 
-            .call(() => {
-                if(anim) anim.stop(); 
-            })
-            .start();
-        
-        this.scheduleOnce(() => {
-            cc.director.loadScene("StartScene")
-            cc.game["placedItems"] = [];
-        }, 3)
+        // 原地跳舞（或站立）
+        const anim = this.getComponent(cc.Animation);
+        if (anim && anim.getClips().some(c => c.name === "idle")) {
+            anim.play("idle");
+        }
+
+        // 啟動完成檢查
+        this.checkIfAllPlayersFinished();
     }
+
 
     born() {
         console.log("🔄 Player reborn");
@@ -250,31 +265,29 @@ export default class LocalPlayerController extends cc.Component {
 
 
    die() {
-        console.log("💀 player died. Respawning...");
-
-        this.rb.linearVelocity = cc.v2(0, 100);
-
-        const anim = this.getComponent(cc.Animation);
-        if (anim && anim.getClips().some(c => c.name === "die")) {
-            anim.play("die");
-            this.currentAnim = "die";
-            console.log("☠️ Playing 'die' animation");
-        } else {
-            console.warn("⚠️ 'die' animation not found");
-        }
+        console.log("💀 player died. Waiting for others...");
 
         this.enabled = false;
-
         const collider = this.getComponent(cc.PhysicsBoxCollider);
         if (collider) {
             collider.enabled = false;
         }
 
-        // 延遲 1 秒後復活
-        this.scheduleOnce(() => {
-            cc.game["selectedBlockType"] = null; 
-            cc.director.loadScene("SelectionScene"); 
-        }, 1);
+        // 更新 Firebase: isDead = true
+        if (this.db && this.roomId && this.playerId) {
+            this.db.ref(`rooms/active/${this.roomId}/players/${this.playerId}`).update({
+                isDead: true
+            });
+        }
+
+        // 原地發呆
+        const anim = this.getComponent(cc.Animation);
+        if (anim && anim.getClips().some(c => c.name === "idle")) {
+            anim.play("idle");
+        }
+
+        // 啟動完成檢查
+        this.checkIfAllPlayersFinished();
     }
         //cc.audioEngine.playEffect(this.dieSound, false);
     
@@ -292,6 +305,9 @@ export default class LocalPlayerController extends cc.Component {
             this.auth.signInAnonymously().catch(error => {
                 cc.error("Error signing in anonymously at start():", error.code, error.message);
             });
+        }
+        if (this.auth.currentUser) {
+            this.playerId = this.auth.currentUser.uid;
         }
         this.roomId = cc.game["currentRoomId"];
         // this.id
@@ -327,4 +343,51 @@ export default class LocalPlayerController extends cc.Component {
             scaleY: this.node.scaleY
         });
     }
+    
+    checkIfAllPlayersFinished() {
+        if (!this.db || !this.roomId) return;
+
+        const playersRef = this.db.ref(`rooms/active/${this.roomId}/players`);
+        playersRef.once("value", (snapshot) => {
+            const players = snapshot.val();
+            let allDone = true;
+            for (const uid in players) {
+                const p = players[uid];
+                if (!p.isFinished && !p.isDead) {
+                    allDone = false;
+                    break;
+                }
+            }
+            if (allDone) {
+                console.log("🎉 所有玩家完成或死亡，準備跳轉場景！");
+                cc.director.loadScene("SelectionMultiScene");
+            } else {
+                console.log("⏳ 還有玩家未完成...");
+            }
+        });
+    }
+
+    listenForEveryoneStatus() {
+        if (!this.db || !this.roomId) return;
+        const playersRef = this.db.ref(`rooms/active/${this.roomId}/players`);
+
+        playersRef.on("value", (snapshot) => {
+            const players = snapshot.val();
+            let allDone = true;
+
+            for (const uid in players) {
+                const p = players[uid];
+                if (!p.isFinished && !p.isDead) {
+                    allDone = false;
+                    break;
+                }
+            }
+
+            if (allDone) {
+                console.log("✅ 全部玩家完成或死亡，自動切換場景！");
+                cc.director.loadScene("SelectionMultiScene");
+            }
+        });
+    }
+
 }

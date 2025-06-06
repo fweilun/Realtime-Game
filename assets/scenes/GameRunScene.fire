@@ -995,8 +995,8 @@
       "__id__": 22
     },
     "_enabled": true,
-    "playerSpeed": 220,
-    "jumpForce": 400,
+    "playerSpeed": 100,
+    "jumpForce": 330,
     "_id": "48g9+DjBJDvauJAAXlg9Al"
   },
   {

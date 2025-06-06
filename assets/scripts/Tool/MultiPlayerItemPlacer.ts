@@ -83,6 +83,8 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         // 本地玩家選擇道具
         const selected = cc.game["selectedBlockType"];
         if (selected) this.setSelectedType(selected);
+
+        this.resetPlayerStatus();
     }
 
     async initFirebase() {
@@ -230,5 +232,32 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         this.cursorLayer.off(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
         this.cursorLayer.off(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
         if (this.itemListRef) this.itemListRef.off();
+    }
+
+    resetPlayerStatus() {
+        const firebaseManager = FirebaseManager.getInstance();
+        const db = firebaseManager.getDatabase();
+        const auth = firebaseManager.getAuth();
+        const roomId = cc.game["currentRoomId"];
+
+        if (!db || !auth.currentUser || !roomId) {
+            console.warn("❗ Firebase 尚未初始化，無法重設玩家狀態！");
+            return;
+        }
+
+        const playersRef = db.ref(`rooms/active/${roomId}/players`);
+        playersRef.once("value", (snapshot) => {
+            const players = snapshot.val();
+            if (!players) return;
+
+            for (const uid in players) {
+                playersRef.child(uid).update({
+                    isDead: false,
+                    isFinished: false
+                });
+            }
+
+            console.log("🔄 所有玩家的 isDead / isFinished 已重置！");
+        });
     }
 }

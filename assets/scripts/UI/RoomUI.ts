@@ -309,7 +309,8 @@ export default class RoomUI extends cc.Component {
                         x: 0,
                         y: 0,
                         score: 0,
-                        isFinished: false
+                        isFinished: false,
+                        isDead: false
                     });
                 }
             }
