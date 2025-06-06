@@ -25,6 +25,7 @@ export default class MultiPlayerController extends cc.Component {
     private db: any = null;
     private auth:any = null;
     private roomId:number = null;
+    private playerId: string = null;
     
     onLoad() {
         this.startPos = this.node.position.clone();
@@ -42,15 +43,15 @@ export default class MultiPlayerController extends cc.Component {
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-
+        
         console.log("🧍 player initialized.");
-
     }
 
     async start() {
         await this.initFirebase();
         this.born();  // 👈 初始重生
         this.schedule(this.sendInfo, 0.02, cc.macro.REPEAT_FOREVER, 0);
+        this.listenForEveryoneStatus();
     }
 
 
@@ -189,29 +190,25 @@ export default class MultiPlayerController extends cc.Component {
 
     levelCleared() {
         this.enabled = false; 
-        cc.director.getPhysicsManager().enabled = false; 
+        cc.director.getPhysicsManager().enabled = false;
 
-        const targetNode = cc.find("Canvas/EndTarget");
-        const targetPos = targetNode.getPosition();
-
-        const anim = this.getComponent(cc.Animation);
-        if (anim && anim.getClips().some(c => c.name === "run")) {
-            anim.play("run");
+        // 更新 Firebase: isFinished = true
+        if (this.db && this.roomId && this.playerId) {
+            this.db.ref(`rooms/active/${this.roomId}/players/${this.playerId}`).update({
+                isFinished: true
+            });
         }
-        this.node.scaleX = 1; 
 
-        cc.tween(this.node)
-            .to(2, { x: targetPos.x, y: targetPos.y }) 
-            .call(() => {
-                if(anim) anim.stop(); 
-            })
-            .start();
-        
-        this.scheduleOnce(() => {
-            cc.director.loadScene("StartScene")
-            cc.game["placedItems"] = [];
-        }, 3)
+        // 原地跳舞（或站立）
+        const anim = this.getComponent(cc.Animation);
+        if (anim && anim.getClips().some(c => c.name === "idle")) {
+            anim.play("idle");
+        }
+
+        // 啟動完成檢查
+        this.checkIfAllPlayersFinished();
     }
+
 
     born() {
         console.log("🔄 Player reborn");
@@ -239,31 +236,29 @@ export default class MultiPlayerController extends cc.Component {
 
 
    die() {
-        console.log("💀 player died. Respawning...");
-
-        this.rb.linearVelocity = cc.v2(0, 100);
-
-        const anim = this.getComponent(cc.Animation);
-        if (anim && anim.getClips().some(c => c.name === "die")) {
-            anim.play("die");
-            this.currentAnim = "die";
-            console.log("☠️ Playing 'die' animation");
-        } else {
-            console.warn("⚠️ 'die' animation not found");
-        }
+        console.log("💀 player died. Waiting for others...");
 
         this.enabled = false;
-
         const collider = this.getComponent(cc.PhysicsBoxCollider);
         if (collider) {
             collider.enabled = false;
         }
 
-        // 延遲 1 秒後復活
-        this.scheduleOnce(() => {
-            cc.game["selectedBlockType"] = null; 
-            cc.director.loadScene("SelectionScene"); 
-        }, 1);
+        // 更新 Firebase: isDead = true
+        if (this.db && this.roomId && this.playerId) {
+            this.db.ref(`rooms/active/${this.roomId}/players/${this.playerId}`).update({
+                isDead: true
+            });
+        }
+
+        // 原地發呆
+        const anim = this.getComponent(cc.Animation);
+        if (anim && anim.getClips().some(c => c.name === "idle")) {
+            anim.play("idle");
+        }
+
+        // 啟動完成檢查
+        this.checkIfAllPlayersFinished();
     }
         //cc.audioEngine.playEffect(this.dieSound, false);
     
@@ -282,6 +277,9 @@ export default class MultiPlayerController extends cc.Component {
                 cc.error("Error signing in anonymously at start():", error.code, error.message);
             });
         }
+        if (this.auth.currentUser) {
+            this.playerId = this.auth.currentUser.uid;
+        }
         this.roomId = cc.game["currentRoomId"];
         // this.id
     }
@@ -297,4 +295,51 @@ export default class MultiPlayerController extends cc.Component {
             scaleY: this.node.scaleY
         });
     }
+    
+    checkIfAllPlayersFinished() {
+        if (!this.db || !this.roomId) return;
+
+        const playersRef = this.db.ref(`rooms/active/${this.roomId}/players`);
+        playersRef.once("value", (snapshot) => {
+            const players = snapshot.val();
+            let allDone = true;
+            for (const uid in players) {
+                const p = players[uid];
+                if (!p.isFinished && !p.isDead) {
+                    allDone = false;
+                    break;
+                }
+            }
+            if (allDone) {
+                console.log("🎉 所有玩家完成或死亡，準備跳轉場景！");
+                cc.director.loadScene("SelectionMultiScene");
+            } else {
+                console.log("⏳ 還有玩家未完成...");
+            }
+        });
+    }
+
+    listenForEveryoneStatus() {
+        if (!this.db || !this.roomId) return;
+        const playersRef = this.db.ref(`rooms/active/${this.roomId}/players`);
+
+        playersRef.on("value", (snapshot) => {
+            const players = snapshot.val();
+            let allDone = true;
+
+            for (const uid in players) {
+                const p = players[uid];
+                if (!p.isFinished && !p.isDead) {
+                    allDone = false;
+                    break;
+                }
+            }
+
+            if (allDone) {
+                console.log("✅ 全部玩家完成或死亡，自動切換場景！");
+                cc.director.loadScene("SelectionMultiScene");
+            }
+        });
+    }
+
 }

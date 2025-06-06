@@ -105,17 +105,11 @@ export default class MultiPlayerItemPlacer extends cc.Component {
             console.warn("❗ 尚未從選擇場景讀取到選擇的道具！");
         }
         // add item to list
-        const tempRef = this.itemListRef.push({
-            type: this.selectedType,
-            state: ItemState.Moving,
-            placedBy: this.playerId,
-            x: 0,
-            y: 0
-        });
-        this.itemKey = tempRef.key
+
         // 從 Firebase 讀取已放置的道具
         this.loadPlacedItems();
         this.listenToOtherPlayers();
+        this.resetPlayerStatus()
     }
 
     async loadPlacedItems() {
@@ -182,28 +176,36 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         if (!this.selectedType || !this.currentPrefab) return;
 
         const pos = this.mapNode.convertToNodeSpaceAR(event.getLocation());
+
+        // 建立道具節點
         const newItem = cc.instantiate(this.currentPrefab);
         newItem.setPosition(pos);
         this.mapNode.addChild(newItem);
-        // // 更新到 Firebase
-        // if (this.db && this.roomId) {
-        //     this.itemListRef.child(this.itemKey).update({
-        //         type: this.selectedType,
-        //         x: pos.x,
-        //         y: pos.y,
-        //         placedBy: this.playerId,
-        //         state: ItemState.Placed
-        //     });
-        // }
-        console.log(`✅ 已放置 ${this.selectedType} 道具！`);
 
+        // 推送到 Firebase（改成 push 一筆新的 item 資料）
+        const itemData = {
+            type: this.selectedType,
+            x: pos.x,
+            y: pos.y,
+            state: ItemState.Placed,
+            placedBy: this.playerId,
+        };
+        const newItemRef = this.itemListRef.push(itemData);
+        console.log(`✅ 成功放置並寫入 Firebase：${this.selectedType}`);
+
+        // 清除光標物件
         if (this.cursorItem) {
             this.cursorItem.destroy();
             this.cursorItem = null;
         }
 
-        this.onPlaced();
+        // 不再使用 this.itemKey，因此不再呼叫 onPlaced()，直接檢查
+        this.placed = true;
+        this.cursorLayer.off(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
+        this.cursorLayer.off(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
+        this.checkAllPlaced();
     }
+
 
     listenToOtherPlayers() {
         if (!this.itemListRef) return;
@@ -285,5 +287,32 @@ export default class MultiPlayerItemPlacer extends cc.Component {
         }else{
             console.log("還有玩家沒放道具！");
         }
+    }
+
+    resetPlayerStatus() {
+        const firebaseManager = FirebaseManager.getInstance();
+        const db = firebaseManager.getDatabase();
+        const auth = firebaseManager.getAuth();
+        const roomId = cc.game["currentRoomId"];
+
+        if (!db || !auth.currentUser || !roomId) {
+            console.warn("❗ Firebase 尚未初始化，無法重設玩家狀態！");
+            return;
+        }
+
+        const playersRef = db.ref(`rooms/active/${roomId}/players`);
+        playersRef.once("value", (snapshot) => {
+            const players = snapshot.val();
+            if (!players) return;
+
+            for (const uid in players) {
+                playersRef.child(uid).update({
+                    isDead: false,
+                    isFinished: false
+                });
+            }
+
+            console.log("🔄 所有玩家的 isDead / isFinished 已重置！");
+        });
     }
 }
