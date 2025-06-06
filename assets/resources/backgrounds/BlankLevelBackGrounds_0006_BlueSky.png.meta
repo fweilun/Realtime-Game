@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "6c59aacb-7630-4935-ba8a-0e4373ab84b8",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 800,
+  "height": 450,
+  "platformSettings": {},
+  "subMetas": {
+    "BlankLevelBackGrounds_0006_BlueSky": {
+      "ver": "1.0.6",
+      "uuid": "3212f9e6-cf77-4805-b6af-6ebecf639ad6",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "6c59aacb-7630-4935-ba8a-0e4373ab84b8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 800,
+      "height": 450,
+      "rawWidth": 800,
+      "rawHeight": 450,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

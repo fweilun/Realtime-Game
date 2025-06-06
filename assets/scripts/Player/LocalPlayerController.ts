@@ -164,6 +164,9 @@ export default class MultiPlayerController extends cc.Component {
         if (otherCollider.node.name === "bullet_light") {
             this.die();
         }
+        if (otherCollider.node.name === "InnerCircle") {
+            this.die();
+        }
         
         if (otherCollider.node.name === "saw") {
             this.die();
