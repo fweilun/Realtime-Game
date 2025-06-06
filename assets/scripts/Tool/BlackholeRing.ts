@@ -11,14 +11,17 @@ const {ccclass, property} = cc._decorator;
 export default class NewClass extends cc.Component {
 
     @property(cc.Label)
-    label: cc.Label = null;
+    anim: cc.Animation = null;
 
     @property
-    text: string = 'hello';
+    clipName: string = "blackhole";
+
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {}
+    onLoad () {
+        this.node.name = "OuterRing";
+    }
 
     start () {
 

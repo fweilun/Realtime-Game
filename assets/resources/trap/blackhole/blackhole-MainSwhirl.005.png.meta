@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c86d30d3-ed16-476c-a8d0-c1debddad832",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 269,
+  "height": 232,
+  "platformSettings": {},
+  "subMetas": {
+    "blackhole-MainSwhirl.005": {
+      "ver": "1.0.6",
+      "uuid": "ff2bd865-d1e0-4500-97b5-732f545feadd",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c86d30d3-ed16-476c-a8d0-c1debddad832",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -1,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 265,
+      "height": 230,
+      "rawWidth": 269,
+      "rawHeight": 232,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
