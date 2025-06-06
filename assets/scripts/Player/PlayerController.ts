@@ -9,6 +9,9 @@ export default class PlayerController extends cc.Component {
     @property
     jumpForce: number = 1000;
 
+    @property
+    forceMagnitude: number = 2500;
+
     public blockHold: string = "box";
      
     private isInvincible: boolean = false;
@@ -19,6 +22,8 @@ export default class PlayerController extends cc.Component {
     private currentAnim: string = "";
     private rightDown = false;
     private leftDown = false;
+    private isInOuterRing: boolean = false;
+    private outerRingCollider: cc.Collider = null;
     
     onLoad() {
         this.startPos = this.node.position.clone();
@@ -34,6 +39,7 @@ export default class PlayerController extends cc.Component {
         }
         box.apply();
 
+        // 不需要註冊 PhysicsCircleCollider 事件，onBeginContact 由引擎自動調用
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
 
@@ -48,6 +54,7 @@ export default class PlayerController extends cc.Component {
     onDestroy() {
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        // 不需要 PhysicsCircleCollider 的 off 註冊
     }
 
     onKeyDown(event: cc.Event.EventKeyboard) {
@@ -92,6 +99,21 @@ export default class PlayerController extends cc.Component {
     update(dt: number) {
         if (this.rb) {
             this.rb.linearVelocity = cc.v2(this.playerSpeed * this.moveDir, this.rb.linearVelocity.y);
+        }
+
+        // OuterRing 吸引力持續施加
+        if (this.isInOuterRing && this.outerRingCollider) {
+            let playerRigidBody = this.getComponent(cc.RigidBody);
+            if (playerRigidBody) {
+                let circleNodeWorldPos = this.outerRingCollider.node.convertToWorldSpaceAR(cc.v2(0,0));
+                let playerNodeWorldPos = this.node.convertToWorldSpaceAR(cc.v2(0,0));
+                let circleCenter = cc.v2(circleNodeWorldPos.x, circleNodeWorldPos.y);
+                let playerCenter = cc.v2(playerNodeWorldPos.x, playerNodeWorldPos.y);
+                let forceDirection = circleCenter.sub(playerCenter);
+                forceDirection.normalizeSelf();
+                let force = forceDirection.mul(this.forceMagnitude);
+                playerRigidBody.applyForceToCenter(force, true);
+            }
         }
 
         const anim = this.getComponent(cc.Animation);
@@ -155,7 +177,14 @@ export default class PlayerController extends cc.Component {
         if (otherCollider.node.name === "bullet_light") {
             this.die();
         }
-        
+        if (otherCollider.node.name === "InnerCircle") {
+            this.die();
+        }
+        if (otherCollider.node.name === "OuterRing") {
+            this.isInOuterRing = true;
+            this.outerRingCollider = otherCollider;
+            // 原本的吸引力邏輯可刪除，改由 update 處理
+        }
         if (otherCollider.node.name === "saw") {
             this.die();
         }
@@ -175,6 +204,13 @@ export default class PlayerController extends cc.Component {
 
         if (otherCollider.node.name === "flag") {
             this.levelCleared();
+        }
+    }
+
+    onEndContact(contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
+        if (otherCollider.node.name === "OuterRing") {
+            this.isInOuterRing = false;
+            this.outerRingCollider = null;
         }
     }
 

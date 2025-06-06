@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "1cfffe68-3663-4bf1-b9d4-8143bd4bdf13",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 194,
+  "height": 75,
+  "platformSettings": {},
+  "subMetas": {
+    "TreadMill.007": {
+      "ver": "1.0.6",
+      "uuid": "59ff7d98-f238-4684-bdb7-b315a6bed6e1",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "1cfffe68-3663-4bf1-b9d4-8143bd4bdf13",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 1,
+      "trimX": 1,
+      "trimY": 0,
+      "width": 191,
+      "height": 73,
+      "rawWidth": 194,
+      "rawHeight": 75,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

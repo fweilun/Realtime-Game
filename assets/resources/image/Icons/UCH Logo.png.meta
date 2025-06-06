@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "ca7965d4-312f-4270-b7a9-20af4168c32e",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1138,
+  "height": 592,
+  "platformSettings": {},
+  "subMetas": {
+    "UCH Logo": {
+      "ver": "1.0.6",
+      "uuid": "208d489d-f72b-4199-8b10-8751400f53c6",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "ca7965d4-312f-4270-b7a9-20af4168c32e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": 2,
+      "trimX": 2,
+      "trimY": 0,
+      "width": 1136,
+      "height": 588,
+      "rawWidth": 1138,
+      "rawHeight": 592,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
