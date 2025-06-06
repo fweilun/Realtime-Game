@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "60baae18-a1fc-457b-9f23-e720ee8c1f4a",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 319,
+  "height": 323,
+  "platformSettings": {},
+  "subMetas": {
+    "Raccoon_DeadShock.001": {
+      "ver": "1.0.6",
+      "uuid": "9f990d0c-2905-4d46-a713-edeef492531f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "60baae18-a1fc-457b-9f23-e720ee8c1f4a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": 2.5,
+      "trimX": 3,
+      "trimY": 1,
+      "width": 314,
+      "height": 316,
+      "rawWidth": 319,
+      "rawHeight": 323,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

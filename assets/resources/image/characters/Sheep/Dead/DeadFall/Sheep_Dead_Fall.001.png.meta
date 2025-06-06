@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "4ce0dad3-1e81-435f-8e3f-5f720dfb8df2",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 194,
+  "height": 300,
+  "platformSettings": {},
+  "subMetas": {
+    "Sheep_Dead_Fall.001": {
+      "ver": "1.0.6",
+      "uuid": "e2abaf9e-d0bb-4530-9bc6-f33acf71be3f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "4ce0dad3-1e81-435f-8e3f-5f720dfb8df2",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2.5,
+      "offsetY": -8.5,
+      "trimX": 5,
+      "trimY": 18,
+      "width": 179,
+      "height": 281,
+      "rawWidth": 194,
+      "rawHeight": 300,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

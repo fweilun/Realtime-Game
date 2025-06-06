@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "cc83f97d-7463-438d-9420-f0839688d5fc",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 198,
+  "height": 187,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_Dead_Rise.002": {
+      "ver": "1.0.6",
+      "uuid": "3adfc42e-a439-4ea2-924e-c4a20712a93f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "cc83f97d-7463-438d-9420-f0839688d5fc",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": -0.5,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 196,
+      "height": 184,
+      "rawWidth": 198,
+      "rawHeight": 187,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

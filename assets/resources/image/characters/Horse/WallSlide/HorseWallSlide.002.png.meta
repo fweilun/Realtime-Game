@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "209f65a5-0f9c-4217-91e5-2ff292a09976",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 205,
+  "height": 249,
+  "platformSettings": {},
+  "subMetas": {
+    "HorseWallSlide.002": {
+      "ver": "1.0.6",
+      "uuid": "cd7433d6-d6c1-46cf-8afb-aff7fe2528f3",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "209f65a5-0f9c-4217-91e5-2ff292a09976",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -6.5,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 1,
+      "width": 188,
+      "height": 247,
+      "rawWidth": 205,
+      "rawHeight": 249,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "b0c7d544-30d4-481c-b242-11bddd0f42ab",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 326,
+  "height": 318,
+  "platformSettings": {},
+  "subMetas": {
+    "Chicken_Victory.005": {
+      "ver": "1.0.6",
+      "uuid": "763f51fc-a259-460f-b934-94633542829e",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "b0c7d544-30d4-481c-b242-11bddd0f42ab",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -4.5,
+      "trimX": 0,
+      "trimY": 14,
+      "width": 326,
+      "height": 299,
+      "rawWidth": 326,
+      "rawHeight": 318,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

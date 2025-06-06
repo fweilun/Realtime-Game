@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "a8ca1a7e-2cbc-4595-8895-badf3b41f0c6",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 281,
+  "height": 373,
+  "platformSettings": {},
+  "subMetas": {
+    "Chicken_DeathShock.002": {
+      "ver": "1.0.6",
+      "uuid": "19cbb357-20ca-4044-9c85-b9042969b544",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a8ca1a7e-2cbc-4595-8895-badf3b41f0c6",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1.5,
+      "offsetY": 1,
+      "trimX": 3,
+      "trimY": 1,
+      "width": 278,
+      "height": 369,
+      "rawWidth": 281,
+      "rawHeight": 373,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

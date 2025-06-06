@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "2eaee2c7-b858-4f1e-84e4-02b79dc255e5",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 267,
+  "height": 319,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_DeadShock.002": {
+      "ver": "1.0.6",
+      "uuid": "827c084d-2c45-4b3d-8b99-05d1204fd67a",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "2eaee2c7-b858-4f1e-84e4-02b79dc255e5",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 7,
+      "trimX": 3,
+      "trimY": 1,
+      "width": 261,
+      "height": 303,
+      "rawWidth": 267,
+      "rawHeight": 319,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

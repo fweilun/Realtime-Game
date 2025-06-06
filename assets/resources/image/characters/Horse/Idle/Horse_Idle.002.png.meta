@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "020d88f9-df5d-4cd3-b690-8aa8261ce258",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 234,
+  "height": 298,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_Idle.002": {
+      "ver": "1.0.6",
+      "uuid": "440f7e9e-4346-4710-a74c-23e1a252a9f0",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "020d88f9-df5d-4cd3-b690-8aa8261ce258",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0.5,
+      "trimX": 7,
+      "trimY": 1,
+      "width": 219,
+      "height": 295,
+      "rawWidth": 234,
+      "rawHeight": 298,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

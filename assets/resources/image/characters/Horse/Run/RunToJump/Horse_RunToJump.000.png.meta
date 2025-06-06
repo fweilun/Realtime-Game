@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "e0d28cbb-b713-4c92-b45d-f8699b795862",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 267,
+  "height": 296,
+  "platformSettings": {},
+  "subMetas": {
+    "Horse_RunToJump.000": {
+      "ver": "1.0.6",
+      "uuid": "e49a6f4e-65cc-471f-b95c-373034b0dc46",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "e0d28cbb-b713-4c92-b45d-f8699b795862",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2.5,
+      "offsetY": -0.5,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 260,
+      "height": 295,
+      "rawWidth": 267,
+      "rawHeight": 296,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

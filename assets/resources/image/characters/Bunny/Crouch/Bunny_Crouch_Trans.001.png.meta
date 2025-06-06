@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "2fb9b928-3bdb-4bae-968f-96a9c3d8d4ef",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 302,
+  "height": 229,
+  "platformSettings": {},
+  "subMetas": {
+    "Bunny_Crouch_Trans.001": {
+      "ver": "1.0.6",
+      "uuid": "63a49da8-30f5-47c8-8bc3-bfdc660ee363",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "2fb9b928-3bdb-4bae-968f-96a9c3d8d4ef",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -5.5,
+      "offsetY": -0.5,
+      "trimX": 0,
+      "trimY": 7,
+      "width": 291,
+      "height": 216,
+      "rawWidth": 302,
+      "rawHeight": 229,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

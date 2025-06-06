@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "83d657d7-1ba7-4562-976d-ea553aece2d8",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 169,
+  "height": 299,
+  "platformSettings": {},
+  "subMetas": {
+    "Sheep_JumpFall.001": {
+      "ver": "1.0.6",
+      "uuid": "32898d36-5e3d-4230-bc8a-9e7f37756d6c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "83d657d7-1ba7-4562-976d-ea553aece2d8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": 1.5,
+      "trimX": 2,
+      "trimY": 8,
+      "width": 162,
+      "height": 280,
+      "rawWidth": 169,
+      "rawHeight": 299,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "6bfe5ea8-5ad6-4b12-9178-43e75286b643",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 217,
+  "height": 277,
+  "platformSettings": {},
+  "subMetas": {
+    "Chicken_Landing.002": {
+      "ver": "1.0.6",
+      "uuid": "bcda4709-e29a-4a4f-b0f5-a17adc048cd6",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "6bfe5ea8-5ad6-4b12-9178-43e75286b643",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": -4,
+      "trimX": 1,
+      "trimY": 8,
+      "width": 212,
+      "height": 269,
+      "rawWidth": 217,
+      "rawHeight": 277,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

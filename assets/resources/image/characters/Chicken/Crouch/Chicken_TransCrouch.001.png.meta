@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "47817f90-49e5-47b0-ab98-83ce33cd56a7",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 190,
+  "height": 266,
+  "platformSettings": {},
+  "subMetas": {
+    "Chicken_TransCrouch.001": {
+      "ver": "1.0.6",
+      "uuid": "65ff5f16-c2bd-4450-8b0c-ebad90a0029b",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "47817f90-49e5-47b0-ab98-83ce33cd56a7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 3,
+      "offsetY": -3,
+      "trimX": 8,
+      "trimY": 6,
+      "width": 180,
+      "height": 260,
+      "rawWidth": 190,
+      "rawHeight": 266,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

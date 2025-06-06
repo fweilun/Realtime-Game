@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "1b8d57b7-5513-4618-b174-a13db62e464e",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 178,
+  "height": 244,
+  "platformSettings": {},
+  "subMetas": {
+    "Sheep_Wallslide.001": {
+      "ver": "1.0.6",
+      "uuid": "0a18e1fa-05b0-47e7-b31e-4b4df118e988",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "1b8d57b7-5513-4618-b174-a13db62e464e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 7,
+      "width": 174,
+      "height": 230,
+      "rawWidth": 178,
+      "rawHeight": 244,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

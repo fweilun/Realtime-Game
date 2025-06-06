@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "4d972f8c-8a4f-487e-80f5-e11de8c6a17c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 220,
+  "height": 289,
+  "platformSettings": {},
+  "subMetas": {
+    "Chicken_WallSlide.001": {
+      "ver": "1.0.6",
+      "uuid": "4e6ba765-cfb7-4d44-a52f-33221205616b",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "4d972f8c-8a4f-487e-80f5-e11de8c6a17c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 4,
+      "offsetY": -3,
+      "trimX": 11,
+      "trimY": 10,
+      "width": 206,
+      "height": 275,
+      "rawWidth": 220,
+      "rawHeight": 289,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
