@@ -1,4 +1,9 @@
 # software-final
+
+Demo:
+https://youtu.be/PhYiu7TGTW8?si=0H3D_j98ZBwe4zpc
+
+
 crazy horse
 
 5/28實作簡單map1，嘗試加入角色。
